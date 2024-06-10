@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import Tempservice from './implements/Tempservice';
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage'; 
 import Forms from './components/Forms/Forms';
 import EmployeeSearch from "./implements/EmployeeSearch/EmployeeSearch";
-
 import DisplayLogin from './implements/DisplayLogin/DisplayLogin';
 import Login from './implements/Login/Login';
 // import Signup from "./implements/Signup/Signup";
-
 import Register from "./implements/Register/Register"
 import About from './components/About/About';
 import "./App.css";
-
 import Programs from './components/Programs/Programs';
 import TitleSearch from './components/TitleSearch/TitleSearch';
 import SketchRoof from './components/SketchRoof/SketchRoof';
@@ -21,23 +17,20 @@ import SoftwareServices from './components/SoftwareServices/SoftwareServices';
 import DisplayAll from './implements/DisplayAll/DisplayAll';
 import { AuthProvider } from './implements/AuthContext/AuthContext';
 import UserService from './implements/UserService/UserService';
-
 import UpdateUser from './implements/UpdateUser/UpdateUser';
 import Dimond from './components/Dimond/Dimond';
-
 import EtServices from './Reports/EtServicesReports/EtServices/EtServices';
 import EtSearchAddress from './Reports/EtServicesReports/EtSearchAddress/EtSearchAddress';
 import EtServiceDisplay from './Reports/EtServicesReports/EtServiceDisplay/EtServiceDisplay';
 import EtServiceSearch from './Reports/EtServicesReports/EtServiceSearch/EtServiceSearch';
-
 import DasAddressSearch from './Reports/DiscoverAbstractServicesReports/DasAddressSearch/DasAddressSearch';
 import DasDisplay from './Reports/DiscoverAbstractServicesReports/DasDisplay/DasDisplay';
 import DasOrderSearch from './Reports/DiscoverAbstractServicesReports/DasOrderSearch/DasOrderSearch';
 import DasReport from './Reports/DiscoverAbstractServicesReports/DasReport/DasReport';
 import ForgetPassword from './implements/ForgetPassowrd/ForgetPassword';
 import ResetPassword from './implements/ResetPassword/ResetPassword';
-
 import Pagination from './implements/Pagination/Pagination';
+import EmployeeDetail from './implements/EmployeeDetail/EmployeeDetail';
 
 
 function App() {
@@ -59,6 +52,7 @@ function App() {
             <Route path="/Tempservice" element={<Tempservice />} />
             <Route path="/ForgetPassword" element={<ForgetPassword />} />
             <Route path="/ResetPassword/:email" element={<ResetPassword />} />
+            <Route path="/EmployeeDetail/:id" element={<EmployeeDetail />} />
             
         
             <Route path="/SoftwareServices" element={<SoftwareServices />} />

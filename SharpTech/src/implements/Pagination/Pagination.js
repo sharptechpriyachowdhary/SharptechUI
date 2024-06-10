@@ -11,6 +11,7 @@ import 'primeicons/primeicons.css';
 import { Button } from 'primereact/button';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import { useNavigate } from 'react-router-dom';
 
 export default function Pagination() {
     const [users, setUsers] = useState([]);
@@ -19,6 +20,9 @@ export default function Pagination() {
     const [error, setError] = useState(null);
     const [rows, setRows] = useState(5);
     const [globalFilter, setGlobalFilter] = useState('');
+
+    const navigate = useNavigate(); // Initialize useNavigate
+
 
     useEffect(() => {
         loadUsers();
@@ -126,7 +130,7 @@ export default function Pagination() {
                                 body={(rowData) => (
                                     <div>
                                         {/* <Button icon="pi pi-user-plus" label="View" className="p-button-rounded p-button-info" /> */}
-                                        <Button icon="pi pi-pen-to-square" label="Edit" className="p-button-rounded p-button-custom-warning" />
+                                        <Button icon="pi pi-pen-to-square" label="&nbsp;View&nbsp;&nbsp;" className="p-button-rounded p-button-custom-warning" onClick={() => navigate(`/EmployeeDetail/${rowData.id}`)} />
                                         {/* <Button icon="pi pi-search" className="p-button-rounded p-button-warning" />
                                         <Button icon="pi pi-trash" label="Delete" className="p-button-rounded p-button-danger" onClick={() => deleteUser(rowData.empId)} />
                                         <Button icon="pi pi-info-circle" className="p-button-rounded p-button-info" />
