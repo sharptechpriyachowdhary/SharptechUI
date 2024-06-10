@@ -1,0 +1,55 @@
+.Abstract-Report{
+    background-color: #db815d;
+    color:  hsl(12, 21%, 91%);
+    display:inline-flex;
+    padding: 50px;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+    padding: 10px;
+    text-align: center;
+   
+  }
+  .header-table{
+    background-color: #7fb9f7;
+    width:100%;
+  }
+  .abstractform-table-1 {
+  
+    width: 50%;
+    color: #db815d;
+    background-color: #db815d;
+  }
+  
+  .Abstract-Report {
+    width: 50%;
+  }
+  
+  .Abstract-Report th, .Abstract-Report td {
+    padding: 10px;
+  }
+  
+  .Abstract-Report th {
+    background-color: #c58c8c;
+    text-align: center;
+  }
+  
+  .Abstract-Report td {
+    text-align: left;
+  }
+  .priya{
+    width: 50%;
+    background-color: #a5d3e6;
+  }
+  .abstractform-table{
+    text-align: center;
+  }
+  .abstractform-table,.abstractform-table-1,.abstractform-table-2,.abstractform-table-3,.abstractform-table-4,.abstractform-table-6,.abstractform-table-7,.abstractform-table-8,
+  .abstractreport-table-10,.abstractreport-table-11,.abstractreport-table-12,.abstractreport-table-13,.abstractreport-table-9
+  {
+    width:50%;
+  }
+  .heading-table{
+    background-color: #9ab4cf;
+  }
