@@ -36,7 +36,7 @@ const ResetPassword = () => {
       <div className="reset-password-box">
         <h1>Reset Password</h1>
         <form onSubmit={handleSubmit}>
-          <div className="input-group">
+          <div className="reset-password-input-group">
             <label>OTP:</label>
             <input 
               type="text" 
@@ -45,7 +45,7 @@ const ResetPassword = () => {
               required 
             />
           </div>
-          <div className="input-group">
+          <div className="reset-password-input-group">
             <label>New Password:</label>
             <input 
               type="password" 
@@ -56,8 +56,8 @@ const ResetPassword = () => {
           </div>
           <button type="submit">Reset Password</button>
         </form>
-        {message && <p className="success-message">{message}</p>}
-        {error && <p className="error-message">{error}</p>}
+        {message && <p className="reset-password-success-message">{message}</p>}
+        {error && <p className="reset-password-error-message">{error}</p>}
       </div>
     </div>
   );

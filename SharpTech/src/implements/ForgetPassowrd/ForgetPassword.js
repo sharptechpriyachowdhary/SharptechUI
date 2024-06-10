@@ -27,9 +27,11 @@ const ForgetPassword = () => {
   return (
     <div className="forgot-password-container">
       <div className="forgot-password-box">
-        <h1>Forgot Password</h1>
+        <h1 className='forgot-password-heading'>Forgot Password</h1>
+        <p>Enter your email address, and we will send an OTP which you can use to reset your password. </p>
+        <br/>
         <form onSubmit={handleSubmit}>
-          <div className="input-group">
+          <div className="forget-password-input-group">
             <label>Email:</label>
             <input 
               type="email" 
@@ -38,10 +40,11 @@ const ForgetPassword = () => {
               required 
             />
           </div>
-          <button type="submit">Submit</button>
+          <br/>
+          <button type="submit">Get OTP</button>
         </form>
-        {message && <p className="success-message">{message}</p>}
-        {error && <p className="error-message">{error}</p>}
+        {message && <p className="forget-success-message">{message}</p>}
+        {error && <p className="forget-error-message">{error}</p>}
       </div>
     </div>
   );
