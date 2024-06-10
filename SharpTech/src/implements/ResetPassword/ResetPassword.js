@@ -56,8 +56,8 @@ const ResetPassword = () => {
           </div>
           <button type="submit">Reset Password</button>
         </form>
-        {message && <p className="success-message">{message}</p>}
-        {error && <p className="error-message">{error}</p>}
+        {message && <p className="reset-password-success-message">{message}</p>}
+        {error && <p className="reset-password-error-message">{error}</p>}
       </div>
     </div>
   );
