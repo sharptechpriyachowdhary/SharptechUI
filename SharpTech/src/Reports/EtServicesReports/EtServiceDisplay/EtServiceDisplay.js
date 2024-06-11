@@ -383,10 +383,10 @@ function EtServiceDisplay() {
                                 {etservice && etservice.etnameruns.map((nameruns, nindex) => (
                                     <tr key={nindex}>
                                         <td style={{ border: '1px solid black' }}>{nameruns.name}</td>
-                                        <td style={{ border: '1px solid black' }}>X</td>
-                                        <td style={{ border: '1px solid black' }}>X</td>
-                                        <td style={{ border: '1px solid black' }}>X</td>
-                                        <td style={{ border: '1px solid black' }}>X</td>
+                                        <td style={{ border: '1px solid black' }}>{nameruns.jud === null ? "X" : nameruns.jud}</td>
+                                        <td style={{ border: '1px solid black' }}>{nameruns.liens === null ? "X" : nameruns.liens}</td>
+                                        <td style={{ border: '1px solid black' }}>{nameruns.ucc === null ? "X" : nameruns.ucc}</td>
+                                        <td style={{ border: '1px solid black' }}>{nameruns.others === null ? "X" : nameruns.others}</td>
                                     </tr>
                                 ))}
                             </table>

@@ -23,7 +23,7 @@ import Dimond from './components/Dimond/Dimond';
 import EtServices from './Reports/EtServicesReports/EtServices/EtServices';
 import EtSearchAddress from './Reports/EtServicesReports/EtSearchAddress/EtSearchAddress';
 import EtServiceDisplay from './Reports/EtServicesReports/EtServiceDisplay/EtServiceDisplay';
-import EtServiceSearch from './Reports/EtServicesReports/EtServiceSearch/EtServiceSearch';
+import EtOrderSearch from './Reports/EtServicesReports/EtOrderSearch/EtOrderSearch';
 import DasAddressSearch from './Reports/DiscoverAbstractServicesReports/DasAddressSearch/DasAddressSearch';
 import DasDisplay from './Reports/DiscoverAbstractServicesReports/DasDisplay/DasDisplay';
 import DasOrderSearch from './Reports/DiscoverAbstractServicesReports/DasOrderSearch/DasOrderSearch';
@@ -88,7 +88,7 @@ function App() {
                 <Route path="/EtServices" element={<EtServices />} />
                 <Route path="/EtSearchAddress" element={<EtSearchAddress />} />
                 <Route path="/EtServiceDisplay/:orderNumber" element={<EtServiceDisplay />} />
-                <Route path="/EtServiceSearch" element={<EtServiceSearch />} />
+                <Route path="/EtOrderSearch" element={<EtOrderSearch />} />
                 <Route path="/DisplayLogin" element={<DisplayLogin />} />
               </Route>
 
@@ -98,6 +98,7 @@ function App() {
               <Route path="/DasOrderSearch" element={<DasOrderSearch />} />
               <Route path="/DasReport" element={<DasReport />} />
               <Route path="/Pagination" element={<Pagination />} />
+              
 
 
               {/* Fallback route */}

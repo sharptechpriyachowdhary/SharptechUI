@@ -118,7 +118,7 @@ color: #161816;
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease;
-    margin-left: 90%;
+    margin-left: 93%;
   }
   
   .et-services-add-button:hover {
@@ -135,7 +135,7 @@ color: #161816;
     display: flex;
     align-items: right;
     transition: background-color 0.3s ease;
-    margin-left: 90%;
+    margin-left: 93%;
   }
   
   .et-services-delete-button:hover {

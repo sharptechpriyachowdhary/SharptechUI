@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from "axios";
@@ -35,7 +36,8 @@ function DasReport() {
     const [tablesData, setTablesData] = useState([{ id: 1, indicator: 0, data: {}, name: 'VESTING INFORMATION' }]);
     const [nextTableId, setNextTableId] = useState(2);
 
-     
+
+
 
     const [tablesData2, setTablesData2] = useState([{ id: 1, indicator: 0, data: {} }]);
     const [nextTableId2, setNextTableId2] = useState(2);
@@ -95,6 +97,13 @@ function DasReport() {
         });
         setTableRowsData(updatedTableRowsData);
     };
+    // const handleRowInputChange = (e, rowId) => {
+    //     const { name, value } = e.target;
+    //     const updatedRows = tableRowsData.map(row =>
+    //         row.id === rowId ? { ...row, data: { ...row.data, [name]: value } } : row
+    //     );
+    //     setTableRowsData(updatedRows);
+    // };
 
 
     // Function to add a new row
@@ -108,17 +117,17 @@ function DasReport() {
     const [amount, setAmount] = useState('');
     const handleInputChange = (e, tableId) => {
         const { name, value } = e.target;
-      
-      // Remove any non-numeric characters for parsing
-        const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+
+        // Remove any non-numeric characters for parsing
+        //const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
 
         // Format the value with a dollar sign for display purposes
-       const formattedValue = isNaN(numericValue) ? '' : `$${numericValue.toFixed(2)}`;
+       // const formattedValue = isNaN(numericValue) ? '' : `$${numericValue.toFixed(2)}`;
 
         // Update the table data with the raw numeric value
-        if (!isNaN(formattedValue) || formattedValue === '') {
-            setAmount(formattedValue);
-        }
+        // if (!isNaN(formattedValue) || formattedValue === '') {
+        //     setAmount(formattedValue);
+        // }
         const updatedTablesData = tablesData.map(table => {
             if (table.id === tableId) {
                 return {
@@ -126,7 +135,7 @@ function DasReport() {
                     data: {
                         ...table.data,
                         [name]: value,
-                        
+
                     }
                 };
             }
@@ -194,11 +203,15 @@ function DasReport() {
         setTableTaxInstaData(updatedTableTaxInstaData);
     };
 
+    const [showDeleteButton, setShowDeleteButton] = useState(false);
+
+    //   const getTableName = (id) => `Table ${id}`;
+
     const handleAddTable = (e) => {
         e.preventDefault();
         const newTableId = nextTableId;
-        const newName = getTableName(newTableId);
-        // const newTableId = tablesData.length + 1;
+        const newName = getTableName(newTableId); // const newTableId = tablesData.length + 1;
+
         const newIndicator = tablesData.length;
         setTablesData([...tablesData, { id: newTableId, indicator: newIndicator, data: {}, name: newName }]);
         setNextTableId(newTableId + 1);
@@ -209,25 +222,35 @@ function DasReport() {
         setTablesData(updatedTables);
     };
 
+
+
     const handleAddTable2 = (e) => {
         e.preventDefault();
-        const newTableId2 = nextTableId2;
-
-        // const newTableId = tablesData.length + 1;
+        const newTableId2 = nextTableId2;   // const newTableId = tablesData.length + 1;       
         const newIndicator = tablesData2.length;
         setTablesData2([...tablesData2, { id: newTableId2, indicator: newIndicator, data: {} }]);
         setNextTableId2(newTableId2 + 1);
     };
- const handleDeleteTable2 = (idToDelete) => {
+
+    const handleDeleteTable2 = (idToDelete) => {
         const updatedTables2 = tablesData2.filter(table => table.id !== idToDelete);
         setTablesData2(updatedTables2);
     };
+
+
     const handleAddRow = (e) => {
         e.preventDefault()
         const newRowsId = nextRowsId;
         const newRow = { id: newRowsId, data: {} };
         setTableRowsData([...tableRowsData, newRow]);
         setNextRowsId(newRowsId + 1);
+    };
+
+    const handleDeleteLastRow = () => {
+        if (tableRowsData.length > 0) {
+            const updatedRows = tableRowsData.slice(0, -1); // Remove the last row
+            setTableRowsData(updatedRows);
+        }
     };
 
     const handleAddNameRow = (e) => {
@@ -238,6 +261,13 @@ function DasReport() {
         setNextNameRunId(newNameRunId + 1);
     };
 
+    const handleDeleteLastNameRow = () => {
+        if (nameRunData.length > 0) {
+            const updatedRows = nameRunData.slice(0, -1); // Remove the last row
+            setNameRunData(updatedRows);
+        }
+    };
+
     const handleAddTaxInstaRow = (e) => {
         e.preventDefault()
         const newTableTaxInstaId = nextTableTaxInstaId;
@@ -246,6 +276,12 @@ function DasReport() {
         setNextTableTaxInstaId(newTableTaxInstaId + 1);
     };
 
+    const handleDeleteLastTaxInstaRow = () => {
+        if (tableTaxInstaData.length > 0) {
+            const updatedRows = tableTaxInstaData.slice(0, -1); // Remove the last row
+            setTableTaxInstaData(updatedRows);
+        }
+    };
 
 
     {/*const handleAddTable = (e) => {
@@ -353,49 +389,49 @@ function DasReport() {
         alert("Table data cleared!");
     };
 
-//save and clear for the third table
-const handleSaveTemporarily = () => {
-    // Check if all fields in all tables are filled
-    const isAnyFieldEmpty = tablesData.some(table =>
-        Object.values(table.data).some(value => value === '')
-    );
+    //save and clear for the third table
+    const handleSaveTemporarily = () => {
+        // Check if all fields in all tables are filled
+        const isAnyFieldEmpty = tablesData.some(table =>
+            Object.values(table.data).some(value => value === '')
+        );
 
-    if (isAnyFieldEmpty) {
-        alert("Please fill in all fields before saving!");
-    } else {
-        // Save data to temporary storage
-        localStorage.setItem('tempTablesData', JSON.stringify(tablesData));
-        alert("Table data saved temporarily!");
-    }
-};
-const handleClearTables = () => {
-    // Clear table data
-    setTablesData([]);
-    alert("Table data cleared!");
-};
+        if (isAnyFieldEmpty) {
+            alert("Please fill in all fields before saving!");
+        } else {
+            // Save data to temporary storage
+            localStorage.setItem('tempTablesData', JSON.stringify(tablesData));
+            alert("Table data saved temporarily!");
+        }
+    };
+    const handleClearTables = () => {
+        // Clear table data
+        setTablesData([]);
+        alert("Table data cleared!");
+    };
 
-//save and clear for fourth table
+    //save and clear for fourth table
 
-const handleSaveTemporarilyRow = () => {
-    // Check if all fields in all rows are filled
-    const isAnyFieldEmpty = tableRowsData.some(row =>
-        Object.values(row).some(value => value === '')
-    );
+    const handleSaveTemporarilyRow = () => {
+        // Check if all fields in all rows are filled
+        const isAnyFieldEmpty = tableRowsData.some(row =>
+            Object.values(row).some(value => value === '')
+        );
 
-    if (isAnyFieldEmpty) {
-        alert("Please fill in all fields before saving!");
-    } else {
-        // Save data to temporary storage
-        localStorage.setItem('tempTableRowsData', JSON.stringify(tableRowsData));
-        alert("Table data saved temporarily!");
-    }
-};
+        if (isAnyFieldEmpty) {
+            alert("Please fill in all fields before saving!");
+        } else {
+            // Save data to temporary storage
+            localStorage.setItem('tempTableRowsData', JSON.stringify(tableRowsData));
+            alert("Table data saved temporarily!");
+        }
+    };
 
-const handleClearRows = () => {
-    // Clear table data
-    setTableRowsData([]);
-    alert("Table data cleared!");
-};
+    const handleClearRows = () => {
+        // Clear table data
+        setTableRowsData([]);
+        alert("Table data cleared!");
+    };
 
 
 
@@ -417,8 +453,8 @@ const handleClearRows = () => {
 
         e.preventDefault();
         try {
+            const token = localStorage.getItem('token');
 
-          const token = localStorage.getItem('token');
             const payload = {
                 propertyinfo: {
                     orderNumber: orderNumber,
@@ -457,11 +493,11 @@ const handleClearRows = () => {
             };
             await axios.post("http://localhost:8080/insert", payload,{
 
-            headers:{
-              'Authorization': `Bearer ${token}`
-            }
-
-            });
+                headers:{
+                  'Authorization': `Bearer ${token}`
+                }
+    
+                });
             window.alert("Data Sent Sucessfully");
 
 
@@ -612,13 +648,14 @@ const handleClearRows = () => {
                                     <tr>
                                         <th style={{ border: '1px solid black' }}> DEED TYPE </th>
                                         <td colSpan={4} style={{ border: '1px solid black' }}>
-                                            <input type="text" className="abstract-control" placeholder="Enter  Deed Type" name="deedType" style={{ width: '100%' }} onChange={(e) => handleInputChange(e, table.id)} required/>
+                                            <input type="text" className="abstract-control" placeholder="Enter  Deed Type" name="deedType" style={{ width: '100%' }} onChange={(e) => handleInputChange(e, table.id)} required />
                                         </td>
                                         <th style={{ border: '1px solid black' }}> CONSIDERATION Amount : $ </th>
-                                   
+
                                         <td colSpan={'100%'} style={{ border: '1px solid black' }}>
-                                            <input type="text"  className="dollar-input" placeholder="Enter Consideration Amount" name="considerationAmount" style={{ width: '100%' }} onChange={(e) => handleInputChange(e, table.id)}  required
-                                             value={formatValueForDisplay(table.data.considerationAmount)}/>
+                                            <input type="text" className="dollar-input" placeholder="Enter Consideration Amount" name="considerationAmount" style={{ width: '100%' }} onChange={(e) => handleInputChange(e, table.id)} required
+                                                // 
+                                                 />
                                         </td>
                                     </tr>
 
@@ -668,11 +705,15 @@ const handleClearRows = () => {
                                     </tr>
                                 </table>
                             </center>
+                            {table.id > 1 && (
+                                    <button className="btn-delete" onClick={() => handleDeleteTable(table.id)}>Delete Table</button>
+                                )} <button className='btn-style' onClick={handleAddTable}>Add Table</button>
                         </div>
                     ))}
                     <br />
-                    <button className='btn-style' onClick={handleAddTable}>Add Table</button>
+                    {/* <button className='btn-style' onClick={handleAddTable}>Add Table</button> */}
                     <br />
+                   
                     <br />
 
                     <button onClick={handleSave}>Save</button>
@@ -685,290 +726,108 @@ const handleClearRows = () => {
 
                 {/* --------------------------------------------------------------Table 3-----------------------------------------------*/}
                 <div>
-                    {tablesData2.map((table, index) => (
-                        <div key={table.id} >
-                            <br />
-                            <center>
-                                <center>
-                                    <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
-
-                                        <tr>
-                                            <th className="header-table" colSpan="7">OPEN MORTGAGE / DEED OF TRUST  ({table.id}) </th>
-                                        </tr>
-
-                                        <tr>
-                                            <th style={{ border: '1px solid black' }}> MORTGAGOR :</th>
-
-                                            <td colSpan={6} style={{ border: '1px solid black' }}>
-                                                <input type="text" className="abstract-control" placeholder="Enter  MORTGAGO" name="mortgagor" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} required/>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th
-                                                style={{ border: '1px solid black' }}> MORTGAGEE :
-                                            </th>
-                                            <td
-                                                colSpan={'6'}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="text"
-                                                    className="abstract-control"
-                                                    name="mortgagee"
-                                                    placeholder='Enter MORTGAGEE'
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)} required
-                                                />
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-
-                                            <th
-                                                style={{ border: '1px solid black' }}> TRUSTEE :
-                                            </th>
-                                            <td
-                                                colSpan={6}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="text" className="abstract-control"
-                                                    placeholder="Enter TRUSTEE   " name="trustee"
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-
-                                            </td>
-
-                                        </tr>
-
-                                        <tr>
-                                            <th style={{ border: '1px solid black' }}> INSTRUMENT/BOOK/PAGE : </th>
-                                            <td
-                                                colSpan={'4'}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="text"
-                                                    className="abstract-control"
-                                                    name="instrBookPage"
-                                                    placeholder='Enter INSTRUMENT/BOOK/PAGE:'
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-                                            </td>
-
-
-
-                                            <th style={{ border: '1px solid black' }}>Amount [$]:</th>
-                                            <td
-                                                colSpan={2}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="Number"
-                                                    className="abstract-control"
-                                                    placeholder="$ Enter Amount"
-                                                    name="amount"
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-
-                                            </td>
-                                        </tr>
-
-
-                                        <tr>
-                                            <th
-                                                style={{ border: '1px solid black' }}> DATED DATE:
-                                            </th>
-
-                                            <td
-                                                colSpan={'4'}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="Date"
-                                                    className="abstract-control"
-                                                    name="datedDate"
-                                                    placeholder='Enter DATED DATE:'
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-                                            </td>
-
-
-
-                                            <th
-                                                style={{ border: '1px solid black' }}>RECORDED DATE:
-                                            </th>
-
-                                            <td
-                                                colSpan={2}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="Date"
-                                                    className="abstract-control"
-                                                    placeholder="Enter RECORDED DATE"
-                                                    name="recordedDate"
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colSpan={5}></td>
-                                            <th
-                                                style={{ border: '1px solid black' }}>MATURITY DATE :
-                                            </th>
-
-                                            <td
-                                                colSpan={3}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="Date"
-                                                    className="abstract-control"
-                                                    placeholder="Enter Maturity Date"
-                                                    name="maturityDate"
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-
-                                            </td>
-
-                                        </tr>
-
-                                        <tr>
-                                            <th
-                                                style={{ border: '1px solid black' }}> MORTGAGE ASSIGNED TO
-                                            </th>
-
-                                            <td
-                                                colSpan={'6'}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="text"
-                                                    className="abstract-control"
-                                                    name="mortgageAssignedTo"
-                                                    placeholder='Enter MORTGAGE ASSIGNED TO'
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th
-                                                style={{ border: '1px solid black' }}> ASSIGNMENT BK/PG :
-                                            </th>
-
-                                            <td
-                                                colSpan={'4'}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="text"
-                                                    className="abstract-control"
-                                                    name="assignmentBkPg"
-                                                    placeholder='Enter ASSIGNMENT BK/PG :'
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-                                            </td>
-
-
-
-                                            <th
-                                                style={{ border: '1px solid black' }}>ASSIGNMENT DATED :
-                                            </th>
-
-                                            <td
-                                                colSpan={2}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="Date"
-                                                    className="abstract-control"
-                                                    placeholder="Enter ASSIGNMENT DATED"
-                                                    name="assignmentDated"
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colSpan={5}></td>
-                                            <th
-                                                style={{ border: '1px solid black' }}>ASSIGNMENT RECORDED :
-                                            </th>
-
-                                            <td
-                                                colSpan={3}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type="Date"
-                                                    className="abstract-control"
-                                                    placeholder="Enter ASSIGNMENT RECORDED:"
-                                                    name="assignmentRecorded"
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-                                            </td>
-
-                                        </tr>
-
-
-
-
-
-                                        <tr>
-                                            <th
-                                                style={{ border: '1px solid black' }}>COMMENTS :
-                                            </th>
-
-                                            <td
-                                                colSpan={6}
-                                                style={{ border: '1px solid black' }}>
-
-                                                <input
-                                                    type='text-area'
-                                                    className="abstract-control"
-                                                    placeholder="Enter COMMENTS"
-                                                    name="comments"
-                                                    style={{ width: '100%' }}
-                                                    onChange={(e) => handleInputChange2(e, table.id)}
-                                                />
-
-                                            </td>
-
-                                        </tr>
-
-                                        <button onSubmit={() => handleDeleteTableD(table.id)}>Delete Table</button>
-
-                                    </table>
-                                </center>
-                            </center>
-                        </div>
-                    ))}
+            {tablesData2.map((table, index) => (
+                <div key={table.id} >
                     <br />
-                    <button className='btn-style' onClick={handleAddTable2}>Add Table</button>
-                    <br />
-                    <br />
-                    <button onClick={handleSaveTemporarily}>Save</button>
-                    <br />
-                    <br />
+                    <center>
+                        <center>
+                            <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                                <tr>
+                                    <th className="header-table" colSpan="7">OPEN MORTGAGE / DEED OF TRUST  ({table.id}) </th>
+                                </tr>
+                                <tr>
+                                    <th style={{ border: '1px solid black' }}> MORTGAGOR :</th>
+                                    <td colSpan={6} style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" placeholder="Enter  MORTGAGO" name="mortgagor" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} required />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style={{ border: '1px solid black' }}> MORTGAGEE :</th>
+                                    <td colSpan={'6'} style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" name="mortgagee" placeholder='Enter MORTGAGEE' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} required />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style={{ border: '1px solid black' }}> TRUSTEE :</th>
+                                    <td colSpan={6} style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" placeholder="Enter TRUSTEE" name="trustee" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style={{ border: '1px solid black' }}> INSTRUMENT/BOOK/PAGE :</th>
+                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" name="instrBookPage" placeholder='Enter INSTRUMENT/BOOK/PAGE:' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                    <th style={{ border: '1px solid black' }}>Amount [$]:</th>
+                                    <td colSpan={2} style={{ border: '1px solid black' }}>
+                                        <input type="Number" className="abstract-control" placeholder="$ Enter Amount" name="amount" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style={{ border: '1px solid black' }}> DATED DATE:</th>
+                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
+                                        <input type="Date" className="abstract-control" name="datedDate" placeholder='Enter DATED DATE:' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                    <th style={{ border: '1px solid black' }}>RECORDED DATE:</th>
+                                    <td colSpan={2} style={{ border: '1px solid black' }}>
+                                        <input type="Date" className="abstract-control" placeholder="Enter RECORDED DATE" name="recordedDate" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colSpan={5}></td>
+                                    <th style={{ border: '1px solid black' }}>MATURITY DATE :</th>
+                                    <td colSpan={3} style={{ border: '1px solid black' }}>
+                                        <input type="Date" className="abstract-control" placeholder="Enter Maturity Date" name="maturityDate" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style={{ border: '1px solid black' }}> MORTGAGE ASSIGNED TO</th>
+                                    <td colSpan={'6'} style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" name="mortgageAssignedTo" placeholder='Enter MORTGAGE ASSIGNED TO' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style={{ border: '1px solid black' }}> ASSIGNMENT BK/PG :</th>
+                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" name="assignmentBkPg" placeholder='Enter ASSIGNMENT BK/PG :' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                    <th style={{ border: '1px solid black' }}>ASSIGNMENT DATED :</th>
+                                    <td colSpan={2} style={{ border: '1px solid black' }}>
+                                        <input type="Date" className="abstract-control" placeholder="Enter ASSIGNMENT DATED" name="assignmentDated" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colSpan={5}></td>
+                                    <th style={{ border: '1px solid black' }}>ASSIGNMENT RECORDED :</th>
+                                    <td colSpan={3} style={{ border: '1px solid black' }}>
+                                        <input type="Date" className="abstract-control" placeholder="Enter ASSIGNMENT RECORDED:" name="assignmentRecorded" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style={{ border: '1px solid black' }}>COMMENTS :</th>
+                                    <td colSpan={6} style={{ border: '1px solid black' }}>
+                                        <input type='text-area' className="abstract-control" placeholder="Enter COMMENTS" name="comments" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+                    </center>
+                    {table.id > 1 && (
+                                    <button className="btn-delete" onClick={() => handleDeleteTable2(table.id)}>Delete Table</button>
+                                )} <button className='btn-style' onClick={handleAddTable2}>Add Table</button>
+                </div>
+            ))}
+            <br />
+           
+            <br />
+            <br />
+            <button onClick={handleSaveTemporarily}>Save</button>
+            <br />
+            <br />
             <button onClick={handleClearTables}>Clear</button>
             <br />
             <br />
-                </div>
+        </div>
 
 
 
@@ -1008,20 +867,26 @@ const handleClearRows = () => {
                                             <input type="text" className="service-control" placeholder="Enter Amount" name="amount" onChange={e => handleChange(e, row.id)} style={{ width: '100%' }} />
                                         </td>
                                     </tr>
+                                    
                                 ))}
                             </tbody>
                         </table>
-                        <br />
-                        <br />
+                        <br/>
                         <button className='btn-style' onClick={handleAddRow}>Add Row</button>
+                        {tableRowsData.length > 3 && (
+                            <button type="button" className='btn-style' onClick={handleDeleteLastRow}>Delete Row</button>
+                        )}
+                        <br />
+                        <br />
+                       
                         <br />
                         <br />
                         <button onClick={handleSaveTemporarilyRow}>Save</button>
                         <br />
                         <br />
-                <button onClick={handleClearRows}>Clear</button>
-                <br />
-                <br />
+                        <button onClick={handleClearRows}>Clear</button>
+                        <br />
+                        <br />
                     </center>
                     <br />
                 </div>
@@ -1096,7 +961,11 @@ const handleClearRows = () => {
                                     </td>
                                 </tr>
                             </table>
+                            <br/>
                             <button className='btn-style' onClick={handleAddTaxInstaRow}>Add Row</button>
+                            {tableTaxInstaData.length > 2 && (
+                                <button type="button" className='btn-style' onClick={handleDeleteLastTaxInstaRow}>Delete Row</button>
+                            )}
                         </center>
                     </div>
                     <br />
@@ -1120,24 +989,27 @@ const handleClearRows = () => {
 
                             {nameRunData.map((row) => (
                                 <tr>
-                                <td style={{ border: '1px solid black' }}>
-                                    <input type="text" className="abstract-control" name="name" placeholder='Enter Name' onChange={e => handleChangeNameRun(e, row.id)} style={{ width: '100%' }} />
+                                    <td style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" name="name" placeholder='Enter Name' onChange={e => handleChangeNameRun(e, row.id)} style={{ width: '100%' }} />
 
-                                </td>
-                                <td style={{ border: '1px solid black' }}>
-                                <input type="text" className="abstract-control" name="jud" placeholder='Enter JUD' onChange={e => handleChangeNameRun(e, row.id)} style={{ width: '100%' }} />
-                                </td>
-                                <td style={{ border: '1px solid black' }}>
-                                     <input type="text" className="abstract-control" name="liens" placeholder='Enter LIENS' onChange={e => handleChangeNameRun(e, row.id)} style={{ width: '100%' }} /></td>
-                                <td style={{ border: '1px solid black' }}> 
-                                <input type="text" className="abstract-control" name="ucc" placeholder='Enter UCC' onChange={e => handleChangeNameRun(e, row.id)} style={{ width: '100%' }} /></td>
-                                <td style={{ border: '1px solid black' }}> 
-                                <input type="text" className="abstract-control" name="others" placeholder='Enter ' onChange={e => handleChangeNameRun(e, row.id)} style={{ width: '100%' }} /></td>
-                            </tr>
+                                    </td>
+                                    <td style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" name="jud" placeholder='Enter JUD' onChange={e => handleChangeNameRun(e, row.id)} style={{ width: '100%' }} />
+                                    </td>
+                                    <td style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" name="liens" placeholder='Enter LIENS' onChange={e => handleChangeNameRun(e, row.id)} style={{ width: '100%' }} /></td>
+                                    <td style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" name="ucc" placeholder='Enter UCC' onChange={e => handleChangeNameRun(e, row.id)} style={{ width: '100%' }} /></td>
+                                    <td style={{ border: '1px solid black' }}>
+                                        <input type="text" className="abstract-control" name="others" placeholder='Enter ' onChange={e => handleChangeNameRun(e, row.id)} style={{ width: '100%' }} /></td>
+                                </tr>
                             ))}
                         </table>
                         <br />
                         <button className='btn-style' onClick={handleAddNameRow}>Add Row</button>
+                            {nameRunData.length > 2 && (
+                                <button type="button" className='btn-style' onClick={handleDeleteLastNameRow}>Delete Row</button>
+                            )}
                     </center>
                 </div>
 

@@ -1,0 +1,145 @@
+Apply styles to all tables
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  /* Apply styles to all table headers */
+  th {
+    background-color: #f2f2f2;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+    min-height: 50px; /* Minimum height for table headers */
+  }
+  
+  /* Apply styles to all table cells */
+  td {
+    border: 1px solid black;
+    padding: 10px;
+    min-height: 50px; /* Minimum height for table cells */
+  }
+  
+  /* Apply styles to all rows */
+  tr {
+    min-height: 50px; /* Minimum height for table rows */
+  }
+  
+  /* Specific style for header row */
+  .header-table {
+    background-color: #dcdcdc;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  #pdf-content1, #pdf-content2, #pdf-content3 {
+    width: 100%;
+    max-width: 100%;
+  }
+  .abstractform-table {
+    width: 100%;
+    table-layout: auto;
+  }
+  
+  
+  
+  /* General styling */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin: 20px 0 10px;
+  }
+  
+  /* Paragraphs */
+  p {
+    margin: 10px 0;
+  }
+  
+  /* Lists */
+  ul, ol {
+    margin: 10px 0 10px 20px;
+  }
+  
+  li {
+    margin: 5px 0;
+  }
+  
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Links */
+  a {
+    color: #0000EE;
+    text-decoration: underline;
+  }
+  
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+  }
+  
+  /* Divs and Containers */
+  #content-to-download {
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  /* Miscellaneous */
+  strong {
+    font-weight: bold;
+  }
+  
+  em {
+    font-style: italic;
+  }
+  
+  /* Page breaks for Word */
+  @media print {
+    .page-break {
+      page-break-before: always;
+    }
+  }
+  .abstractform-table {
+    border: 2px solid black;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .abstractform-table th, .abstractform-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  
+  .header-table {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+  }

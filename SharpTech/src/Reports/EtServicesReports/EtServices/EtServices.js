@@ -138,6 +138,8 @@ function EtServices() {
   ]);
   const [nextTableTaxInstaId, setNextTableTaxInstaId] = useState(2);
 
+  const [considerationAmount, setConsiderationAmount] = useState('');
+
 
   const handleInputChange = (e, tableId) => {
     const { name, value } = e.target;
@@ -156,7 +158,7 @@ function EtServices() {
     setTablesData(updatedTablesData);
   };
 
-
+  const [amount, setAmount] = useState('');
   const handleInputChange2 = (e, tableId) => {
     const { name, value } = e.target;
     const updatedTablesData2 = tablesData2.map(table => {
@@ -307,6 +309,57 @@ function EtServices() {
     }
   };
 
+  const handleSave = () => {
+    // Check if all fields in all tables are filled
+    const isAnyFieldEmpty = tablesData.some(table =>
+      Object.values(table.data).some(value => value === '')
+    );
+
+    if (isAnyFieldEmpty) {
+      alert("Please fill in all fields before saving!");
+    } else {
+      // Save data to temporary storage
+      localStorage.setItem('tempTablesData', JSON.stringify(tablesData));
+      alert("Table data saved temporarily!");
+    }
+  };
+
+  const handleClear = () => {
+    // Check if there is any data in the tables
+    const isAnyTableFilled = tablesData.some(table =>
+      Object.values(table.data).some(value => value !== '')
+    );
+
+    if (isAnyTableFilled) {
+      // Clear table data
+      setTablesData([]);
+      localStorage.removeItem('tempTablesData');
+      alert("Table data cleared!");
+    } else {
+      alert("No table data to clear!");
+    }
+  };
+  const handleSaveTemporarilyRow = () => {
+    // Check if all fields in all rows are filled
+    const isAnyFieldEmpty = tableRowsData.some(row =>
+      Object.values(row).some(value => value === '')
+    );
+
+    if (isAnyFieldEmpty) {
+      alert("Please fill in all fields before saving!");
+    } else {
+      // Save data to temporary storage
+      localStorage.setItem('tempTableRowsData', JSON.stringify(tableRowsData));
+      alert("Table data saved temporarily!");
+    }
+  };
+
+  const handleClearRows = () => {
+    // Clear table data
+    setTableRowsData([]);
+    alert("Table data cleared!");
+  };
+
 
 
 
@@ -315,7 +368,9 @@ function EtServices() {
   return (
     <div className='et-services-container'>
       <form className="et-services-form-container" onSubmit={(e) => onSubmit(e)}>
-        <table className='et-services-main-table-border' style={{ border: '2px solid black', }}>
+        <table className='et-services-main-table-border'
+        //style={{ border: '2px solid black', }}
+        >
 
 
           <br />
@@ -413,6 +468,10 @@ function EtServices() {
               </table>
             </center>
             <br />
+            <button type="button" onClick={handleSave}>Save</button>
+            <br />
+            <br />
+            <button type="button" onClick={handleClear}>Clear</button>
           </div>
 
           {/* --------------------------------------------------------------Table 2-----------------------------------------------*/}
@@ -489,8 +548,8 @@ function EtServices() {
                 <div className="et-service-single-line-button-container">
                   {table.id > 1 && (
                     <>
-                      <button className="et-services-delete-button" onClick={() => handleDeleteTable(table.id)}>  <i className="pi pi-trash" style={{ marginRight: '8px' }}></i>  Delete Table  </button>
-                      <button className="et-services-add-button" onClick={handleAddTable}>  <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>  Add Table   </button>
+                      <button className="et-services-delete-button" onClick={() => handleDeleteTable(table.id)}>  <i className="pi pi-trash" style={{ marginRight: '8px' }}></i>  Table  </button>
+                      <button className="et-services-add-button" onClick={handleAddTable}>  <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>   Table   </button>
                     </>
                   )}
                 </div>
@@ -498,7 +557,10 @@ function EtServices() {
 
 
             ))}
-
+            <button type="button" onClick={handleSave}>Save</button>
+            <br />
+            <br />
+            <button type="button" onClick={handleClear}>Clear</button>
 
             <br />
           </div>
@@ -616,12 +678,14 @@ function EtServices() {
                 {table.id > 1 && (
                   // <button className="et-services-delete-button" onClick={() => handleDeleteTable2(table.id)}>Delete Table</button>
                   <button className="et-services-delete-button" onClick={() => handleDeleteTable2(table.id)}>
-                    <i className="pi pi-trash" style={{ marginRight: '8px' }}></i>
-                     Delete Table
-                  </button>
-                )} <button className="et-services-add-button" onClick={handleAddTable2}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Add Table</button>
+                    <i className="pi pi-trash" style={{ marginRight: '8px' }}></i> Table</button>
+                )} <button className="et-services-add-button" onClick={handleAddTable2}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Table</button>
               </div>
             ))}
+            <button type="button" onClick={handleSave}>Save</button>
+            <br />
+            <br />
+            <button type="button" onClick={handleClear}>Clear</button>
 
             <br />
           </div>
@@ -670,15 +734,19 @@ function EtServices() {
 
             </center>
             {/* <button className='btn-style' onClick={handleAddRow}>Add Row</button> */}
-            <button className="et-services-add-button" onClick={handleAddRow}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>&nbsp;&nbsp;Add Row</button>
+            <button className="et-services-add-button" onClick={handleAddRow}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Row</button>
             {tableRowsData.length > 3 && (
               // <button type="button" className='btn-style' onClick={handleDeleteLastRow}>Delete Row</button>
               <button className="et-services-delete-button" onClick={handleDeleteLastRow}>
                 <i className="pi pi-trash" style={{ marginRight: '8px' }}></i>
-                Delete Row
+                Row
               </button>
             )}
             <br />
+            <button onClick={handleSaveTemporarilyRow}>Save</button>
+            <br />
+            <br />
+            <button onClick={handleClearRows}>Clear</button>
           </div>
 
 
@@ -748,15 +816,18 @@ function EtServices() {
                 </tr>
               </table>
               {/* <button className='btn-style' onClick={handleAddTaxInstaRow}>Add Row</button> */}
-              <button className="et-services-add-button" onClick={handleAddTaxInstaRow}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Add Row</button>
+              <button className="et-services-add-button" onClick={handleAddTaxInstaRow}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i> Row</button>
               {tableTaxInstaData.length > 2 && (
                 // <button type="button" className='btn-style' onClick={handleDeleteLastTaxInstaRow}>Delete Row</button>
                 <button className="et-services-delete-button" onClick={handleDeleteLastTaxInstaRow}>
                   <i className="pi pi-trash" style={{ marginRight: '8px' }}></i>
-                  Delete Row
+                  Row
                 </button>
               )}
-
+              <button onClick={handleSaveTemporarilyRow}>Save</button>
+              <br />
+              <br />
+              <button onClick={handleClearRows}>Clear</button>
             </center>
 
           </div>
@@ -793,17 +864,20 @@ function EtServices() {
               </table>
 
               {/* <button className='btn-style' onClick={handleAddNameRow}>Add Row</button> */}
-              <button className="et-services-add-button" onClick={handleAddNameRow}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Add Row</button>
+              <button className="et-services-add-button" onClick={handleAddNameRow}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i> Row</button>
 
 
               {nameRunData.length > 2 && (
                 // <button type="button" className='btn-style' onClick={handleDeleteLastNameRow}>Delete Row</button>
                 <button className="et-services-delete-button" onClick={handleDeleteLastNameRow}>
-                  <i className="pi pi-trash" style={{ marginRight: '8px' }}></i>
-                  Delete Row
-                </button>
+                  <i className="pi pi-trash" style={{ marginRight: '8px' }}></i> Row </button>
               )}
             </center>
+
+            <button onClick={handleSaveTemporarilyRow}>Save</button>
+            <br />
+            <br />
+            <button onClick={handleClearRows}>Clear</button>
           </div>
 
           <div>
@@ -855,7 +929,7 @@ function EtServices() {
             <br />
             <center>
               <table className='et-service-form-table-1' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
-
+                {/* 
                 <tr>
                   <th className='et-service-form-table-selftables-heading' colSpan="5">Upload Document </th>
                 </tr>
@@ -863,7 +937,7 @@ function EtServices() {
                   <td className='et-service-form-table-1-data' colSpan='1' style={{ border: '1px solid black' }}>
                     <input type="file" />
                   </td>
-                </tr>
+                </tr> */}
 
               </table>
               <br />

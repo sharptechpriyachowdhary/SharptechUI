@@ -1,0 +1,54 @@
+.et-display-services-container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.et-display-service-div-container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.et-display-Service-table {
+    width: 100%;
+    margin-top: 20px;
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.et-display-service-form-table-1 {
+    width: 100%;
+    border: 2px solid black;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.et-display-service-form-table-1-rows th {
+    background-color: #c52c2c;
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.et-display-service-form-heading {
+    background-color: #e6e6e6;
+    text-align: left;
+    padding: 8px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.et-display-service-form-data {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.et-display-service-form-table-1 th,
+.et-display-service-form-table-1 td {
+    border: 1px solid black;
+    padding: 8px;
+}
+

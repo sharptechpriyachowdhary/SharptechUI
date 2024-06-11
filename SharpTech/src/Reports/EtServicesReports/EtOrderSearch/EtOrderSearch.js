@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react'
 
 
-function EtServiceSearch() {
+function EtOrderSearch() {
 
     const [orderNumber, setOrderNumber] = useState("");
     const [etservice, setEtService] = useState(null);
@@ -58,4 +58,4 @@ function EtServiceSearch() {
 
     )
 }
-export default EtServiceSearch
+export default EtOrderSearch
