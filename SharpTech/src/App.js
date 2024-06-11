@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Tempservice from './implements/Tempservice';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage/HomePage'; 
+import { Navigate } from 'react-router-dom'; // Import Navigate
+import HomePage from './components/HomePage/HomePage';
 import Forms from './components/Forms/Forms';
 import EmployeeSearch from "./implements/EmployeeSearch/EmployeeSearch";
 import DisplayLogin from './implements/DisplayLogin/DisplayLogin';
@@ -31,6 +32,7 @@ import ForgetPassword from './implements/ForgetPassowrd/ForgetPassword';
 import ResetPassword from './implements/ResetPassword/ResetPassword';
 import Pagination from './implements/Pagination/Pagination';
 import EmployeeDetail from './implements/EmployeeDetail/EmployeeDetail';
+import ProtectedRoute from './implements/Logic/ProtectedRoute';
 
 
 function App() {
@@ -38,58 +40,72 @@ function App() {
 
   return (
     <AuthProvider>
-    <Router>
-      <div className="App">
-        <div className="container">
-         
-          <Routes>
-            <Route path="/" element={<HomePage playState={playState} setPlayState={setPlayState} />} />
-            <Route path="/forms" element={<Forms />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/DisplayLogin" element={<DisplayLogin />} />
-            <Route path="/EmployeeSearch" element={<EmployeeSearch />} />
-            {/* <Route path="/Signup" element={<Signup />} /> */}
-            <Route path="/Tempservice" element={<Tempservice />} />
-            <Route path="/ForgetPassword" element={<ForgetPassword />} />
-            <Route path="/ResetPassword/:email" element={<ResetPassword />} />
-            <Route path="/EmployeeDetail/:id" element={<EmployeeDetail />} />
-            
-        
-            <Route path="/SoftwareServices" element={<SoftwareServices />} />
-            <Route path="/AuthProvider" element={<AuthProvider/>} />
-             {/* Check if user is authenticated and admin before rendering admin-only routes */}
-              {UserService.adminOnly() && ( 
+      <Router>
+        <div className="App">
+          <div className="container">
+
+            <Routes>
+              <Route path="/" element={<HomePage playState={playState} setPlayState={setPlayState} />} />
+              <Route path="/forms" element={<Forms />} />
+              <Route path="/Login" element={<Login />} />
+
+              <Route path="/EmployeeSearch" element={<EmployeeSearch />} />
+              {/* <Route path="/Signup" element={<Signup />} /> */}
+              <Route path="/Tempservice" element={<Tempservice />} />
+              <Route path="/ForgetPassword" element={<ForgetPassword />} />
+              <Route path="/ResetPassword" element={<ResetPassword />} />
+              <Route path="/EmployeeDetail" element={<EmployeeDetail />} />
+
+
+              <Route path="/SoftwareServices" element={<SoftwareServices />} />
+              <Route path="/AuthProvider" element={<AuthProvider />} />
+
+
+              <Route element={<ProtectedRoute role="ADMIN" redirectTo="/" />}>
+                <Route path="/Register" element={<Register />} />
+                <Route path="/DisplayALL" element={<DisplayAll />} />
+                <Route path="/update-user/:userId" element={<UpdateUser />} />
+                
+              </Route>
+
+
+              {/* Check if user is authenticated and admin before rendering admin-only routes */}
+              {/* {UserService.adminOnly() && ( 
                <> 
                 <Route path="/Register" element={<Register />} />
                 <Route path="/DisplayALL" element={<DisplayAll/>} />
                 <Route path="/update-user/:userId" element={<UpdateUser />} />
                </> 
-            )} 
-            <Route path="/SketchRoof" element={<SketchRoof />} />
-    
-            <Route path="/TitleSearch" element={<TitleSearch/>} />
-            <Route path="/Programs" element={<Programs/>} />
-            
-           
-            <Route path="/Dimond" element={<Dimond/>} />
+            )}  */}
+              <Route path="/SketchRoof" element={<SketchRoof />} />
 
-            <Route path="/EtServices" element={<EtServices/>} />
-            <Route path="/EtSearchAddress" element={<EtSearchAddress/>} />
-            <Route path="/EtServiceDisplay/:orderNumber" element={<EtServiceDisplay/>} />
-            <Route path="/EtServiceSearch" element={<EtServiceSearch/>} />
-         
-            <Route path="/DasAddressSearch" element={<DasAddressSearch/>} />
-            <Route path="/DasDisplay/:orderNumber" element={<DasDisplay/>} />
-            <Route path="/DasOrderSearch" element={<DasOrderSearch/>} />
-            <Route path="/DasReport" element={<DasReport/>} />
-            <Route path="/Pagination" element={<Pagination/>} />
+              <Route path="/TitleSearch" element={<TitleSearch />} />
+              <Route path="/Programs" element={<Programs />} />
+
+              <Route path="/Dimond" element={<Dimond />} />
+
+              <Route element={<ProtectedRoute redirectTo="/" />}>
+                <Route path="/EtServices" element={<EtServices />} />
+                <Route path="/EtSearchAddress" element={<EtSearchAddress />} />
+                <Route path="/EtServiceDisplay/:orderNumber" element={<EtServiceDisplay />} />
+                <Route path="/EtServiceSearch" element={<EtServiceSearch />} />
+                <Route path="/DisplayLogin" element={<DisplayLogin />} />
+              </Route>
 
 
+              <Route path="/DasAddressSearch" element={<DasAddressSearch />} />
+              <Route path="/DasDisplay/:orderNumber" element={<DasDisplay />} />
+              <Route path="/DasOrderSearch" element={<DasOrderSearch />} />
+              <Route path="/DasReport" element={<DasReport />} />
+              <Route path="/Pagination" element={<Pagination />} />
 
-          </Routes>
+
+              {/* Fallback route */}
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
     </AuthProvider>
   )
 }

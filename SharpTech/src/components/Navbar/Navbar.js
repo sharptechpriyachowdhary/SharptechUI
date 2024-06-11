@@ -6,16 +6,39 @@ import { Link } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import AuthContext from '../../implements/AuthContext/AuthContext';
 import Dropdown from "../../implements/Dropdown/Dropdown";
+import { useNavigate } from 'react-router-dom';
+import UserService from '../../implements/UserService/UserService';
 
 const Navbar = () => {
   const { isAuthenticated, isAdmin, logout } = useContext(AuthContext); // Use the context
 
 
-  const handleLogout = () => {
-    const confirmDelete = window.confirm('Are you sure you want to logout this user?');
-    if (confirmDelete) {
-      logout();
-      //  UserService.logout();
+  const navigate = useNavigate();
+
+
+  const handleLogout = async () => {
+    const confirmLogout = window.confirm('Are you sure you want to logout this user?');
+
+    if (confirmLogout) {
+      // logout();
+      try {
+        const email = localStorage.getItem('email');
+        if (!email) {
+          console.error('Email not found in localStorage');
+          return;
+        }
+        const response = await UserService.logout(email);
+        if (response.statusCode === 200) {
+          logout(); // Update the authentication state in the context
+          navigate('/');
+        } else {
+          console.error('Logout failed:', response.message);
+          logout();
+        }
+      } catch (error) {
+        console.error('Logout error:', error);
+        logout();
+      }
     }
   };
 
@@ -42,21 +65,22 @@ const Navbar = () => {
 
         {!isAuthenticated && <li ><Link to='carousel' smooth={true} offset={-250} duration={500}>Home</Link></li>}
         {!isAuthenticated && <li><Link to='about' smooth={true} offset={-150} duration={500}>About</Link></li>}
-       
         {!isAuthenticated && <li><Link to='program' smooth={true} offset={-440} duration={500}>Services</Link></li>}
         {!isAuthenticated && <li><Link to='testimonials' smooth={true} offset={-320} duration={500}>Reports</Link></li>}
         {!isAuthenticated && <li><Link to='contact' smooth={true} offset={-250} duration={500}>Contact</Link></li>}
-        {!isAuthenticated && <li className='btn'><RouterLink to="/Login">Login</RouterLink></li>}
         {/* {!isAuthenticated && <li><RouterLink to='/Tempservice'>Tempservice</RouterLink></li>} */}
         {isAdmin && <li><RouterLink to='/Register'>Register</RouterLink></li>}
-         {/* {isAdmin && <li><RouterLink to='/EmployeeSearch'>EmployeeSearch</RouterLink></li>}  */}
+        {/* {isAdmin && <li><RouterLink to='/EmployeeSearch'>EmployeeSearch</RouterLink></li>}  */}
         {isAdmin && <li><RouterLink to='/Pagination'>Employees List</RouterLink></li>}
-        {isAuthenticated && <li ><Dropdown/></li>}
+        {isAuthenticated && <li ><Dropdown /></li>}
 
-      
-        {isAuthenticated && <li className='btn'><RouterLink to="/" onClick={handleLogout}>Logout</RouterLink></li>}
-      
-        
+
+        {isAuthenticated ? (
+          <li className='btn'><RouterLink to="/" onClick={handleLogout}>Logout</RouterLink></li>
+        ) : (
+          <li className='btn'><RouterLink to="/Login">Login</RouterLink></li>
+        )}
+
 
         {/* <li ><RouterLink to="/Dimond">Dimond</RouterLink></li>  */}
         {/* <li><RouterLink to='/About'>About</RouterLink></li>*/}

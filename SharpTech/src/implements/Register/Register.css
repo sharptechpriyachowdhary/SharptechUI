@@ -1,4 +1,11 @@
 /* Register.css */
+
+
+.register-reqired-field{
+
+  color: #ff0000;
+ font-size: small;
+}
 .register-container {
   display: flex;
   justify-content: center;

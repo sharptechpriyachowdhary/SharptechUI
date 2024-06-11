@@ -112,6 +112,7 @@ function UpdateUser() {
               <div className="form-group col">
                 <label htmlFor="empId">Employee Id</label>
                 <input type="text" className="form-control" placeholder="Enter your employee id" name="empId" value={userData.empId} onChange={handleInputChange} readOnly />
+                {<p>&nbsp;&nbsp;Employee Id Cant be Edit</p>}
               </div>
             </div>
             <div className="form-row">
@@ -150,6 +151,7 @@ function UpdateUser() {
                 <label htmlFor="empEmail">Email</label>
                 <input type="email" className="form-control" placeholder="Enter your email" name="email" value={userData.email} onChange={handleInputChange} />
                 {emailInvalid && <span className="error-message-return">Invalid email format</span>}
+                {<p>&nbsp;&nbsp;Email can't be Edit</p>}
               </div>
               <div className="form-group col">
                 <label htmlFor="phoneNumber">Phone Number</label>

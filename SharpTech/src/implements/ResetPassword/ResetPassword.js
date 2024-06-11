@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './ResetPassword.css';
 
 const ResetPassword = () => {
+
+
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate(); // Using useNavigate hook
-  const { email } = useParams();
+
+
+  const location = useLocation();
+  const { email } = location.state || {};  // Get the email from state
+
+  if (!email) {
+    return <p>No email provided. Please go back and enter your email again.</p>;
+  }
+
+
+
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

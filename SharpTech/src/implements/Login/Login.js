@@ -27,6 +27,7 @@ const Login = () => {
       const userData = await UserService.login(email, password);
       if (userData.token) {
         login(userData.token, userData.role);
+        localStorage.setItem('email', email); // Store email in localStorage
         navigate('/DisplayLogin');
       } else {
         setError(userData.message);

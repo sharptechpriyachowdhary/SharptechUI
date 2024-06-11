@@ -17,7 +17,7 @@ const ForgetPassword = () => {
       setMessage(response.data.message);      
       setError('');
       window.alert(response.data.message);
-      navigate(`/ResetPassword/${email}`);
+      navigate('/ResetPassword', { state: { email } });  // Pass email in state
     } catch (err) {
       setMessage('');
       setError(err.response.data.message || 'An error occurred. Please try again.');

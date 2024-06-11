@@ -111,6 +111,7 @@ function Register() {
     try {
       const token = localStorage.getItem('token');
       const response = await UserService.register(user, token);
+      console.log(response);
 
       if (response.statusCode === 400) {
         if (response.message.includes('empId')) {
@@ -144,7 +145,7 @@ function Register() {
         role: "",
         remark: ""
       });
-      alert(`${user.firstName} ${user.middleName} ${user.lastName} registered successfully:`);
+      alert(`${user.firstName} ${user.lastName} ${response.message}`);
     } catch (error) {
       console.error('Error registering user', error);
       alert('An error occurred while registering user');
@@ -173,8 +174,8 @@ function Register() {
             </div>
             <div className="form-row">
               <div className="form-group col">
-                <label htmlFor="empFirstName">First Name</label>
-                <input type="text" className="form-control" placeholder="Enter your first name" name="firstName" value={user.firstName} onChange={onInputChange} />
+                <label htmlFor="empFirstName">First Name</label><b className="register-reqired-field"> &nbsp;*</b>
+                <input type="text" className="form-control" placeholder="Enter your first name" name="firstName" value={user.firstName} onChange={onInputChange} required />
               </div>
               <div className="form-group col">
                 <label htmlFor="empMiddleName">Middle Name</label>
@@ -187,32 +188,32 @@ function Register() {
             </div>
             <div className="form-row">
               <div className="form-group col">
-                <label htmlFor="empFatherName">Father's Name</label>
-                <input type="text" className="form-control" placeholder="Enter your father's name" name="fatherName" value={user.fatherName} onChange={onInputChange} />
+                <label htmlFor="empFatherName">Father's Name</label><b className="register-reqired-field"> &nbsp;*</b>
+                <input type="text" className="form-control" placeholder="Enter your father's name" name="fatherName" value={user.fatherName} onChange={onInputChange} required/>
               </div>
               <div className="form-group col">
-                <label htmlFor="empMotherName">Mother's Name</label>
-                <input type="text" className="form-control" placeholder="Enter your mother's name" name="motherName" value={user.motherName} onChange={onInputChange} />
+                <label htmlFor="empMotherName">Mother's Name</label><b className="register-reqired-field"> &nbsp;*</b>
+                <input type="text" className="form-control" placeholder="Enter your mother's name" name="motherName" value={user.motherName} onChange={onInputChange} required />
               </div>
               <div className="form-group col">
-                <label htmlFor="empDateOfBirth">Date of Birth</label>
-                <input  type="date" className="form-control"  placeholder="Enter your date of birth"  name="dateOfBirth" value={user.dateOfBirth} onChange={onInputChange} max={getMaxDate()} />   
+                <label htmlFor="empDateOfBirth">Date of Birth</label><b className="register-reqired-field"> &nbsp;*</b>
+                <input  type="date" className="form-control"  placeholder="Enter your date of birth"  name="dateOfBirth" value={user.dateOfBirth} onChange={onInputChange} max={getMaxDate()} required />   
               </div>
             </div>
             <div className="form-row">
               <div className="form-group col">
-                <label htmlFor="empEmail">Email</label>
+                <label htmlFor="empEmail">Email</label><b className="register-reqired-field"> &nbsp;*</b>
                 <input type="email" className="form-control" placeholder="email@gmail.com" name="email" value={user.email} onChange={onInputChange} required />
                 {emailExists && <span className="error-message-return">Email address is already exists use different email</span>}
                 {emailInvalid && <span className="error-message-return">Invalid email format</span>}
 
               </div>
               <div className="form-group col">
-                <label htmlFor="empPassword">Password</label>
+                <label htmlFor="empPassword">Password</label><b className="register-reqired-field"> &nbsp;*</b>
                 <input type="password" className="form-control" placeholder="Enter your password" name="password" value={user.password} onChange={onInputChange} required />
               </div>
               <div className="form-group col">
-                <label htmlFor="phoneNumber">Phone Number</label>
+                <label htmlFor="phoneNumber">Phone Number</label><b className="register-reqired-field"> &nbsp;*</b>
                 <input type="tel" className="form-control" placeholder="Enter your phone number" name="phoneNumber" value={user.phoneNumber} onChange={onInputChange} pattern="\d{10}" required />
               </div>
               
@@ -220,7 +221,7 @@ function Register() {
             <div className="form-row">
             <div className="form-group col">
                 <label htmlFor="empJoiningDate">Joining Date</label>
-                <input type="date" className="form-control" placeholder="Enter your joining date" name="joiningDate" value={user.joiningDate} onChange={onInputChange} />
+                <input type="date" className="form-control" placeholder="Enter your joining date" name="joiningDate" value={user.joiningDate} onChange={onInputChange}  />
               </div>
               <div className="form-group col">
                 <label htmlFor="empDesignation">Designation</label>
@@ -233,8 +234,8 @@ function Register() {
             </div>
             <div className="form-row">
               <div className="form-group col">
-                <label htmlFor="Qualification">Qualification</label>
-                <input type="text" className="form-control" placeholder="Enter your qualification" name="qualification" value={user.qualification} onChange={onInputChange} />
+                <label htmlFor="Qualification">Qualification</label><b className="register-reqired-field"> &nbsp;*</b>
+                <input type="text" className="form-control" placeholder="Enter your qualification" name="qualification" value={user.qualification} onChange={onInputChange} required />
               </div>
 
               <div className="form-group col">
@@ -249,7 +250,7 @@ function Register() {
             </div>
             <div className="form-row">
               <div className="form-group col">
-                <label htmlFor="role">Role</label>
+                <label htmlFor="role">Role</label><b className="register-reqired-field"> &nbsp;*</b>
                 <select className="form-control" name="role" value={user.role} onChange={onInputChange} required>
                   <option value="" disabled>Select the role</option>
                   <option value="ADMIN">ADMIN</option>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useLocation  } from 'react-router-dom';
 import Footer from "../../components/Footer/Footer";
 // import "./DisplayLogin.css";
 import EmpNavbar from '../EmpNavbar/EmpNavbar';
@@ -15,12 +15,22 @@ import { ClipLoader } from 'react-spinners'; // Import ClipLoader from react-spi
 function EmployeeDetail() {
   const [profileInfo, setProfileInfo] = useState(null);
   const {  isAdmin } = useContext(AuthContext); // Use the context
-  const { id } = useParams();
   const [loading, setLoading] = useState(true); // Add loading state
+
+
+  
 
   useEffect(() => {
     fetchProfileInfo();
   }, []);
+
+  const location = useLocation();
+  const { id } = location.state || {}; // Retrieve the ID from state
+
+  if (!id) {
+    return <p>No employee ID provided. Please go back and select an employee.</p>;
+  }
+  
 
   const fetchProfileInfo = async () => {
     try {

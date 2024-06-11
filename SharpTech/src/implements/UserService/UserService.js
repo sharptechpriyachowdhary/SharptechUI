@@ -16,6 +16,18 @@ class UserService{
     }
 
 
+    static async logout(email) {
+        try {
+            const response = await axios.post(`${this.BASE_URL}/auth/logout`, { email });
+            return response.data;
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    
+
+
     static async register(user, token) {
         const config = {
             headers: { Authorization: `Bearer ${token}` }
@@ -105,11 +117,14 @@ class UserService{
         }
     }
 
+
+
+
     /**AUTHENTICATION CHECKER */
-    static logout(){
-        localStorage.removeItem('token')
-        localStorage.removeItem('role')
-    }
+    // static logout(){
+    //     localStorage.removeItem('token')
+    //     localStorage.removeItem('role')
+    // }
 
     static isAuthenticated(){
         const token = localStorage.getItem('token')

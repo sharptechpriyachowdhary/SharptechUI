@@ -5,6 +5,14 @@
   margin: 0 auto;
   padding: 20px;
 }
+.form-group p{
+
+  font-size: large;
+  font-style: italic;
+  font-size: 75%;
+  color: #a03320;
+  
+}
 
 .update-user-container h2 {
   font-size: 24px;

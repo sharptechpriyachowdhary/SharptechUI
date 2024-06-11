@@ -24,6 +24,11 @@ export default function Pagination() {
     const navigate = useNavigate(); // Initialize useNavigate
 
 
+    const handleViewClick = (rowData) => {
+        navigate('/EmployeeDetail', { state: { id: rowData.id } });
+    };
+
+
     useEffect(() => {
         loadUsers();
     }, []);
@@ -130,7 +135,7 @@ export default function Pagination() {
                                 body={(rowData) => (
                                     <div>
                                         {/* <Button icon="pi pi-user-plus" label="View" className="p-button-rounded p-button-info" /> */}
-                                        <Button icon="pi pi-pen-to-square" label="&nbsp;View&nbsp;&nbsp;" className="p-button-rounded p-button-custom-warning" onClick={() => navigate(`/EmployeeDetail/${rowData.id}`)} />
+                                        <Button icon="pi pi-pen-to-square" label="&nbsp;View&nbsp;&nbsp;" className="p-button-rounded p-button-custom-warning" onClick={() => handleViewClick(rowData)} />
                                         {/* <Button icon="pi pi-search" className="p-button-rounded p-button-warning" />
                                         <Button icon="pi pi-trash" label="Delete" className="p-button-rounded p-button-danger" onClick={() => deleteUser(rowData.empId)} />
                                         <Button icon="pi pi-info-circle" className="p-button-rounded p-button-info" />

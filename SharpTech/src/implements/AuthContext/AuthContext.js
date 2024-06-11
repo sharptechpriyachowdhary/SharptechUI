@@ -16,9 +16,10 @@ export const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    const login = (token, role) => {
+    const login = (token, role, email) => {
         localStorage.setItem('token', token);
         localStorage.setItem('role', role);
+    //    localStorage.setItem('email', email);  Store email in local storage Storin the emil in the Login
         setIsAuthenticated(true);
         setIsAdmin(role === 'ADMIN');
     };
@@ -26,6 +27,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('role');
+        localStorage.removeItem('email'); // Ensure email is also removed
         setIsAuthenticated(false);
         setIsAdmin(false);
     };
