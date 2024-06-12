@@ -6,7 +6,12 @@
     align-items: center;
     height: 80%;
     max-height: 100%;
+    margin-top: 8%;
     
+  }
+  .et-service-form-table-1{
+    max-height: 100%;
+    height: 50%;
   }
   
   /* Styling the services form container */
@@ -40,7 +45,7 @@ background-color: rgb(212, 210, 210);
   /* Styling the headings */
   .et-services-container h1 {
     text-align: center;
-    font-size: 24px;
+    font-size: 35px;
     margin-bottom: 10px;
   }
   
@@ -68,7 +73,9 @@ background-color: rgb(212, 210, 210);
   
   /* Styling the form table data */
   .et-service-form-table-1-data {
-    padding: 5px;
+    padding: none;
+    max-height: 100%;
+    height:50%;
   }
   
   /* Styling the form inputs */
@@ -76,7 +83,7 @@ background-color: rgb(212, 210, 210);
   
   .et-service-input-labels {
     width: 100%;  /* Ensure the input takes the full width of its container */
-    padding: 10px;  /* Add padding for better spacing inside the input */
+    padding: 5px;   /*Add padding for better spacing inside the input */
     border: 1px solid #ccc;  /* Light grey border */
     border-radius: 4px;  /* Rounded corners */
     font-size: 20px;
@@ -151,7 +158,7 @@ color: #161816;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
-    font-size: 16px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -173,3 +180,54 @@ color: #161816;
     box-shadow: 0 0 0 3px rgba(129, 195, 240, 0.5);
   }
  
+
+
+
+/* Style for the ave button */
+  .et-service-genenal-info-save-button {
+    background-color: #28a745; 
+    border-color: #28a745;    
+    color: white;             
+    font-size: 18px;        
+  
+    border-radius: 5px;        
+    transition: background-color 0.3s, border-color 0.3s; 
+    margin-right: 10px;        
+  }
+.et-service-genenal-info-save-button:hover {
+    background-color: #218838; 
+    border-color: #1e7e34;
+}
+
+
+
+
+
+
+/* Style for the Clear button */
+.et-service-genenal-info-clear-button {
+    background-color: #dc3545; 
+    border-color: #dc3545;
+    color: white;             
+    font-size: 18px;       
+    border-radius: 5px;       
+    transition: background-color 0.3s, border-color 0.3s; 
+   
+}
+
+.et-service-genenal-info-clear-button:hover {
+    background-color: #c82333; 
+    border-color: #bd2130;
+}
+
+/* Common button styles */
+.p-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.p-button .pi {
+    margin-right: 0.5em;
+}
