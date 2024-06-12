@@ -16,9 +16,9 @@ class UserService{
     }
 
 
-    static async logout(email) {
+    static async logout(email, transactionId) {
         try {
-            const response = await axios.post(`${this.BASE_URL}/auth/logout`, { email });
+            const response = await axios.post(`${this.BASE_URL}/auth/logout`, { email, transactionId });
             return response.data;
         } catch (err) {
             throw err;

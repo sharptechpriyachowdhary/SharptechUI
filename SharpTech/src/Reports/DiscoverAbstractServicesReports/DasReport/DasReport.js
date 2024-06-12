@@ -122,7 +122,7 @@ function DasReport() {
         //const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
 
         // Format the value with a dollar sign for display purposes
-       // const formattedValue = isNaN(numericValue) ? '' : `$${numericValue.toFixed(2)}`;
+        // const formattedValue = isNaN(numericValue) ? '' : `$${numericValue.toFixed(2)}`;
 
         // Update the table data with the raw numeric value
         // if (!isNaN(formattedValue) || formattedValue === '') {
@@ -491,13 +491,13 @@ function DasReport() {
                     taxinstallments: tableTaxInstaData.map(row => ({ ...row.data })),
                 }
             };
-            await axios.post("http://localhost:8080/insert", payload,{
+            await axios.post("http://localhost:8080/insert", payload, {
 
-                headers:{
-                  'Authorization': `Bearer ${token}`
+                headers: {
+                    'Authorization': `Bearer ${token}`
                 }
-    
-                });
+
+            });
             window.alert("Data Sent Sucessfully");
 
 
@@ -654,8 +654,8 @@ function DasReport() {
 
                                         <td colSpan={'100%'} style={{ border: '1px solid black' }}>
                                             <input type="text" className="dollar-input" placeholder="Enter Consideration Amount" name="considerationAmount" style={{ width: '100%' }} onChange={(e) => handleInputChange(e, table.id)} required
-                                                // 
-                                                 />
+                                            // 
+                                            />
                                         </td>
                                     </tr>
 
@@ -705,15 +705,20 @@ function DasReport() {
                                     </tr>
                                 </table>
                             </center>
+                            <br />
                             {table.id > 1 && (
-                                    <button className="btn-delete" onClick={() => handleDeleteTable(table.id)}>Delete Table</button>
-                                )} <button className='btn-style' onClick={handleAddTable}>Add Table</button>
+                                // <button className="btn-delete" onClick={() => handleDeleteTable(table.id)}>Delete Table</button>
+
+                                <button className="Abstract-report-delete-button" onClick={() => handleDeleteTable(table.id)}>
+                                    <i className="pi pi-trash" style={{ marginRight: '5px' }}></i> Table</button>
+                            )} <button className="Abstract-report-add-button" onClick={handleAddTable}> <i className="pi pi-plus" style={{ marginRight: '5px' }}></i>Table</button>
+                            {/* <button className='btn-style' onClick={handleAddTable}>Add Table</button> */}
                         </div>
                     ))}
                     <br />
                     {/* <button className='btn-style' onClick={handleAddTable}>Add Table</button> */}
                     <br />
-                   
+
                     <br />
 
                     <button onClick={handleSave}>Save</button>
@@ -726,108 +731,111 @@ function DasReport() {
 
                 {/* --------------------------------------------------------------Table 3-----------------------------------------------*/}
                 <div>
-            {tablesData2.map((table, index) => (
-                <div key={table.id} >
+                    {tablesData2.map((table, index) => (
+                        <div key={table.id} >
+                            <br />
+                            <center>
+                                <center>
+                                    <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                                        <tr>
+                                            <th className="header-table" colSpan="7">OPEN MORTGAGE / DEED OF TRUST  ({table.id}) </th>
+                                        </tr>
+                                        <tr>
+                                            <th style={{ border: '1px solid black' }}> MORTGAGOR :</th>
+                                            <td colSpan={6} style={{ border: '1px solid black' }}>
+                                                <input type="text" className="abstract-control" placeholder="Enter  MORTGAGO" name="mortgagor" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} required />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style={{ border: '1px solid black' }}> MORTGAGEE :</th>
+                                            <td colSpan={'6'} style={{ border: '1px solid black' }}>
+                                                <input type="text" className="abstract-control" name="mortgagee" placeholder='Enter MORTGAGEE' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} required />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style={{ border: '1px solid black' }}> TRUSTEE :</th>
+                                            <td colSpan={6} style={{ border: '1px solid black' }}>
+                                                <input type="text" className="abstract-control" placeholder="Enter TRUSTEE" name="trustee" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style={{ border: '1px solid black' }}> INSTRUMENT/BOOK/PAGE :</th>
+                                            <td colSpan={'4'} style={{ border: '1px solid black' }}>
+                                                <input type="text" className="abstract-control" name="instrBookPage" placeholder='Enter INSTRUMENT/BOOK/PAGE:' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                            <th style={{ border: '1px solid black' }}>Amount [$]:</th>
+                                            <td colSpan={2} style={{ border: '1px solid black' }}>
+                                                <input type="Number" className="abstract-control" placeholder="$ Enter Amount" name="amount" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style={{ border: '1px solid black' }}> DATED DATE:</th>
+                                            <td colSpan={'4'} style={{ border: '1px solid black' }}>
+                                                <input type="Date" className="abstract-control" name="datedDate" placeholder='Enter DATED DATE:' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                            <th style={{ border: '1px solid black' }}>RECORDED DATE:</th>
+                                            <td colSpan={2} style={{ border: '1px solid black' }}>
+                                                <input type="Date" className="abstract-control" placeholder="Enter RECORDED DATE" name="recordedDate" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colSpan={5}></td>
+                                            <th style={{ border: '1px solid black' }}>MATURITY DATE :</th>
+                                            <td colSpan={3} style={{ border: '1px solid black' }}>
+                                                <input type="Date" className="abstract-control" placeholder="Enter Maturity Date" name="maturityDate" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style={{ border: '1px solid black' }}> MORTGAGE ASSIGNED TO</th>
+                                            <td colSpan={'6'} style={{ border: '1px solid black' }}>
+                                                <input type="text" className="abstract-control" name="mortgageAssignedTo" placeholder='Enter MORTGAGE ASSIGNED TO' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style={{ border: '1px solid black' }}> ASSIGNMENT BK/PG :</th>
+                                            <td colSpan={'4'} style={{ border: '1px solid black' }}>
+                                                <input type="text" className="abstract-control" name="assignmentBkPg" placeholder='Enter ASSIGNMENT BK/PG :' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                            <th style={{ border: '1px solid black' }}>ASSIGNMENT DATED :</th>
+                                            <td colSpan={2} style={{ border: '1px solid black' }}>
+                                                <input type="Date" className="abstract-control" placeholder="Enter ASSIGNMENT DATED" name="assignmentDated" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colSpan={5}></td>
+                                            <th style={{ border: '1px solid black' }}>ASSIGNMENT RECORDED :</th>
+                                            <td colSpan={3} style={{ border: '1px solid black' }}>
+                                                <input type="Date" className="abstract-control" placeholder="Enter ASSIGNMENT RECORDED:" name="assignmentRecorded" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style={{ border: '1px solid black' }}>COMMENTS :</th>
+                                            <td colSpan={6} style={{ border: '1px solid black' }}>
+                                                <input type='text-area' className="abstract-control" placeholder="Enter COMMENTS" name="comments" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </center>
+                            </center>
+                            {table.id > 1 && (
+                                // <button className="btn-delete" onClick={() => handleDeleteTable2(table.id)}>Delete Table</button>
+                                <button className="Abstract-report-delete-button" onClick={() => handleDeleteTable2(table.id)}>
+                                    <i className="pi pi-trash" style={{ marginRight: '5px' }}></i> Table</button>
+                            )} <button className="Abstract-report-add-button" onClick={handleAddTable2}> <i className="pi pi-plus" style={{ marginRight: '5px' }}></i>Table</button>
+                            {/* <button className='btn-style' onClick={handleAddTable2}>Add Table</button> */}
+                        </div>
+                    ))}
                     <br />
-                    <center>
-                        <center>
-                            <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
-                                <tr>
-                                    <th className="header-table" colSpan="7">OPEN MORTGAGE / DEED OF TRUST  ({table.id}) </th>
-                                </tr>
-                                <tr>
-                                    <th style={{ border: '1px solid black' }}> MORTGAGOR :</th>
-                                    <td colSpan={6} style={{ border: '1px solid black' }}>
-                                        <input type="text" className="abstract-control" placeholder="Enter  MORTGAGO" name="mortgagor" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} required />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style={{ border: '1px solid black' }}> MORTGAGEE :</th>
-                                    <td colSpan={'6'} style={{ border: '1px solid black' }}>
-                                        <input type="text" className="abstract-control" name="mortgagee" placeholder='Enter MORTGAGEE' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} required />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style={{ border: '1px solid black' }}> TRUSTEE :</th>
-                                    <td colSpan={6} style={{ border: '1px solid black' }}>
-                                        <input type="text" className="abstract-control" placeholder="Enter TRUSTEE" name="trustee" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style={{ border: '1px solid black' }}> INSTRUMENT/BOOK/PAGE :</th>
-                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
-                                        <input type="text" className="abstract-control" name="instrBookPage" placeholder='Enter INSTRUMENT/BOOK/PAGE:' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                    <th style={{ border: '1px solid black' }}>Amount [$]:</th>
-                                    <td colSpan={2} style={{ border: '1px solid black' }}>
-                                        <input type="Number" className="abstract-control" placeholder="$ Enter Amount" name="amount" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style={{ border: '1px solid black' }}> DATED DATE:</th>
-                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
-                                        <input type="Date" className="abstract-control" name="datedDate" placeholder='Enter DATED DATE:' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                    <th style={{ border: '1px solid black' }}>RECORDED DATE:</th>
-                                    <td colSpan={2} style={{ border: '1px solid black' }}>
-                                        <input type="Date" className="abstract-control" placeholder="Enter RECORDED DATE" name="recordedDate" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colSpan={5}></td>
-                                    <th style={{ border: '1px solid black' }}>MATURITY DATE :</th>
-                                    <td colSpan={3} style={{ border: '1px solid black' }}>
-                                        <input type="Date" className="abstract-control" placeholder="Enter Maturity Date" name="maturityDate" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style={{ border: '1px solid black' }}> MORTGAGE ASSIGNED TO</th>
-                                    <td colSpan={'6'} style={{ border: '1px solid black' }}>
-                                        <input type="text" className="abstract-control" name="mortgageAssignedTo" placeholder='Enter MORTGAGE ASSIGNED TO' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style={{ border: '1px solid black' }}> ASSIGNMENT BK/PG :</th>
-                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
-                                        <input type="text" className="abstract-control" name="assignmentBkPg" placeholder='Enter ASSIGNMENT BK/PG :' style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                    <th style={{ border: '1px solid black' }}>ASSIGNMENT DATED :</th>
-                                    <td colSpan={2} style={{ border: '1px solid black' }}>
-                                        <input type="Date" className="abstract-control" placeholder="Enter ASSIGNMENT DATED" name="assignmentDated" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colSpan={5}></td>
-                                    <th style={{ border: '1px solid black' }}>ASSIGNMENT RECORDED :</th>
-                                    <td colSpan={3} style={{ border: '1px solid black' }}>
-                                        <input type="Date" className="abstract-control" placeholder="Enter ASSIGNMENT RECORDED:" name="assignmentRecorded" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style={{ border: '1px solid black' }}>COMMENTS :</th>
-                                    <td colSpan={6} style={{ border: '1px solid black' }}>
-                                        <input type='text-area' className="abstract-control" placeholder="Enter COMMENTS" name="comments" style={{ width: '100%' }} onChange={(e) => handleInputChange2(e, table.id)} />
-                                    </td>
-                                </tr>
-                            </table>
-                        </center>
-                    </center>
-                    {table.id > 1 && (
-                                    <button className="btn-delete" onClick={() => handleDeleteTable2(table.id)}>Delete Table</button>
-                                )} <button className='btn-style' onClick={handleAddTable2}>Add Table</button>
+
+                    <br />
+                    <br />
+                    <button onClick={handleSaveTemporarily}>Save</button>
+                    <br />
+                    <br />
+                    <button onClick={handleClearTables}>Clear</button>
+                    <br />
+                    <br />
                 </div>
-            ))}
-            <br />
-           
-            <br />
-            <br />
-            <button onClick={handleSaveTemporarily}>Save</button>
-            <br />
-            <br />
-            <button onClick={handleClearTables}>Clear</button>
-            <br />
-            <br />
-        </div>
 
 
 
@@ -867,18 +875,21 @@ function DasReport() {
                                             <input type="text" className="service-control" placeholder="Enter Amount" name="amount" onChange={e => handleChange(e, row.id)} style={{ width: '100%' }} />
                                         </td>
                                     </tr>
-                                    
+
                                 ))}
                             </tbody>
                         </table>
-                        <br/>
-                        <button className='btn-style' onClick={handleAddRow}>Add Row</button>
+                        <br />
+                        <button className="Abstract-report-add-button-2" onClick={handleAddRow}> <i className="pi pi-plus" style={{ marginRight: '5px' }}></i>Table</button>
+                        {/* <button className='btn-style' onClick={handleAddRow}>Add Row</button> */}
                         {tableRowsData.length > 3 && (
-                            <button type="button" className='btn-style' onClick={handleDeleteLastRow}>Delete Row</button>
+                            //  <button type="button" className='btn-style' onClick={handleDeleteLastRow}>Delete Row</button>
+                            <button type="button" className="Abstract-report-delete-button-2" onClick={handleDeleteLastRow}>
+                                <i className="pi pi-trash" style={{ marginRight: '5px' }}></i> Table</button>
                         )}
                         <br />
                         <br />
-                       
+
                         <br />
                         <br />
                         <button onClick={handleSaveTemporarilyRow}>Save</button>
@@ -961,10 +972,14 @@ function DasReport() {
                                     </td>
                                 </tr>
                             </table>
-                            <br/>
-                            <button className='btn-style' onClick={handleAddTaxInstaRow}>Add Row</button>
+                            <br />
+                            {/* <button className='btn-style' onClick={handleAddTaxInstaRow}>Add Row</button> */}
+                            <button className="Abstract-report-add-button-2" onClick={handleAddTaxInstaRow}> <i className="pi pi-plus" style={{ marginRight: '5px' }}></i>Table</button>
                             {tableTaxInstaData.length > 2 && (
-                                <button type="button" className='btn-style' onClick={handleDeleteLastTaxInstaRow}>Delete Row</button>
+                                //  <button type="button" className='btn-style' onClick={handleDeleteLastTaxInstaRow}>Delete Row</button>
+                                <button type="button" className="Abstract-report-delete-button-2" onClick={handleDeleteLastTaxInstaRow}>
+                                <i className="pi pi-trash" style={{ marginRight: '5px' }}></i> Table</button>
+                           
                             )}
                         </center>
                     </div>
@@ -1006,10 +1021,14 @@ function DasReport() {
                             ))}
                         </table>
                         <br />
-                        <button className='btn-style' onClick={handleAddNameRow}>Add Row</button>
-                            {nameRunData.length > 2 && (
-                                <button type="button" className='btn-style' onClick={handleDeleteLastNameRow}>Delete Row</button>
-                            )}
+                        {/* <button className='btn-style' onClick={handleAddNameRow}>Add Row</button> */}
+                        <button className="Abstract-report-add-button-2" onClick={handleAddNameRow}> <i className="pi pi-plus" style={{ marginRight: '5px' }}></i>Table</button>
+
+                        {nameRunData.length > 2 && (
+                            // <button type="button" className='btn-style' onClick={handleDeleteLastNameRow}>Delete Row</button>
+                            <button type="button" className="Abstract-report-delete-button-2" onClick={handleDeleteLastNameRow}>
+                                <i className="pi pi-trash" style={{ marginRight: '5px' }}></i> Table</button>
+                        )}
                     </center>
                 </div>
 
@@ -1066,7 +1085,10 @@ function DasReport() {
 
 
                 <br />
-                <button type="Submit" className="btn btn-outline-primary">Submit</button>
+                {/* <button type="Submit" className="btn btn-outline-primary">Submit</button> */}
+                <button className="Abstract-report-submit-button" type="submit">
+                    <i className="pi pi-check" style={{ marginRight: '8px' }}></i>Submit
+                </button>
             </form>
         </div>
     )

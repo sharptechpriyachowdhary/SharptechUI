@@ -23,11 +23,12 @@ const Navbar = () => {
       // logout();
       try {
         const email = localStorage.getItem('email');
+        const transactionId = localStorage.getItem('transactionId');
         if (!email) {
           console.error('Email not found in localStorage');
           return;
         }
-        const response = await UserService.logout(email);
+        const response = await UserService.logout(email,transactionId);
         if (response.statusCode === 200) {
           logout(); // Update the authentication state in the context
           navigate('/');

@@ -15,6 +15,7 @@ import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState('');
+  const [transactionid, setTansactionId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { login } = useContext(AuthContext);
@@ -25,9 +26,14 @@ const Login = () => {
 
     try {
       const userData = await UserService.login(email, password);
+      // console.log(userData);
       if (userData.token) {
-        login(userData.token, userData.role);
+        login(userData.token, userData.role, userData.transactionId);
         localStorage.setItem('email', email); // Store email in localStorage
+
+
+        // localStorage.setTansactionId('transactionid',userData.transactionId);     // Storing the transaction ID in local Storage
+        console.log(transactionid);
         navigate('/DisplayLogin');
       } else {
         setError(userData.message);

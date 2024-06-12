@@ -47,25 +47,35 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage playState={playState} setPlayState={setPlayState} />} />
               <Route path="/forms" element={<Forms />} />
-              <Route path="/Login" element={<Login />} />
-
-              <Route path="/EmployeeSearch" element={<EmployeeSearch />} />
-              {/* <Route path="/Signup" element={<Signup />} /> */}
+              <Route path="/SketchRoof" element={<SketchRoof />} />
+              <Route path="/TitleSearch" element={<TitleSearch />} />
+              <Route path="/Programs" element={<Programs />} />
+              <Route path="/Dimond" element={<Dimond />} />
               <Route path="/Tempservice" element={<Tempservice />} />
               <Route path="/ForgetPassword" element={<ForgetPassword />} />
               <Route path="/ResetPassword" element={<ResetPassword />} />
-              <Route path="/EmployeeDetail" element={<EmployeeDetail />} />
-
-
               <Route path="/SoftwareServices" element={<SoftwareServices />} />
               <Route path="/AuthProvider" element={<AuthProvider />} />
-
-
+              <Route path="/Login" element={<Login />} />
+        
               <Route element={<ProtectedRoute role="ADMIN" redirectTo="/" />}>
                 <Route path="/Register" element={<Register />} />
                 <Route path="/DisplayALL" element={<DisplayAll />} />
                 <Route path="/update-user/:userId" element={<UpdateUser />} />
-                
+                <Route path="/Pagination" element={<Pagination />} />
+                <Route path="/EmployeeSearch" element={<EmployeeSearch />} />
+              </Route>
+
+              <Route element={<ProtectedRoute redirectTo="/" />}>
+                <Route path="/EtServices" element={<EtServices />} />
+                <Route path="/EtSearchAddress" element={<EtSearchAddress />} />
+                <Route path="/EtServiceDisplay/:orderNumber" element={<EtServiceDisplay />} />
+                <Route path="/EtOrderSearch" element={<EtOrderSearch />} />
+                <Route path="/DisplayLogin" element={<DisplayLogin />} />
+                <Route path="/DasAddressSearch" element={<DasAddressSearch />} />
+                <Route path="/DasDisplay/:orderNumber" element={<DasDisplay />} />
+                <Route path="/DasOrderSearch" element={<DasOrderSearch />} />
+                <Route path="/DasReport" element={<DasReport />} />
               </Route>
 
 
@@ -77,29 +87,6 @@ function App() {
                 <Route path="/update-user/:userId" element={<UpdateUser />} />
                </> 
             )}  */}
-              <Route path="/SketchRoof" element={<SketchRoof />} />
-
-              <Route path="/TitleSearch" element={<TitleSearch />} />
-              <Route path="/Programs" element={<Programs />} />
-
-              <Route path="/Dimond" element={<Dimond />} />
-
-              <Route element={<ProtectedRoute redirectTo="/" />}>
-                <Route path="/EtServices" element={<EtServices />} />
-                <Route path="/EtSearchAddress" element={<EtSearchAddress />} />
-                <Route path="/EtServiceDisplay/:orderNumber" element={<EtServiceDisplay />} />
-                <Route path="/EtOrderSearch" element={<EtOrderSearch />} />
-                <Route path="/DisplayLogin" element={<DisplayLogin />} />
-              </Route>
-
-
-              <Route path="/DasAddressSearch" element={<DasAddressSearch />} />
-              <Route path="/DasDisplay/:orderNumber" element={<DasDisplay />} />
-              <Route path="/DasOrderSearch" element={<DasOrderSearch />} />
-              <Route path="/DasReport" element={<DasReport />} />
-              <Route path="/Pagination" element={<Pagination />} />
-              
-
 
               {/* Fallback route */}
               <Route path="*" element={<Navigate to="/" />} />
