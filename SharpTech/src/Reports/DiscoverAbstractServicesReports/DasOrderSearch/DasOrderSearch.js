@@ -1,6 +1,13 @@
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react'
+import Navbar from '../../../components/Navbar/Navbar';
+import 'primereact/resources/themes/saga-blue/theme.css';  // Or any other theme you prefer
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import { Button } from 'primereact/button';
+import "./DasOrderSearch.css";
 
 
 function DasOrderSearch() {
@@ -8,6 +15,7 @@ function DasOrderSearch() {
   const [orderNumber, setOrderNumber] = useState("");
   const [etservice, setEtService] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false); // State for loading spinner
   let navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -18,6 +26,7 @@ function DasOrderSearch() {
 
 
     e.preventDefault();
+    setLoading(true);
 
     try {
       const token = localStorage.getItem('token');
@@ -34,19 +43,23 @@ function DasOrderSearch() {
       setEtService(null); // Clear user data
       setError("Error fetching user data"); // Set error message
       console.error("Error fetching user data:", error);
-    }
+    }finally {
+            setLoading(false);
+        }
   };
   return (
 
     <div>
-      <div className="EtService">
-        <form className='login-form' onSubmit={handleSubmit}>
+      <Navbar/>
+      <div className="das-order-search-container">
+        <form className='das-order-search-form' onSubmit={handleSubmit}>
           <h2>Serch By OrderNumber</h2>
           <div>
-            <label>OrderNumber:</label>
-            <input type="orderNumber" value={orderNumber} onChange={(e) => setOrderNumber(e.target.value)} required />
+            <label  className='das-order-search-label'>OrderNumber:</label>
+            <input className='et-service-order-search-label-input' type="orderNumber" value={orderNumber} onChange={(e) => setOrderNumber(e.target.value)} required />
           </div>
-          <button type="submit">Login</button>
+          {/* <button type="submit">Login</button> */}
+          <Button className="das-order-search-button" label="Submit&nbsp;" icon="pi pi-check" loading={loading} type="&nbsp;submit" />
           {error && <p>{error}</p>}
         </form>
       </div>

@@ -3,6 +3,9 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import "./DasReport.css";
+import { Button } from 'primereact/button';
+import Navbar from '../../../components/Navbar/Navbar';
+import Footer from '../../../components/Footer/Footer';
 
 function DasReport() {
 
@@ -511,6 +514,7 @@ function DasReport() {
 
     return (
         <div className='abstractform-container'>
+            <Navbar />
             <form onSubmit={(e) => onSubmit(e)}>
 
                 <table className='Abstract-Report'
@@ -625,10 +629,14 @@ function DasReport() {
                         </table>
                     </center>
                     <br />
+
+                    <Button className='das-report-general-info-saave-button' label="Save&nbsp;" icon="pi pi-check" onClick={onSave} />
+                    <Button className='das-report-general-info-clear-button' label="Clear&nbsp;" icon="pi pi-times" onClick={onSave} />
+                    {/* <br />
                     <button type="button" onClick={onSave}>Save</button>
                     <br />
                     <br />
-                    <button type="button" onClick={clearLocalStorage}>Clear</button>
+                    <button type="button" onClick={clearLocalStorage}>Clear</button> */}
                 </div>
 
                 {/* --------------------------------------------------------------Table 2-----------------------------------------------*/}
@@ -717,14 +725,16 @@ function DasReport() {
                     ))}
                     <br />
                     {/* <button className='btn-style' onClick={handleAddTable}>Add Table</button> */}
-                    <br />
+                    <Button className='das-report-general-info-saave-button' label="Save&nbsp;" icon="pi pi-check" onClick={handleSave} />
+                    <Button className='das-report-general-info-clear-button' label="Clear&nbsp;" icon="pi pi-times" onClick={handleClear} />
+                    {/* <br />
 
                     <br />
 
                     <button onClick={handleSave}>Save</button>
                     <br />
                     <br />
-                    <button onClick={handleClear}>Clear</button>
+                    <button onClick={handleClear}>Clear</button> */}
 
                 </div>
                 <br />
@@ -825,7 +835,10 @@ function DasReport() {
                             {/* <button className='btn-style' onClick={handleAddTable2}>Add Table</button> */}
                         </div>
                     ))}
-                    <br />
+
+                    <Button className='das-report-general-info-saave-button' label="Save&nbsp;" icon="pi pi-check" onClick={handleSaveTemporarily} />
+                    <Button className='das-report-general-info-clear-button' label="Clear&nbsp;" icon="pi pi-times" onClick={handleClearTables} />
+                    {/* <br />
 
                     <br />
                     <br />
@@ -834,7 +847,7 @@ function DasReport() {
                     <br />
                     <button onClick={handleClearTables}>Clear</button>
                     <br />
-                    <br />
+                    <br /> */}
                 </div>
 
 
@@ -887,7 +900,10 @@ function DasReport() {
                             <button type="button" className="Abstract-report-delete-button-2" onClick={handleDeleteLastRow}>
                                 <i className="pi pi-trash" style={{ marginRight: '5px' }}></i> Table</button>
                         )}
-                        <br />
+
+                        <Button className='das-report-general-info-saave-button-2' label="Save&nbsp;" icon="pi pi-check" onClick={handleSaveTemporarilyRow} />
+                        <Button className='das-report-general-info-clear-button-2' label="Clear&nbsp;" icon="pi pi-times" onClick={handleClearRows} />
+                        {/* <br />
                         <br />
 
                         <br />
@@ -897,7 +913,7 @@ function DasReport() {
                         <br />
                         <button onClick={handleClearRows}>Clear</button>
                         <br />
-                        <br />
+                        <br /> */}
                     </center>
                     <br />
                 </div>
@@ -978,8 +994,8 @@ function DasReport() {
                             {tableTaxInstaData.length > 2 && (
                                 //  <button type="button" className='btn-style' onClick={handleDeleteLastTaxInstaRow}>Delete Row</button>
                                 <button type="button" className="Abstract-report-delete-button-2" onClick={handleDeleteLastTaxInstaRow}>
-                                <i className="pi pi-trash" style={{ marginRight: '5px' }}></i> Table</button>
-                           
+                                    <i className="pi pi-trash" style={{ marginRight: '5px' }}></i> Table</button>
+
                             )}
                         </center>
                     </div>
@@ -1090,6 +1106,9 @@ function DasReport() {
                     <i className="pi pi-check" style={{ marginRight: '8px' }}></i>Submit
                 </button>
             </form>
+            <br/>
+            <br/>
+            <Footer />
         </div>
     )
 }

@@ -33,6 +33,8 @@ import ResetPassword from './implements/ResetPassword/ResetPassword';
 import Pagination from './implements/Pagination/Pagination';
 import EmployeeDetail from './implements/EmployeeDetail/EmployeeDetail';
 import ProtectedRoute from './implements/Logic/ProtectedRoute';
+import PublicRoute from './implements/Logic/PublicRoute';
+import VerifyLogin from './implements/Login/VerifyLogin';
 
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
         <div className="App">
           <div className="container">
 
+
+            {/* These are the routes are public route any one can access directly */}
             <Routes>
               <Route path="/" element={<HomePage playState={playState} setPlayState={setPlayState} />} />
               <Route path="/forms" element={<Forms />} />
@@ -56,16 +60,24 @@ function App() {
               <Route path="/ResetPassword" element={<ResetPassword />} />
               <Route path="/SoftwareServices" element={<SoftwareServices />} />
               <Route path="/AuthProvider" element={<AuthProvider />} />
-              <Route path="/Login" element={<Login />} />
-        
+              <Route path="/VerifyLogin" element={<VerifyLogin />} />
+              
+              {/* This route will access by only admin  with the help of ProtectedRoute in Loginc folder  */}
               <Route element={<ProtectedRoute role="ADMIN" redirectTo="/" />}>
                 <Route path="/Register" element={<Register />} />
                 <Route path="/DisplayALL" element={<DisplayAll />} />
                 <Route path="/update-user/:userId" element={<UpdateUser />} />
                 <Route path="/Pagination" element={<Pagination />} />
                 <Route path="/EmployeeSearch" element={<EmployeeSearch />} />
+                <Route path="/EmployeeDetail" element={<EmployeeDetail />} />
               </Route>
 
+               {/* This route will access only with the unauthitcatid only with help of PublicRoute in Loginc folder  */}
+              <Route element={<PublicRoute redirectTo="/" />}>
+                <Route path="/Login" element={<Login />} />
+              </Route>
+
+              {/* This route will access with both admin and Employee with the help of ProtectedRoute in Loginc folder  */}
               <Route element={<ProtectedRoute redirectTo="/" />}>
                 <Route path="/EtServices" element={<EtServices />} />
                 <Route path="/EtSearchAddress" element={<EtSearchAddress />} />
@@ -77,16 +89,6 @@ function App() {
                 <Route path="/DasOrderSearch" element={<DasOrderSearch />} />
                 <Route path="/DasReport" element={<DasReport />} />
               </Route>
-
-
-              {/* Check if user is authenticated and admin before rendering admin-only routes */}
-              {/* {UserService.adminOnly() && ( 
-               <> 
-                <Route path="/Register" element={<Register />} />
-                <Route path="/DisplayALL" element={<DisplayAll/>} />
-                <Route path="/update-user/:userId" element={<UpdateUser />} />
-               </> 
-            )}  */}
 
               {/* Fallback route */}
               <Route path="*" element={<Navigate to="/" />} />
