@@ -29,7 +29,7 @@ const VerifyLogin = () => {
     
         try {
           const userData = await UserService.verifylogin(email, otp);
-          // console.log(userData);
+           console.log(userData);
           if (userData.token) {
             verifylogin(userData.token, userData.role, userData.transactionId);
             localStorage.setItem('email', email); // Store email in localStorage
