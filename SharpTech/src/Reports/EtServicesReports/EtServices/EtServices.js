@@ -4,7 +4,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import "./EtServices.css"
+ import "./EtServices.css"
 import { Button } from 'primereact/button';
 import Navbar from '../../../components/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';

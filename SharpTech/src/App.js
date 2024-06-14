@@ -57,13 +57,14 @@ function App() {
               <Route path="/SoftwareServices" element={<SoftwareServices />} />
               <Route path="/AuthProvider" element={<AuthProvider />} />
               <Route path="/Login" element={<Login />} />
-        
+
               <Route element={<ProtectedRoute role="ADMIN" redirectTo="/" />}>
                 <Route path="/Register" element={<Register />} />
                 <Route path="/DisplayALL" element={<DisplayAll />} />
                 <Route path="/update-user/:userId" element={<UpdateUser />} />
                 <Route path="/Pagination" element={<Pagination />} />
                 <Route path="/EmployeeSearch" element={<EmployeeSearch />} />
+                <Route path="/EmployeeDetail" element={<EmployeeDetail />} />
               </Route>
 
               <Route element={<ProtectedRoute redirectTo="/" />}>
@@ -77,6 +78,7 @@ function App() {
                 <Route path="/DasOrderSearch" element={<DasOrderSearch />} />
                 <Route path="/DasReport" element={<DasReport />} />
               </Route>
+              
 
 
               {/* Check if user is authenticated and admin before rendering admin-only routes */}

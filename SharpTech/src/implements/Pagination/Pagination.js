@@ -112,13 +112,13 @@ export default function Pagination() {
                         >
                             <Column field="empId" header="Employee ID" sortable className="heading-pagination-column" />
                             <Column field="firstName" header="First Name" className="heading-pagination-column" />
+                            <Column field="middleName" header="Middle Name" className="heading-pagination-column" />
                             <Column field="lastName" header="Last Name" className="heading-pagination-column" />
                             <Column field="role" header="Role" className="heading-pagination-column" />
                             <Column field="email" header="Email" className="heading-pagination-column" />
                             <Column field="designation" header="Designation" className="heading-pagination-column" />
                             <Column field="phoneNumber" header="Phone Number" className="heading-pagination-column" />
-                            <Column field="remark" header="Remark" className="heading-pagination-column" />
-                            <Column field="middleName" header="Middle Name" className="heading-pagination-column" />
+                            <Column field="remark" header="Remark" className="heading-pagination-column" />                        
                             <Column field="fatherName" header="Father's Name" className="heading-pagination-column" />
                             <Column field="motherName" header="Mother's Name" className="heading-pagination-column" />
                             <Column field="dateOfBirth" header="Date of Birth" className="heading-pagination-column" />

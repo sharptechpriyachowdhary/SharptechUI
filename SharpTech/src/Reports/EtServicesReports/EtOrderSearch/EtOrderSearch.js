@@ -6,7 +6,7 @@ import { Button } from 'primereact/button';
 import 'primereact/resources/themes/saga-blue/theme.css';  // Or any other theme you prefer
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+// import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FloatLabel } from 'primereact/floatlabel';
 import { InputText } from 'primereact/inputtext';
 import Navbar from '../../../components/Navbar/Navbar';
@@ -65,7 +65,7 @@ function EtOrderSearch() {
                         <br/>
                     </FloatLabel> */}
                 </div>
-                <Button className="et-service-order-search-button" label="Submit&nbsp;" icon="pi pi-check" loading={loading} type="&nbsp;submit" />
+                <Button className="et-service-order-search-button" label="Search&nbsp;" icon="pi pi-check" loading={loading} type="&nbsp;submit" />
                 {error && <p>{error}</p>}
             </form>
         </div>
