@@ -188,7 +188,7 @@ color: #161816;
     background-color: #28a745; 
     border-color: #28a745;    
     color: white;             
-    font-size: 18px;        
+    font-size: 20pxpx;        
   
     border-radius: 5px;        
     transition: background-color 0.3s, border-color 0.3s; 
@@ -209,7 +209,7 @@ color: #161816;
     background-color: #dc3545; 
     border-color: #dc3545;
     color: white;             
-    font-size: 18px;       
+    font-size: px;       
     border-radius: 5px;       
     transition: background-color 0.3s, border-color 0.3s; 
    
@@ -230,4 +230,4 @@ color: #161816;
 
 .p-button .pi {
     margin-right: 0.5em;
-}
+} 

@@ -4,7 +4,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import { useState, useEffect } from 'react';
 import axios from "axios";
- import "./EtServices.css"
+import "./EtServices.css"
 import { Button } from 'primereact/button';
 import Navbar from '../../../components/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';
@@ -493,7 +493,7 @@ function EtServices() {
                       </tr>
                       <tr className='et-service-form-table-1-rows'>
                         <th className='et-service-form-table-1-heading' style={{ border: '1px solid black' }}> DEED TYPE  </th>
-                        <td  className='et-service-form-table-1-data' colSpan={4} style={{ border: '1px solid black' }}>
+                        <td className='et-service-form-table-1-data' colSpan={4} style={{ border: '1px solid black' }}>
                           <input type="text" className="et-service-input-labels" placeholder="Enter  Deed Type" name="deedType" style={{ width: '100%' }} onChange={(e) => handleInputChange(e, table.id)} required />
                         </td>
                         <th style={{ border: '1px solid black' }}> CONSIDERATION AMOUNT: </th>
@@ -556,7 +556,7 @@ function EtServices() {
                 </div>
               ))} */}
 
-                {table.id > 1 && (
+                  {table.id > 1 && (
                     <button className="et-services-delete-button" onClick={() => handleDeleteTable(table.id)}>
                       <i className="pi pi-trash" style={{ marginRight: '8px' }}></i> Table</button>
                   )} <button className="et-services-add-button" onClick={handleAddTable}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Table</button>
@@ -566,9 +566,9 @@ function EtServices() {
               {/* <button type="button" onClick={handleSave}>Save</button>
               <button type="button" onClick={handleClear}>Clear</button> */}
 
-           
+
               <Button className='et-service-genenal-info-save-button' label="Save&nbsp;" icon="pi pi-check" onClick={handleSave} />
-              <Button className='et-service-genenal-info-clear-button' label="Clear&nbsp;" icon="pi pi-times" onClick={handleClear} /> 
+              <Button className='et-service-genenal-info-clear-button' label="Clear&nbsp;" icon="pi pi-times" onClick={handleClear} />
 
 
               {/* <button type="button" onClick={handleSave}>Save</button>
@@ -893,7 +893,7 @@ function EtServices() {
               <Button className='et-service-genenal-info-save-button' label="Save&nbsp;" icon="pi pi-check" onClick={handleSaveTemporarilyRow} />
               <Button className='et-service-genenal-info-clear-button' label="Clear&nbsp;" icon="pi pi-times" onClick={handleClearRows} />
             </div>
-
+            {/* --------------------------------------------------------------Table 7-----------------------------------------------*/}
             <div>
               <br />
               <center>
@@ -918,7 +918,7 @@ function EtServices() {
 
             </div>
 
-
+            {/* --------------------------------------------------------------Table 8-----------------------------------------------*/}
             <div>
               <br />
               <center>
@@ -938,7 +938,7 @@ function EtServices() {
 
 
             </div>
-
+            {/* --------------------------------------------------------------Table 9-----------------------------------------------*/}
             <div>
               <br />
               <center>
