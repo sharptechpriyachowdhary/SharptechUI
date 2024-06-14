@@ -6,8 +6,14 @@ import jsPDF from 'jspdf';
 import * as autoTable from 'jspdf-autotable';
 import html2canvas from 'html2canvas';
 import "./EtServiceDisplay.css"
+import { saveAs } from 'file-saver';
 import Navbar from '../../../components/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';
+import htmlDocx from "html-docx-js/dist/html-docx";
+
+
+
+
 
 function EtServiceDisplay() {
     const [etservice, setEtService] = useState(null);
@@ -76,19 +82,33 @@ function EtServiceDisplay() {
         };
 
         generatePDF();
+
+    };
+    const contentRef = useRef(null);
+    const handleDownload = () => {
+        const content = contentRef.current.innerHTML;
+        const css = `
+        <style>
+           <style/>
+    `;
+    const html = `<!DOCTYPE html><html><head><meta charset="UTF-8">${css}</head><body>${content}</body></html>`;
+    const docxContent = htmlDocx.asBlob(html);
+    saveAs(docxContent, 'et_service.docx');
     };
 
+  
+
     return (
-        <div>
+        <div >
             <Navbar/>
-        <div className='et-services-container'>
+        <div className='et-services-container' ref={contentRef} id="content-to-download">
 
 
             <div id="pdf-content1">
                 <div  >
                     <br/>
                     <br/>
-                    <h1><b>ETrack Title Services Inc</b></h1>
+                    <h1><b> ETRACK TITTLE SERVICES INC </b></h1>
                     <br/>
                     <br/>
                    
@@ -98,11 +118,11 @@ function EtServiceDisplay() {
                                 <table className='et-service-form-table-1' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
 
                                     <tr className='et-service-form-table-1-rows' >
-                                        <th className='et-service-form-table-selftables-heading' colSpan="7"> GENERAL INFORMATION </th>
+                                        <th className='et-service-form-table-selftables-heading' colSpan="8"> GENERAL INFORMATION </th>
                                     </tr>
 
                                     <tr className='et-service-form-table-1-rows'>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>Order Number</th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> ORDER NUMBER</th>
                                         <td className='et-service-form-table-2-data' colSpan={4} style={{ border: '1px solid black' }}> {etservice.orderNumber} </td>
 
                                         <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> ET REFERENCE NUMBER </th>
@@ -110,50 +130,50 @@ function EtServiceDisplay() {
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>Search Date</th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> SEARCH DATE </th>
                                         <td className='et-service-form-table-2-data' colSpan={'2'} style={{ border: '1px solid black' }}>{etservice.searchDate}</td>
 
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>As Of</th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>AS OF</th>
                                         <td className='et-service-form-table-2-data' >7:30 Am</td>
 
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>Effective Date</th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> EFFECTIVE DATE</th>
                                         <td className='et-service-form-table-2-data' colSpan={2} style={{ border: '1px solid black' }}>{etservice.effectiveDate}</td>
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>Property Address</th>
-                                        <td className='et-service-form-table-2-data' colSpan={6} style={{ border: '1px solid black' }}>{etservice.propertyAdderess}</td>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> PROPERTY ADDRESS</th>
+                                        <td className='et-service-form-table-2-data' colSpan={7} style={{ border: '1px solid black' }}>{etservice.propertyAdderess}</td>
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> State </th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> STATE </th>
                                         <td className='et-service-form-table-2-data' colSpan={'4'} style={{ border: '1px solid black' }}>{etservice.state}</td>
 
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> Country </th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> COUNTRY</th>
                                         <td className='et-service-form-table-2-data' colSpan={2} style={{ border: '1px solid black' }}>{etservice.country}</td>
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading'v style={{ border: '1px solid black' }}> Parcel Number </th>
+                                        <th className='et-service-form-table-2-heading'v style={{ border: '1px solid black' }}> PARCEL NUMBER </th>
                                         <td className='et-service-form-table-2-data' colSpan={'4'} style={{ border: '1px solid black' }}>{etservice.parcelNumber}</td>
 
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> Sub Division </th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>SUB DIVISION </th>
                                         <td className='et-service-form-table-2-data' colSpan={2} style={{ border: '1px solid black' }}>{etservice.subDivision}</td>
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> Lot/Unit </th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> LOT/UNIT </th>
                                         <td className='et-service-form-table-2-data' colSpan={'4'} style={{ border: '1px solid black' }}>{etservice.lotUnit}</td>
 
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>Block</th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>BLOCK</th>
                                         <td className='et-service-form-table-2-data' colSpan={2} style={{ border: '1px solid black' }}>{etservice.block}</td>
                                     </tr>
 
                                     <tr>
                                         <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>SFR/PUD/CONDO</th>
-                                        <td className='et-service-form-table-2-data'colSpan={'4'} style={{ border: '1px solid black' }}>{etservice.sfrPudCondo}</td>
-                                        <td className='et-service-form-table-2-data' colSpan={'1'} style={{ border: '1px solid black' }}></td>
-                                        <td className='et-service-form-table-2-data' colSpan={'1'} style={{ border: '1px solid black' }}></td>
+                                        <td className='et-service-form-table-2-data'colSpan={'7'} style={{ border: '1px solid black' }}>{etservice.sfrPudCondo}</td>
+                                        {/* <td className='et-service-form-table-2-data' colSpan={'1'} style={{ border: '1px solid black' }}></td>
+                                        <td className='et-service-form-table-2-data' colSpan={'1'} style={{ border: '1px solid black' }}></td> */}
 
                                     </tr>
                                 </table>
@@ -169,29 +189,29 @@ function EtServiceDisplay() {
                             <center>
                                 <table style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                                     <tr className='et-service-form-table-1-rows'>
-                                        <th className='et-service-form-table-selftables-heading' colSpan="7"> {index === 0 ? "Vesting Information" : `Chain of Title ${index}`}  </th>
+                                        <th className='et-service-form-table-selftables-heading' colSpan="9"> {index === 0 ? " VESTING INFORMATION " : `Chain of Title ${index}`}  </th>
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> Deed Type </th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> DEED TYPE </th>
                                         <td className='et-service-form-table-2-data' colSpan={4} style={{ border: '1px solid black' }}>{vestingInfo.deedType}</td>
 
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> Consideration Amount: </th>
-                                        <td className='et-service-form-table-2-data' colSpan={3} style={{ border: '1px solid black' }}>{vestingInfo.considerationAmount}</td>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>  CONSIDERATION AMOUNT </th>
+                                        <td className='et-service-form-table-2-data' colSpan={2} style={{ border: '1px solid black' }}>{vestingInfo.considerationAmount}</td>
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> Grantor </th>
-                                        <td className='et-service-form-table-2-data' colSpan={'6'} style={{ border: '1px solid black' }}>{vestingInfo.grantor}</td>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> GRANTOR </th>
+                                        <td className='et-service-form-table-2-data' colSpan={'7'} style={{ border: '1px solid black' }}>{vestingInfo.grantor}</td>
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> Grantee </th>
-                                        <td className='et-service-form-table-2-data' colSpan={6} style={{ border: '1px solid black' }}>{vestingInfo.grantee}</td>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> GRANTEE </th>
+                                        <td className='et-service-form-table-2-data' colSpan={7} style={{ border: '1px solid black' }}>{vestingInfo.grantee}</td>
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> Vesting </th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> VESTING</th>
                                         <td className='et-service-form-table-2-data' colSpan={'4'} style={{ border: '1px solid black' }}>{vestingInfo.vesting}</td>
 
                                         <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>INSTR/BOOK/PAGE:</th>
@@ -207,8 +227,8 @@ function EtServiceDisplay() {
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>Notes</th>
-                                        <td className='et-service-form-table-2-data' colSpan={6} style={{ border: '1px solid black' }}>{vestingInfo.note}</td>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>NOTES</th>
+                                        <td className='et-service-form-table-2-data' colSpan={7} style={{ border: '1px solid black' }}>{vestingInfo.note}</td>
 
                                     </tr>
 
@@ -228,47 +248,44 @@ function EtServiceDisplay() {
                             <center>
                                 <table style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
                                     <tr className='et-service-form-table-1-rows' >
-                                        <th className='et-service-form-table-selftables-heading' colSpan="7">OPEN MORTGAGE / DEED OF TRUST  - ({mIndex}) INFORMATION </th>
+                                        <th className='et-service-form-table-selftables-heading' colSpan="8">OPEN MORTGAGE / DEED OF TRUST  - ({mIndex}) INFORMATION </th>
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> Mortgago </th>
-
-                                        <td className='et-service-form-table-2-data' colSpan={6} style={{ border: '1px solid black' }}>{openmortagedeedinfo.mortgago}</td>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> MORTGAGO  </th>
+                                        <td className='et-service-form-table-2-data' colSpan={7} style={{ border: '1px solid black' }}>{openmortagedeedinfo.mortgago}</td>
                                     </tr>
 
                                     <tr>
                                         <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> MORTGAGEE </th>
-                                        <td className='et-service-form-table-2-data'  colSpan={'6'} style={{ border: '1px solid black' }}>{openmortagedeedinfo.mortgagee}</td>
+                                        <td className='et-service-form-table-2-data'  colSpan={'7'} style={{ border: '1px solid black' }}>{openmortagedeedinfo.mortgagee}</td>
                                     </tr>
 
                                     <tr>
                                         <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> TRUSTEE </th>
-                                        <td className='et-service-form-table-2-data' colSpan={6} style={{ border: '1px solid black' }}>{openmortagedeedinfo.trustee}</td>
+                                        <td className='et-service-form-table-2-data' colSpan={7} style={{ border: '1px solid black' }}>{openmortagedeedinfo.trustee}</td>
                                     </tr>
 
                                     <tr>
                                         <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> INSTRUMENT/BOOK/PAGE: </th>
                                         <td className='et-service-form-table-2-data' colSpan={'4'} style={{ border: '1px solid black' }}>{openmortagedeedinfo.instBookPage}</td>
 
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>Amount [$]:</th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>AMOUNT [$]:</th>
                                         <td className='et-service-form-table-2-data' colSpan={2} style={{ border: '1px solid black' }}>{openmortagedeedinfo.amount}</td>
                                     </tr>
 
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> DATED DATE:
-                                        </th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> DATED DATE: </th>
                                         <td className='et-service-form-table-2-data' colSpan={'4'} style={{ border: '1px solid black' }}>{openmortagedeedinfo.datedDate}</td>
 
                                         <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>RECORDED DATE:</th>
-
                                         <td className='et-service-form-table-2-data' colSpan={2} style={{ border: '1px solid black' }}>{openmortagedeedinfo.recordedDate}</td>
                                     </tr>
 
                                     <tr>
                                         <td className='et-service-form-table-2-data' colSpan={5}></td>
-                                        <th className='et-service-form-table-2-heading'v style={{ border: '1px solid black' }}>Maturity Date:</th>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>MATURITY DATE </th>
                                         <td className='et-service-form-table-2-data' colSpan={3} style={{ border: '1px solid black' }}>{openmortagedeedinfo.maturityDate}</td>
                                     </tr>
 
@@ -283,7 +300,6 @@ function EtServiceDisplay() {
 
                                     <tr>
                                         <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> ASSIGNMENT DATED </th>
-
                                         <td className='et-service-form-table-2-data' colSpan={'4'} style={{ border: '1px solid black' }}>{openmortagedeedinfo.assiDated === null ? "No Data" : openmortagedeedinfo.assiDated}</td>
 
                                         <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>ASSIGNMENT RECORDED: </th>
@@ -291,8 +307,8 @@ function EtServiceDisplay() {
                                     </tr>
 
                                     <tr>
-                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}>Additional Infromation</th>
-                                        <td className='et-service-form-table-2-data' colSpan={6} style={{ border: '1px solid black' }}>{openmortagedeedinfo.additionalInformation === null ? "No Data" : openmortagedeedinfo.additionalInformation}</td>
+                                        <th className='et-service-form-table-2-heading' style={{ border: '1px solid black' }}> ADDITIONAL INFORMATION </th>
+                                        <td className='et-service-form-table-2-data' colSpan={7} style={{ border: '1px solid black' }}>{openmortagedeedinfo.additionalInformation === null ? "No Data" : openmortagedeedinfo.additionalInformation}</td>
                                     </tr>
                                 </table>
                             </center>
@@ -316,10 +332,10 @@ function EtServiceDisplay() {
                                         <th className='et-service-form-table-selftables-heading' colSpan="16"> ACTIVE JUDGMENTS AND LIENS</th>
                                     </tr>
                                     <tr style={{ border: '1px solid black' }}>
-                                        <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }} scope="col">Case Number</th>
-                                        <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }} scope="col">Description</th>
-                                        <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }} scope="col">Date Recorded</th>
-                                        <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }} scope="col">Amount</th>
+                                        <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }} scope="col"> CASE NUMBER </th>
+                                        <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }} scope="col"> DESCRIPTION </th>
+                                        <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }} scope="col"> DATE RECORDED </th>
+                                        <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }} scope="col">AMOUNT</th>
 
                                         {/* <th className="mx-2" scope="col">Action</th>*/}
                                     </tr>
@@ -348,7 +364,7 @@ function EtServiceDisplay() {
                             <center>
                                 <table style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
                                     <tr className='et-service-form-table-1-rows' >
-                                        <th className='et-service-form-table-selftables-heading' colSpan="4">TAX INFORMATION </th>
+                                        <th className='et-service-form-table-selftables-heading' colSpan="8">TAX INFORMATION </th>
                                     </tr>
                                     <tr   >
                                         <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }}>ASSESMENT YEAR</th>
@@ -360,7 +376,7 @@ function EtServiceDisplay() {
                                     <tr>
                                         <td className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }} > LAND VALUE </td>
                                         <td className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }} >{taxinformation.landValue}</td>
-                                        <td className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }} > Building Value </td>
+                                        <td className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }} > BUILDING VALUE  </td>
                                         <td className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }} >{taxinformation.buildingValue}</td>
                                     </tr>
 
@@ -371,7 +387,7 @@ function EtServiceDisplay() {
                                         <td className='et-service-form-table-2-data'colSpan='1' style={{ border: '1px solid black' }} >{taxinformation.excemption}</td>
                                     </tr>
 
-                                    <tr   >
+                                    <tr>
                                         <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }}>INSTALLMENT</th>
                                         <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }}>AMOUNT</th>
                                         <th className='et-service-form-table-sub-selftables-heading'style={{ border: '1px solid black' }}>STATUS</th>
@@ -380,17 +396,17 @@ function EtServiceDisplay() {
                                     </tr>
                                     {etservice && etservice.ettaxinstallment.map((taxinstallment, tindex) => (
                                         <tr key={tindex}>
-                                            <td className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }} >{tindex === 0 ? `${tindex + 1}st Installment` : tindex === 1 ? ` ${tindex + 1}nd Installemnt` : tindex === 2 ? `${tindex + 1}rd Installment` : `${tindex + 1}th Installemnt`}</td>
-                                            <td colSpan='1' style={{ border: '1px solid black' }} >{taxinstallment.amount}</td>
-                                            <td colSpan='1' style={{ border: '1px solid black' }} >{taxinstallment.status}</td>
-                                            <td colSpan='1' style={{ border: '1px solid black' }} >{taxinstallment.paidDueDate}</td>
+                                            <td className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }} >{tindex === 0 ? `${tindex + 1}ST INSTALLMENT` : tindex === 1 ? ` ${tindex + 1}ND INSTALLMENT` : tindex === 2 ? `${tindex + 1}rd Installment` : `${tindex + 1}th Installemnt`}</td>
+                                            <td  className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }} >{taxinstallment.amount}</td>
+                                            <td  className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }} >{taxinstallment.status}</td>
+                                            <td  className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }} >{taxinstallment.paidDueDate}</td>
                                         </tr>
                                     ))}
 
 
                                     <tr>
-                                        <th  className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }}> Notes </th>
-                                        <td colSpan={6} style={{ border: '1px solid black' }}>{taxinformation.notes}</td>
+                                        <th  className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }}> NOTES </th>
+                                        <td  className='et-service-form-table-2-data' colSpan={6} style={{ border: '1px solid black' }}>{taxinformation.notes}</td>
                                     </tr>
                                 </table>
                             </center>
@@ -405,14 +421,14 @@ function EtServiceDisplay() {
                         <center>
                             <table style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                                 <tr className='et-service-form-table-1-rows' >
-                                    <th className='et-service-form-table-selftables-heading' colSpan={5}>Names Runs</th>
+                                    <th className='et-service-form-table-selftables-heading' colSpan={6}>NAMES RUNS</th>
                                 </tr>
                                 <tr    >
-                                    <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black', width: '25%' }}> Names</th>
+                                    <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black'}}>NAMES</th>
                                     <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }}>  JUD </th>
-                                    <th className='et-service-form-table-sub-selftables-heading'style={{ border: '1px solid black' }}> Liens </th>
+                                    <th className='et-service-form-table-sub-selftables-heading'style={{ border: '1px solid black' }}> LIENS </th>
                                     <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }}>UCC</th>
-                                    <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }}>Others</th>
+                                    <th className='et-service-form-table-sub-selftables-heading' style={{ border: '1px solid black' }}>OTHERS</th>
                                 </tr>
 
                                 {etservice && etservice.etnameruns.map((nameruns, nindex) => (
@@ -435,10 +451,10 @@ function EtServiceDisplay() {
                         <center>
                             <table style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
                                 <tr className='et-service-form-table-1-rows' >
-                                    <th className='et-service-form-table-selftables-heading' colSpan="5">LEGAL DESCRIPTION </th>
+                                    <th className='et-service-form-table-selftables-heading' colSpan="6">LEGAL DESCRIPTION </th>
                                 </tr>
                                 <tr>
-                                    <td  className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }}>
+                                    <td  className='et-service-form-table-2-data' colSpan='6' style={{ border: '1px solid black' }}>
                                         FOR COMPLETE LEGAL DESCRIPTION SEE ATTACHED VESTING DEED
                                         ASSESSOR'S PARCEL NUMBER:
                                     </td>
@@ -456,11 +472,11 @@ function EtServiceDisplay() {
                         <center>
                             <table style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
                                 <tr className='et-service-form-table-1-rows' >
-                                    <th className='et-service-form-table-selftables-heading'colSpan="5">DISCLAIMER</th>
+                                    <th className='et-service-form-table-selftables-heading'colSpan="6">DISCLAIMER</th>
                                 </tr>
 
                                 <tr>
-                                    <td  className='et-service-form-table-2-data' colSpan='1' style={{ border: '1px solid black' }}>This title search report was performed in
+                                    <td  className='et-service-form-table-2-data' colSpan='6' style={{ border: '1px solid black' }}>This title search report was performed in
                                         accordance with generally accepted standards. This report may
                                         not contain information affecting above real estate property
                                         that cannot be indexed due to different spelling of owner's
@@ -483,11 +499,11 @@ function EtServiceDisplay() {
 
                     </div>
 
-                    {/* <button className='et-service-display-pdf-button' onClick={printDocument}>Download PDF</button> */}
+                    <button className='et-service-display-pdf-button' onClick={printDocument}>Download PDF</button>
                     <br/>
                     <br/>
                     <br/>
-                    
+                    <button onClick={ handleDownload}>Download as DOCX</button>
 
                 </div>
             </div>

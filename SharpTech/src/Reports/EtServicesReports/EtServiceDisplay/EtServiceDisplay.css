@@ -3,6 +3,11 @@
     padding-bottom: 10px;
     text-align: center;
 }
+.et-service-form-table-2-heading{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
 .et-service-display-pdf-button {
     background-color: #4CAF50; /* Green background */
     border: none; /* Remove borders */

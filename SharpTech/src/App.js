@@ -60,9 +60,14 @@ function App() {
               <Route path="/ResetPassword" element={<ResetPassword />} />
               <Route path="/SoftwareServices" element={<SoftwareServices />} />
               <Route path="/AuthProvider" element={<AuthProvider />} />
+<<<<<<< HEAD
               <Route path="/VerifyLogin" element={<VerifyLogin />} />
               
               {/* This route will access by only admin  with the help of ProtectedRoute in Loginc folder  */}
+=======
+              <Route path="/Login" element={<Login />} />
+
+>>>>>>> 1fecda7c19cac19b150f2539b0af1c72a6302a91
               <Route element={<ProtectedRoute role="ADMIN" redirectTo="/" />}>
                 <Route path="/Register" element={<Register />} />
                 <Route path="/DisplayALL" element={<DisplayAll />} />
@@ -89,6 +94,7 @@ function App() {
                 <Route path="/DasOrderSearch" element={<DasOrderSearch />} />
                 <Route path="/DasReport" element={<DasReport />} />
               </Route>
+              
 
               {/* Fallback route */}
               <Route path="*" element={<Navigate to="/" />} />
