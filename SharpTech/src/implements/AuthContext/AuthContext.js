@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    const login = (token, role, transactionId) => {
+    const verifylogin = (token, role, transactionId) => {
         localStorage.setItem('token', token);
         localStorage.setItem('role', role);
         localStorage.setItem('transactionId', transactionId);
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, isAdmin, login, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, isAdmin, verifylogin, logout }}>
             {children}
         </AuthContext.Provider>
     );

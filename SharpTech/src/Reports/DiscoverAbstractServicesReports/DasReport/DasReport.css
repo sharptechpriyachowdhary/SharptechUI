@@ -195,6 +195,82 @@
 }
 
 
+/* Style for the ave button */
+.das-report-general-info-saave-button {
+  background-color: #28a745; 
+  border-color: #28a745;    
+  color: white;             
+  font-size: 18px;        
+  border-radius: 5px;        
+  transition: background-color 0.3s, border-color 0.3s; 
+  margin-right: 10px;   
+  margin-left: 428px;     
+}
+.das-report-general-info-saave-button:hover {
+  background-color: #218838; 
+  border-color: #1e7e34;
+}
+
+
+
+/* Style for the Clear button */
+.das-report-general-info-clear-button {
+  background-color: #dc3545; 
+  border-color: #dc3545;
+  color: white;             
+  font-size: 18px;       
+  border-radius: 5px;       
+  transition: background-color 0.3s, border-color 0.3s; 
+ 
+}
+
+.das-report-general-info-clear-button:hover {
+  background-color: #c82333; 
+  border-color: #bd2130;
+}
+
+
+/* Fromt the active judgment table css */
+/* Style for the ave button */
+.das-report-general-info-saave-button-2 {
+  background-color: #28a745; 
+  border-color: #28a745;    
+  color: white;             
+  font-size: 18px;        
+  border-radius: 5px;        
+  transition: background-color 0.3s, border-color 0.3s; 
+  margin-right: 10px;   
+  margin-left: -700px;     
+}
+.das-report-general-info-saave-button-2:hover {
+  background-color: #218838; 
+  border-color: #1e7e34;
+}
+
+
+
+/* Style for the Clear button */
+.das-report-general-info-clear-button-2 {
+  background-color: #dc3545; 
+  border-color: #dc3545;
+  color: white;             
+  font-size: 18px;       
+  border-radius: 5px;       
+  transition: background-color 0.3s, border-color 0.3s; 
+ 
+}
+
+.das-report-general-info-clear-button-2:hover {
+  background-color: #c82333; 
+  border-color: #bd2130;
+}
+
+.abstractform-container{
+
+  margin-top: 7%;
+}
+
+
 
 
 

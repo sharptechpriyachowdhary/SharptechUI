@@ -9,34 +9,36 @@ import { MdEmail } from 'react-icons/md'; // Importing MdEmail icon
 import { FaLinkedin, FaInstagram, FaEnvelope, } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { Link } from "react-router-dom";
-
-
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState('');
-  const [transactionid, setTansactionId] = useState('');
+  // const [transactionid, setTansactionId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { login } = useContext(AuthContext);
+  // const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const userData = await UserService.login(email, password);
-      // console.log(userData);
-      if (userData.token) {
-        login(userData.token, userData.role, userData.transactionId);
+      const response = await UserService.login(email, password);
+       console.log(response);
+      if (response.statusCode==200) {
+        // login(userData.token, userData.role, userData.transactionId);
         localStorage.setItem('email', email); // Store email in localStorage
+        alert("Sucessfully loggied in");
 
 
         // localStorage.setTansactionId('transactionid',userData.transactionId);     // Storing the transaction ID in local Storage
-        console.log(transactionid);
-        navigate('/DisplayLogin');
+        // console.log(transactionid);
+        navigate('/VerifyLogin',{ state: { email } });  // Pass email in state
       } else {
-        setError(userData.message);
+        setError(response.message);
+        setTimeout(() => {
+          setError('');
+        }, 3500);
       }
     } catch (error) {
       setError(error.message);
