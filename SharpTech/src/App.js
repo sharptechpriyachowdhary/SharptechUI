@@ -47,6 +47,8 @@ function App() {
           <div className="container">
 
 
+            {/* Workin fine */}
+
             {/* These are the routes are public route any one can access directly */}
             <Routes>
               <Route path="/" element={<HomePage playState={playState} setPlayState={setPlayState} />} />
@@ -64,7 +66,7 @@ function App() {
               <Route path="/VerifyLogin" element={<VerifyLogin />} />
 
 
-              
+
               
               {/* This route will access by only admin  with the help of ProtectedRoute in Loginc folder  */}
               <Route element={<ProtectedRoute role="ADMIN" redirectTo="/" />}>
