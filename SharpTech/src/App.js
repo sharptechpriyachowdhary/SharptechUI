@@ -18,7 +18,7 @@ import DisplayAll from './implements/DisplayAll/DisplayAll';
 import { AuthProvider } from './implements/AuthContext/AuthContext';
 import UserService from './implements/UserService/UserService';
 import UpdateUser from './implements/UpdateUser/UpdateUser';
-import Dimond from './components/Dimond/Dimond';
+
 import EtServices from './Reports/EtServicesReports/EtServices/EtServices';
 import EtSearchAddress from './Reports/EtServicesReports/EtSearchAddress/EtSearchAddress';
 import EtServiceDisplay from './Reports/EtServicesReports/EtServiceDisplay/EtServiceDisplay';
@@ -56,6 +56,7 @@ function App() {
               <Route path="/TitleSearch" element={<TitleSearch />} />
               <Route path="/Programs" element={<Programs />} />
               <Route path="/Dimond" element={<Dimond />} />
+              <Route path="/Tempservice" element={<Tempservice />} />
               <Route path="/ForgetPassword" element={<ForgetPassword />} />
               <Route path="/ResetPassword" element={<ResetPassword />} />
               <Route path="/SoftwareServices" element={<SoftwareServices />} />

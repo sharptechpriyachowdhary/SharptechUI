@@ -66,12 +66,12 @@ const Login = () => {
           {error && <p className="error-message">{error}</p>}
 
           <div className='input-group'>
-            <label >Email:</label>
+            <label >Email</label>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           </div>
 
           <div className='input-group'>
-            <label >Password:</label>
+            <label >Password</label>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           </div>
 

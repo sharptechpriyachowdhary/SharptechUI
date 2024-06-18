@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/SharpTechLogo.png';
 import menu_icon from '../../assets/menu-icon.png';
 import Dropdown from '../Dropdown/Dropdown';
-import Dimond from "../../components/Dimond/Dimond";
 
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -34,18 +33,16 @@ const LoginNavbar = () => {
                 <img src={logo} alt="" className={`logo ${sticky ? 'sticky-logo' : ''}`} />
             </Link>
             <ul className={mobileMenu ? '' : 'hide-mobile-menu'}>
-           
+
                 <li>
                     <Link to='/'>Home</Link>
                 </li>
                 {/* <li ><Dropdown/></li>  */}
+                {/* 
+                    <li><RouterLink to='/Tempservice'>Tempservice</RouterLink></li>
+                    <li><RouterLink to='/Pagination'>Tables</RouterLink></li>
+                */}
 
-                <li ><RouterLink to="/Dimond">Dimond</RouterLink></li> 
-
-                <li><RouterLink to='/Tempservice'>Tempservice</RouterLink></li>
-                <li><RouterLink to='/Pagination'>Tables</RouterLink></li>
-               
-               
                 {/* 
                 <li>
                     <Link to='/EmployeeSearch'>EmployeeSearch</Link>
