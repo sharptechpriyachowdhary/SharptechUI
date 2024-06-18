@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './ForgetPassword.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
+// Define the FloatLabel component within the same file
+const FloatLabel = ({ children, label, value }) => {
+  const isActive = value && value.length > 0;
+  return (
+    <div className={`float-label ${isActive ? 'active' : ''}`}>
+      {children}
+      <label className="float-label-text">{label}</label>
+    </div>
+  );
+};
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');
@@ -14,7 +24,7 @@ const ForgetPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8080/auth/forgot-password', { email });
-      setMessage(response.data.message);      
+      setMessage(response.data.message);
       setError('');
       window.alert(response.data.message);
       navigate('/ResetPassword', { state: { email } });  // Pass email in state
@@ -27,19 +37,19 @@ const ForgetPassword = () => {
   return (
     <div className="forgot-password-container">
       <div className="forgot-password-box">
-        <h1 className='forgot-password-heading'>Forgot Password</h1>
-        <p>Enter your email address, and we will send an OTP which you can use to reset your password. </p>
+        <h1 className="forgot-password-heading">Forgot Password</h1>
+        <p>Enter your email address, and we will send an OTP which you can use to reset your password.</p>
         <br/>
         <form onSubmit={handleSubmit}>
-          <div className="forget-password-input-group">
-            <label>Email:</label>
-            <input 
-              type="email" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
-              required 
+          <FloatLabel label="Email" value={email}>
+            <input
+            // placeholder='email@gmail.com'
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
-          </div>
+          </FloatLabel>
           <br/>
           <button type="submit">Get OTP</button>
         </form>
@@ -48,7 +58,6 @@ const ForgetPassword = () => {
       </div>
     </div>
   );
-}
+};
 
 export default ForgetPassword;
-

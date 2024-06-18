@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ProgressSpinner } from 'primereact/progressspinner'; // Import ProgressSpinner from PrimeReact
 import "./EtSearchAddress.css"
+import Footer from '../../../components/Footer/Footer';
+import Navbar from '../../../components/Navbar/Navbar';
 
 function EtSearchAddress() {
     const [partialAddress, setPartialAddress] = useState('');
@@ -65,6 +67,8 @@ function EtSearchAddress() {
     };
 
     return (
+        <div>
+            <Navbar/>
         <div className="et-address-search-container">
             <form className='et-address-search-form' onSubmit={handleSubmit}>
                 <h2>ET Report Address Search </h2>
@@ -91,6 +95,8 @@ function EtSearchAddress() {
                     {loading ? <ProgressSpinner style={{ width: '24px', height: '24px' }} strokeWidth="4" /> : 'Submit'}
                 </button>
             </form>
+        </div>
+        <Footer/>
         </div>
     );
 }

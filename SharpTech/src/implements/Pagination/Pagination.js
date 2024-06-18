@@ -108,8 +108,7 @@ export default function Pagination() {
                             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries &nbsp; &nbsp;"
                             header={header}
                             globalFilter={globalFilter}
-                            className="pagination-datatable"
-                        >
+                            className="pagination-datatable" >
                             <Column field="empId" header="Employee ID" sortable className="heading-pagination-column" />
                             <Column field="firstName" header="First Name" className="heading-pagination-column" />
                             <Column field="middleName" header="Middle Name" className="heading-pagination-column" />

@@ -66,12 +66,28 @@
 }
 
 
+/* Responsive Styles */
 @media (max-width: 768px) {
   .moving-title {
     font-size: 1.5em;
+    height: 150px; /* Adjust height for mobile */
+    margin-bottom: -150px; /* Adjust margin for mobile */
   }
 
-  .home-page-content {
-    width: 95%;
+  .moving-title h2 {
+    font-size: 2rem; /* Adjust font size for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .moving-title {
+    font-size: 1.2em;
+    height: 120px; /* Adjust height for small mobile devices */
+    margin-top: 70px;
+    
+  }
+
+  .moving-title h2 {
+    font-size: 1.5rem; /* Adjust font size for small mobile devices */
   }
 }

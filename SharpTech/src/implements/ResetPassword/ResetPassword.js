@@ -4,26 +4,18 @@ import axios from 'axios';
 import './ResetPassword.css';
 
 const ResetPassword = () => {
-
-
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Using useNavigate hook
-
+  const navigate = useNavigate();
 
   const location = useLocation();
-  const { email } = location.state || {};  // Get the email from state
+  const { email } = location.state || {};
 
   if (!email) {
     return <p>No email provided. Please go back and enter your email again.</p>;
   }
-
-
-
-
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,11 +25,9 @@ const ResetPassword = () => {
         otp,
         newPassword
       });
-    //   console.log(response);
-      setMessage(response);
+      setMessage(response.data);
       setError('');
       window.alert(response.data);
-      // Redirect to login page after successful password reset
       navigate('/login');
     } catch (err) {
       setMessage('');
@@ -51,20 +41,20 @@ const ResetPassword = () => {
         <h1>Reset Password</h1>
         <form onSubmit={handleSubmit}>
           <div className="reset-password-input-group">
-            <label>OTP:</label>
             <input 
               type="text" 
               value={otp} 
               onChange={(e) => setOtp(e.target.value)} 
+              placeholder="Enter OTP"
               required 
             />
           </div>
           <div className="reset-password-input-group">
-            <label>New Password:</label>
             <input 
               type="password" 
               value={newPassword} 
               onChange={(e) => setNewPassword(e.target.value)} 
+              placeholder="Enter New Password"
               required 
             />
           </div>

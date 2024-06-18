@@ -5,7 +5,7 @@ import Navbar from '../../../components/Navbar/Navbar';
 import 'primereact/resources/themes/saga-blue/theme.css';  // Or any other theme you prefer
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+// import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Button } from 'primereact/button';
 import "./DasOrderSearch.css";
 
