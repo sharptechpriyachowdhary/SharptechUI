@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import "./DasReport.css";
+import { Button } from 'primereact/button';
 
 function DasReport() {
 
@@ -89,7 +90,7 @@ function DasReport() {
                     ...row,
                     data: {
                         ...row.data,
-                        [name]:value.toUpperCase()
+                        [name]: value.toUpperCase()
                     }
                 };
             }
@@ -517,7 +518,7 @@ function DasReport() {
             alert(`There is no data to clear for Table ${tableId}.`);
         }
     };
-   
+
 
     //save and clear for activejudgements and lines
     const handleSaveTemporarilyRow = () => {
@@ -703,12 +704,7 @@ function DasReport() {
         <div className='abstractform-container'>
             <form onSubmit={(e) => onSubmit(e)}>
 
-                <table className='Abstract-Report'
-
-                    style={{
-                        border: '2px solid black',
-                        borderCollapse: 'collapse'
-                    }} >
+                <table className='Abstract-Report' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
                     <tr>
                         <th><h2> DISCOVER ABSTRACT REPORT</h2></th>
                     </tr>
@@ -815,10 +811,12 @@ function DasReport() {
                         </table>
                     </center>
                     <br />
-                    <button type="button" onClick={onSave}>Save</button>
+                    {/* <button type="button" onClick={onSave}>Save</button>
                     <br />
                     <br />
-                    <button type="button" onClick={clearLocalStorage}>Clear</button>
+                    <button type="button" onClick={clearLocalStorage}>Clear</button> */}
+                    <Button className='das-report-general-info-saave-button' label="Save&nbsp;" icon="pi pi-check" onClick={onSave} />
+                    <Button className='das-report-general-info-clear-button ' label="Clear&nbsp;" icon="pi pi-times" onClick={clearLocalStorage} />
                 </div>
 
                 {/* --------------------------------------------------------------Table 2-----------------------------------------------*/}
@@ -886,18 +884,24 @@ function DasReport() {
                                     </tbody>
                                 </table>
                             </center>
+                            <br />
                             {table.id > 1 && (
-                                <button className="btn-delete" onClick={() => handleDeleteTable(table.id)}>Delete Table</button>
-                            )}
+                                // <button className="btn-delete" onClick={() => handleDeleteTable(table.id)}>Delete Table</button>
+                                <button className="Abstract-report-delete-button" onClick={() => handleDeleteTable(table.id)}>
+                                    <i className="pi pi-trash" style={{ marginRight: '8px' }}></i> Table</button>
+                            )} <button className="Abstract-report-add-button" onClick={handleAddTable}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Table</button>
                             <br />
 
-                            <button onClick={() => handleSaveTable(table.id)}>Save</button>
+                            {/* <button onClick={() => handleSaveTable(table.id)}>Save</button>
                             <br />
-                            <button onClick={() => handleClearTable(table.id)}>Clear</button>
+                            <button onClick={() => handleClearTable(table.id)}>Clear</button> */}
+                            <Button className='das-report-general-info-saave-button' label="Save&nbsp;" icon="pi pi-check" onClick={() => handleSaveTable(table.id)} />
+                            <Button className='das-report-general-info-clear-button' label="Clear&nbsp;" icon="pi pi-times" onClick={() => handleClearTable(table.id)} />
                         </div>
                     ))}
                     <br />
-                    <button className='btn-style' onClick={handleAddTable}>Add Table</button>
+                    {/* <button className='btn-style' onClick={handleAddTable}>Add Table</button> */}
+
                     <br />
                     {/* <button className='btn-style' onClick={handleAddTable}>Add Table</button> */}
                     <br />
@@ -1001,14 +1005,19 @@ function DasReport() {
                                 </center>
                             </center>
                             {table.id > 1 && (
-                                <button className="btn-delete" onClick={() => handleDeleteTable2(table.id)}>Delete Table</button>
-                            )}
-                            <button className="btn-save" onClick={() => handleSaveTable1(table.id)}>Save</button>
-                            <button className="btn-clear" onClick={() => handleClearTable1(table.id)}>Clear</button>
+                                // <button className="btn-delete" onClick={() => handleDeleteTable2(table.id)}>Delete Table</button>
+                                <button className="Abstract-report-delete-button" onClick={() => handleDeleteTable2(table.id)}>
+                                    <i className="pi pi-trash" style={{ marginRight: '8px' }}></i> Table</button> 
+                            )} <button className="Abstract-report-add-button" onClick={handleAddTable2}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Table</button>
+                            <br />
+                            {/* <button className="btn-save" onClick={() => handleSaveTable1(table.id)}>Save</button>
+                            <button className="btn-clear" onClick={() => handleClearTable1(table.id)}>Clear</button> */}
+                            <Button className='das-report-general-info-saave-button' label="Save&nbsp;" icon="pi pi-check" onClick={() => handleSaveTable1(table.id)} />
+                            <Button className='das-report-general-info-clear-button ' label="Clear&nbsp;" icon="pi pi-times" onClick={() => handleClearTable1(table.id)} />
                         </div>
                     ))}
                     <br />
-                    <button className="btn-add" onClick={handleAddTable2}>Add Table</button>
+                    {/* <button className="btn-add" onClick={handleAddTable2}>Add Table</button> */}
                     <br />
                     <br />
                 </div>
@@ -1059,17 +1068,24 @@ function DasReport() {
                             <p>Table data is empty</p>
                         )}
                         <br />
-                        <button className='btn-style' onClick={handleAddRow}>Add</button>
+                        {/* <button className='btn-style' onClick={handleAddRow}>Add</button> */}
+                        <button className="Abstract-report-add-button-2" onClick={handleAddRow}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Table</button>
+                        
                         {tableRowsData.length > 3 && (
-                            <button type="button" className='btn-style' onClick={handleDeleteLastRow}>Delete</button>
+                            // <button type="button" className='btn-style' onClick={handleDeleteLastRow}>Delete</button>
+                            <button className="Abstract-report-delete-button-2" onClick={handleDeleteLastRow}>
+                                    <i className="pi pi-trash" style={{ marginRight: '8px' }}></i> Table</button>
                         )}
                         <br />
-                        <button onClick={handleSaveTemporarilyRow}>Save</button>
+                        {/* <button onClick={handleSaveTemporarilyRow}>Save</button>
                         <br />
                         <br />
                         <button onClick={handleClearRows}>Clear</button>
                         <br />
-                        <br />
+                        <br /> */}
+                        <Button className='das-report-general-info-saave-button-2' label="Save&nbsp;" icon="pi pi-check" onClick={handleSaveTemporarilyRow} />
+                        <Button className='das-report-general-info-clear-button-2' label="Clear&nbsp;" icon="pi pi-times" onClick={handleClearRows} />
+
                     </center>
                     <br />
                 </div>
@@ -1084,81 +1100,85 @@ function DasReport() {
                 <center>
                     <div>
                         <br />
-                        <center>
-                            <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
-                                <thead>
-                                    <tr>
-                                        <th className='header-table' colSpan="4">TAX INFORMATION</th>
-                                    </tr>
-                                    <tr className='th-color'>
-                                        <th style={{ border: '1px solid black' }}>ASSESMENT YEAR</th>
-                                        <th style={{ border: '1px solid black' }}>2023</th>
-                                        <th style={{ border: '1px solid black' }}>TAX YEAR</th>
-                                        <th style={{ border: '1px solid black' }}>2023</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colSpan='1' style={{ border: '1px solid black' }} > LAND VALUE </td>
-                                        <td colSpan='1' style={{ border: '1px solid black' }} >
-                                            <input type="text" className="service-control" placeholder="Enter LandValue" name="landValue" style={{ width: '100%' }} />
-                                        </td>
-                                        <td colSpan='1' style={{ border: '1px solid black' }} > Building Value </td>
-                                        <td colSpan='1' style={{ border: '1px solid black' }} >
-                                            <input type="text" className="service-control" placeholder="Enter BuildingValue" name="buildingValue" style={{ width: '100%' }} />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colSpan='1' style={{ border: '1px solid black' }} > TOTAL VALUE </td>
-                                        <td colSpan='1' style={{ border: '1px solid black' }} >
-                                            <input type="text" className="service-control" placeholder="Enter TotalValue" name="totalValue" style={{ width: '100%' }} />
-                                        </td>
-                                        <td colSpan='1' style={{ border: '1px solid black' }} > EXEMPTION </td>
-                                        <td colSpan='1' style={{ border: '1px solid black' }} >
-                                            <input type="text" className="service-control" placeholder="Enter extraValue" name="extraValue" style={{ width: '100%' }} />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th className='heading-table' style={{ border: '1px solid black' }}>INSTALLMENT</th>
-                                        <th className='heading-table' style={{ border: '1px solid black' }}>AMOUNT</th>
-                                        <th className='heading-table' style={{ border: '1px solid black' }}>STATUS</th>
-                                        <th className='heading-table' style={{ border: '1px solid black' }}>PAID/DUE DATE</th>
-                                    </tr>
-                                    {tableTaxInstaData.map((row, index) => (
-                                        <tr key={row.id}>
-                                            <td colSpan='1' style={{ border: '1px solid black' }}>
-                                                {index + 1 === 1 ? `${index + 1}st Installment` : index + 1 === 2 ? `${index + 1}nd Installment` : index + 1 === 3 ? `${index + 1}rd Installment` : `${index + 1}th Installment`}
-                                            </td>
-                                            <td colSpan='1' style={{ border: '1px solid black' }} >
-                                                <input type="text" className="service-control" name="amount" placeholder='Enter Amount' onChange={e => handleInputChangeTaxInsta(e, row.id)} style={{ width: '100%' }} />
-                                            </td>
-                                            <td colSpan='1' style={{ border: '1px solid black' }} >
-                                                <input type="text" className="service-control" name="status" placeholder='Enter Status' onChange={e => handleInputChangeTaxInsta(e, row.id)} style={{ width: '100%' }} />
-                                            </td>
-                                            <td colSpan='1' style={{ border: '1px solid black' }} >
-                                                <input type="date" className="service-control" name="paidDueDate" placeholder='Enter Date' onChange={e => handleInputChangeTaxInsta(e, row.id)} style={{ width: '100%' }} />
-                                            </td>
-                                        </tr>
-                                    ))}
-                                    <tr>
-                                        <th style={{ border: '1px solid black' }}>Notes</th>
-                                        <td colSpan={6} style={{ border: '1px solid black' }}>
-                                            <input type='text' className="service-control" placeholder="Enter Notes" name="comments" style={{ width: '100%' }} />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br />
 
-                            {tableTaxInstaData.length > 2 && (
-                                <button type="button" className='btn-style' onClick={handleDeleteLastTaxInstaRow}>Delete</button>
-                            )}
-                            <button className='btn-style' onClick={handleAddTaxInstaRow}>Add</button>
+                        <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
+                            <thead>
+                                <tr>
+                                    <th className='header-table' colSpan="4">TAX INFORMATION</th>
+                                </tr>
+                                <tr className='th-color'>
+                                    <th style={{ border: '1px solid black' }}>ASSESMENT YEAR</th>
+                                    <th style={{ border: '1px solid black' }}>2023</th>
+                                    <th style={{ border: '1px solid black' }}>TAX YEAR</th>
+                                    <th style={{ border: '1px solid black' }}>2023</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colSpan='1' style={{ border: '1px solid black' }} > LAND VALUE </td>
+                                    <td colSpan='1' style={{ border: '1px solid black' }} >
+                                        <input type="text" className="service-control" placeholder="Enter LandValue" name="landValue" style={{ width: '100%' }} />
+                                    </td>
+                                    <td colSpan='1' style={{ border: '1px solid black' }} > Building Value </td>
+                                    <td colSpan='1' style={{ border: '1px solid black' }} >
+                                        <input type="text" className="service-control" placeholder="Enter BuildingValue" name="buildingValue" style={{ width: '100%' }} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colSpan='1' style={{ border: '1px solid black' }} > TOTAL VALUE </td>
+                                    <td colSpan='1' style={{ border: '1px solid black' }} >
+                                        <input type="text" className="service-control" placeholder="Enter TotalValue" name="totalValue" style={{ width: '100%' }} />
+                                    </td>
+                                    <td colSpan='1' style={{ border: '1px solid black' }} > EXEMPTION </td>
+                                    <td colSpan='1' style={{ border: '1px solid black' }} >
+                                        <input type="text" className="service-control" placeholder="Enter extraValue" name="extraValue" style={{ width: '100%' }} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th className='heading-table' style={{ border: '1px solid black' }}>INSTALLMENT</th>
+                                    <th className='heading-table' style={{ border: '1px solid black' }}>AMOUNT</th>
+                                    <th className='heading-table' style={{ border: '1px solid black' }}>STATUS</th>
+                                    <th className='heading-table' style={{ border: '1px solid black' }}>PAID/DUE DATE</th>
+                                </tr>
+                                {tableTaxInstaData.map((row, index) => (
+                                    <tr key={row.id}>
+                                        <td colSpan='1' style={{ border: '1px solid black' }}>
+                                            {index + 1 === 1 ? `${index + 1}st Installment` : index + 1 === 2 ? `${index + 1}nd Installment` : index + 1 === 3 ? `${index + 1}rd Installment` : `${index + 1}th Installment`}
+                                        </td>
+                                        <td colSpan='1' style={{ border: '1px solid black' }} >
+                                            <input type="text" className="service-control" name="amount" placeholder='Enter Amount' onChange={e => handleInputChangeTaxInsta(e, row.id)} style={{ width: '100%' }} />
+                                        </td>
+                                        <td colSpan='1' style={{ border: '1px solid black' }} >
+                                            <input type="text" className="service-control" name="status" placeholder='Enter Status' onChange={e => handleInputChangeTaxInsta(e, row.id)} style={{ width: '100%' }} />
+                                        </td>
+                                        <td colSpan='1' style={{ border: '1px solid black' }} >
+                                            <input type="date" className="service-control" name="paidDueDate" placeholder='Enter Date' onChange={e => handleInputChangeTaxInsta(e, row.id)} style={{ width: '100%' }} />
+                                        </td>
+                                    </tr>
+                                ))}
+                                <tr>
+                                    <th style={{ border: '1px solid black' }}>Notes</th>
+                                    <td colSpan={6} style={{ border: '1px solid black' }}>
+                                        <input type='text' className="service-control" placeholder="Enter Notes" name="comments" style={{ width: '100%' }} />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+
+                        {tableTaxInstaData.length > 2 && (
+                            // <button type="button" className='btn-style' onClick={handleDeleteLastTaxInstaRow}>Delete</button>
+                            <button className="Abstract-report-delete-button-2" onClick={handleDeleteLastTaxInstaRow}>
+                                    <i className="pi pi-trash" style={{ marginRight: '8px' }}></i> Table</button>
+                        )}<button className="Abstract-report-add-button-2" onClick={handleAddTaxInstaRow}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Table</button>
+                        {/* <button className='btn-style' onClick={handleAddTaxInstaRow}>Add</button> */}
+                        <br />
+                        {/* <button className='btn-style' onClick={handleSaveTemporarilyTaxInstaRow}>Save</button>
                             <br />
-                            <button className='btn-style' onClick={handleSaveTemporarilyTaxInstaRow}>Save</button>
-                            <br />
-                            <button className='btn-style' onClick={handleClearTaxInstaRows}>Clear</button>
-                        </center>
+                            <button className='btn-style' onClick={handleClearTaxInstaRows}>Clear</button> */}
+                        <Button className='das-report-general-info-saave-button-2' label="Save&nbsp;" icon="pi pi-check" onClick={handleSaveTemporarilyTaxInstaRow} />
+                        <Button className='das-report-general-info-clear-button-2' label="Clear&nbsp;" icon="pi pi-times" onClick={handleClearTaxInstaRows} />
+
                     </div>
                     <br />
                 </center>
@@ -1202,14 +1222,21 @@ function DasReport() {
                             </tbody>
                         </table>
                         <br />
-                        <button className='btn-style' onClick={handleAddNameRow}>Add</button>
+                        {/* <button className='btn-style' onClick={handleAddNameRow}>Add</button> */}
+                        <button className="Abstract-report-add-button-2" onClick={handleAddNameRow}> <i className="pi pi-plus" style={{ marginRight: '8px' }}></i>Table</button>
                         {nameRunData.length > 2 && (
-                            <button type="button" className='btn-style' onClick={handleDeleteLastNameRow}>Delete</button>
+                            // <button type="button" className='btn-style' onClick={handleDeleteLastNameRow}>Delete</button>
+                            <button className="Abstract-report-delete-button-2" onClick={handleDeleteLastNameRow}>
+                                    <i className="pi pi-trash" style={{ marginRight: '8px' }}></i> Table</button>
                         )}
                         <br />
-                        <button className='btn-style' onClick={handleSaveTemporarilyNameRunRow}>Save</button>
+                        {/* <button className='btn-style' onClick={handleSaveTemporarilyNameRunRow}>Save</button>
                         <br />
-                        <button className='btn-style' onClick={handleClearNameRunRows}>Clear</button>
+                        <button className='btn-style' onClick={handleClearNameRunRows}>Clear</button> */}
+
+                        <Button className='das-report-general-info-saave-button-2' label="Save&nbsp;" icon="pi pi-check" onClick={handleSaveTemporarilyNameRunRow} />
+                        <Button className='das-report-general-info-clear-button-2' label="Clear&nbsp;" icon="pi pi-times" onClick={handleClearNameRunRows} />
+
                     </center>
                 </div>
 
@@ -1266,7 +1293,10 @@ function DasReport() {
 
 
                 <br />
-                <button type="Submit" onClick={handleSubmit} className="btn btn-outline-primary">Submit</button>
+                {/* <button type="Submit" className="btn btn-outline-primary">Submit</button> */}
+                <button className="das-report-submit-button" type="Submit">
+                    <i className="pi pi-check" style={{ marginRight: '8px' }}></i>Submit
+                </button>
             </form>
         </div>
     )

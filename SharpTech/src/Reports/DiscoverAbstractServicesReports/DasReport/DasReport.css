@@ -275,4 +275,41 @@
 
 
 
+
+
+
+
+.das-report-submit-button {
+  background-color: #217feb; /* Customize the background color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+ margin-left: 45%;
+}
+
+.das-report-submit-button:hover {
+  background-color: #218838;
+}
+
+.das-report-submit-button:active {
+  background-color: #1e7e34;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.das-report-submit-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(129, 195, 240, 0.5);
+}
+
+
+
+
+
+
 /* From the Above css Done by Shravankumar */

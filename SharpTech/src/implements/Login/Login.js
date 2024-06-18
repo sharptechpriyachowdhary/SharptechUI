@@ -28,7 +28,7 @@ const Login = () => {
       if (response.statusCode==200) {
         // login(userData.token, userData.role, userData.transactionId);
         localStorage.setItem('email', email); // Store email in localStorage
-        alert("Sucessfully loggied in");
+        alert(response.message);
 
 
         // localStorage.setTansactionId('transactionid',userData.transactionId);     // Storing the transaction ID in local Storage
