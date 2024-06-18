@@ -55,8 +55,8 @@ function App() {
               <Route path="/SketchRoof" element={<SketchRoof />} />
               <Route path="/TitleSearch" element={<TitleSearch />} />
               <Route path="/Programs" element={<Programs />} />
-              <Route path="/Dimond" element={<Dimond />} />
-              <Route path="/Tempservice" element={<Tempservice />} />
+             
+        
               <Route path="/ForgetPassword" element={<ForgetPassword />} />
               <Route path="/ResetPassword" element={<ResetPassword />} />
               <Route path="/SoftwareServices" element={<SoftwareServices />} />
