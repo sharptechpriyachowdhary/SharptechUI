@@ -53,6 +53,11 @@
     display: block;
     margin: 20px 0;
 }
+
+.contact-page-container{
+    font-size: 20px;
+
+}
 .contact-mail-icon:hover {
     filter: invert(48%) sepia(30%) saturate(6500%) hue-rotate(1deg) brightness(107%) contrast(101%);
 }
