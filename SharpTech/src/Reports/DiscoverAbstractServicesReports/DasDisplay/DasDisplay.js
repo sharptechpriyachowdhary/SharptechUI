@@ -236,16 +236,7 @@ function DasDisplay() {
                 <div >
                     <br />
                     <br />
-<<<<<<< HEAD
-                    {/* <table className='das-display-abstract-report' style={{ border: '2px solid black', borderCollapse: 'collapse'}} >
-=======
-                    <table className='Abstract-Report' style={{ border: '2px solid black', borderCollapse: 'collapse'  }} >
->>>>>>> 3c547f49071b4b976656c592d285f05491692648
-                        <tr>
-                            <th><h2> DISCOVER ABSTRACT REPORT</h2></th>
-                        </tr>
-    
-                    </table> */}
+
                     <center>
                     <table className='das-display-report-heading' style={{ border: '2px solid black', borderCollapse: 'collapse'}}>
                         <tr>
