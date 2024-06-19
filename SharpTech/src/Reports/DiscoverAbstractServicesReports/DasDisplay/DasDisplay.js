@@ -236,7 +236,11 @@ function DasDisplay() {
                 <div >
                     <br />
                     <br />
+<<<<<<< HEAD
                     {/* <table className='das-display-abstract-report' style={{ border: '2px solid black', borderCollapse: 'collapse'}} >
+=======
+                    <table className='Abstract-Report' style={{ border: '2px solid black', borderCollapse: 'collapse'  }} >
+>>>>>>> 3c547f49071b4b976656c592d285f05491692648
                         <tr>
                             <th><h2> DISCOVER ABSTRACT REPORT</h2></th>
                         </tr>
@@ -267,86 +271,71 @@ function DasDisplay() {
 
                                                 <tr>
                                                     <th style={{ border: '1px solid black' }}>ORDER NUMBER :</th>
-                                                    <td colSpan={4} style={{ border: '1px solid black' }}>
-                                                        {etservice.orderNumber}
+                                                    <td colSpan={4} style={{ border: '1px solid black' }}>{etservice.orderNumber}
 
                                                     </td>
                                                     <th style={{ border: '1px solid black' }}>REFERENCE NUMBER :</th>
-                                                    <td colSpan={'100%'} style={{ border: '1px solid black' }}>
-                                                        {etservice.referenceNumber}
+                                                    <td colSpan={'100%'} style={{ border: '1px solid black' }}>  {etservice.referenceNumber}
                                                     </td>
                                                 </tr>
 
                                                 <tr>
                                                     <th style={{ border: '1px solid black' }}>SEARCH DATE :</th>
-                                                    <td colSpan={'2'} style={{ border: '1px solid black' }}>
-                                                        {etservice.searchDate}
-                                                    </td>
+                                                    <td colSpan={'2'} style={{ border: '1px solid black' }}> {etservice.searchDate}  </td>
 
                                                     <th style={{ border: '1px solid black' }}>As Of</th>
-                                                    <td >7:30 Am</td>
+                                                    <td style={{ border: '1px solid black' }} >7:30 Am</td>
 
                                                     <th style={{ border: '1px solid black' }}>EFFECTIVE DATE :</th>
-                                                    <td colSpan={2} style={{ border: '1px solid black' }}>
-                                                        {etservice.effectiveDate}
-                                                    </td>
+                                                    <td colSpan={2} style={{ border: '1px solid black' }}>{etservice.effectiveDate}  </td>
                                                 </tr>
 
                                                 <tr>
 
                                                     <th style={{ border: '1px solid black' }}>PROPERTY ADDRESS :</th>
-                                                    <td colSpan={6} style={{ border: '1px solid black' }}>
-                                                        {etservice.propertyAddress}
+                                                    <td colSpan={6} style={{ border: '1px solid black' }}>  {etservice.propertyAddress}
                                                     </td>
 
                                                 </tr>
 
                                                 <tr>
                                                     <th style={{ border: '1px solid black' }}> STATE : </th>
-                                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
-                                                        {etservice.state}
+                                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>  {etservice.state}
                                                     </td>
 
                                                     <th style={{ border: '1px solid black' }}> COUNTY :</th>
-                                                    <td colSpan={2} style={{ border: '1px solid black' }}>
-                                                        {etservice.county}
+                                                    <td colSpan={2} style={{ border: '1px solid black' }}> {etservice.county}
                                                     </td>
                                                 </tr>
 
                                                 <tr>
                                                     <th style={{ border: '1px solid black' }}>BORROWER NAME :</th>
-                                                    <td colSpan={6} style={{ border: '1px solid black' }}>
-                                                        {etservice.borrowerName}
+                                                    <td colSpan={6} style={{ border: '1px solid black' }}>  {etservice.borrowerName}
                                                     </td>
 
                                                 </tr>
                                                 <tr>
                                                     <th style={{ border: '1px solid black' }}> PARCEL NUMBER :</th>
-                                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
-                                                        {etservice.parcelNumber}
+                                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>  {etservice.parcelNumber}
                                                     </td>
 
                                                     <th style={{ border: '1px solid black' }}> SUBDIVISION : </th>
-                                                    <td colSpan={2} style={{ border: '1px solid black' }}>
-                                                        {etservice.subdivision}
+                                                    <td colSpan={2} style={{ border: '1px solid black' }}> {etservice.subdivision}
                                                     </td>
                                                 </tr>
 
                                                 <tr>
                                                     <th style={{ border: '1px solid black' }}> Lot/Unit </th>
-                                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
-                                                        {etservice.lotUnit}
+                                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>  {etservice.lotUnit}
                                                     </td>
                                                     <th style={{ border: '1px solid black' }}>BLOCK:</th>
-                                                    <td colSpan={2} style={{ border: '1px solid black' }}>
-                                                        {etservice.block}                                </td>
+                                                    <td colSpan={2} style={{ border: '1px solid black' }}> {etservice.block}  
+                                                </td>
                                                 </tr>
 
                                                 <tr>
                                                     <th style={{ border: '1px solid black' }}>PROPERTY TYPE:</th>
-                                                    <td colSpan={'8'} style={{ border: '1px solid black' }}>
-                                                        {etservice.propertyType}
-                                                    </td>
+                                                    <td colSpan={'8'} style={{ border: '1px solid black' }}>{etservice.propertyType} </td>
                                                     <td colSpan={'1'} style={{ border: '1px solid black' }}></td>
                                                     <td colSpan={'1'} style={{ border: '1px solid black' }}></td>
 

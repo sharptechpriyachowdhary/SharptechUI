@@ -42,7 +42,7 @@ const Contact = () => {
       <div className="contact-col">
         <h3>Send us a message <img src={msg_icon} alt="" /></h3>
 
-        <p> One-Stop Solution for all your Software, Title and Roof Sketch services. </p>
+        <p className='contact-page-container'> One-Stop Solution for all your Software, Title and Roof Sketch services. </p>
         <br />
         <h2>Hours of Operation:</h2>
         <br />

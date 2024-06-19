@@ -5,15 +5,18 @@
 }
 
 .dropdown-button-component {
-  background-color: white; /* Customize your button styling */
-  padding: 10px 20px;
+  background-color: white;
+  padding: 10px 10px;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
+  color: rgb(42, 64, 92);
+  font-size: 20px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.dropdown-button-component .dropdown-icon {
+.dropdown-button-component{
   margin-left: 8px;
 }
 
