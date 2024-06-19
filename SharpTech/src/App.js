@@ -8,7 +8,7 @@ import DisplayLogin from './implements/DisplayLogin/DisplayLogin';
 import Login from './implements/Login/Login';
 // import Signup from "./implements/Signup/Signup";
 import Register from "./implements/Register/Register"
-import About from './components/About/About';
+// import About from './components/About/About';
 import "./App.css";
 import Programs from './components/Programs/Programs';
 import TitleSearch from './components/TitleSearch/TitleSearch';
@@ -16,7 +16,7 @@ import SketchRoof from './components/SketchRoof/SketchRoof';
 import SoftwareServices from './components/SoftwareServices/SoftwareServices';
 import DisplayAll from './implements/DisplayAll/DisplayAll';
 import { AuthProvider } from './implements/AuthContext/AuthContext';
-import UserService from './implements/UserService/UserService';
+// import UserService from './implements/UserService/UserService';
 import UpdateUser from './implements/UpdateUser/UpdateUser';
 
 import EtServices from './Reports/EtServicesReports/EtServices/EtServices';
@@ -67,7 +67,7 @@ function App() {
 
 
               
-              {/* This route will access by only admin  with the help of ProtectedRoute in Loginc folder  */}
+              {/* This route will access by only admin  with the help of ProtectedRoute in Logic folder  */}
               <Route element={<ProtectedRoute role="ADMIN" redirectTo="/" />}>
                 <Route path="/Register" element={<Register />} />
                 <Route path="/DisplayALL" element={<DisplayAll />} />
@@ -77,7 +77,7 @@ function App() {
                 <Route path="/EmployeeDetail" element={<EmployeeDetail />} />
               </Route>
 
-               {/* This route will access only with the unauthitcatid only with help of PublicRoute in Loginc folder  */}
+               {/* This route will access only with the unauthitcatid only with help of PublicRoute in Logic folder  */}
               <Route element={<PublicRoute redirectTo="/" />}>
                 <Route path="/Login" element={<Login />} />
               </Route>

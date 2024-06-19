@@ -11,7 +11,7 @@ import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph, Table, TableRow, TableCell } from "docx";
 import htmlDocx from 'html-docx-js/dist/html-docx';
 // import { createParagraph, createHeading, createTable, HeadingLevel } from './DocHelpers';
-//  import "./DasDisplay.css"
+   import "./DasDisplay.css"
 
 function DasDisplay() {
 
@@ -138,7 +138,7 @@ function DasDisplay() {
             }
 
             /* Specific style for header row */
-            .header-table {
+            .das-display-header-table {
                 text-align: center;
                 font-weight: bold;
                 font-size: 1.2em;
@@ -181,13 +181,13 @@ function DasDisplay() {
                 }
             }
 
-            .abstractform-table {
+            .das-display-table {
                 border: 2px solid black;
                 border-collapse: collapse;
                 width: 100%;
             }
 
-            .abstractform-table th, .abstractform-table td {
+            .das-display-table th, .das-display-table td {
                 border: 1px solid black;
                 padding: 8px;
                 text-align: left;
@@ -236,28 +236,33 @@ function DasDisplay() {
                 <div >
                     <br />
                     <br />
-                    <table className='Abstract-Report'
-
-                        style={{
-                            border: '2px solid black',
-                            borderCollapse: 'collapse'
-                        }} >
+                    {/* <table className='das-display-abstract-report' style={{ border: '2px solid black', borderCollapse: 'collapse'}} >
                         <tr>
                             <th><h2> DISCOVER ABSTRACT REPORT</h2></th>
                         </tr>
-                        {/* Table-----------------------------------------------------------------1*/}
+    
+                    </table> */}
+                    <center>
+                    <table className='das-display-report-heading' style={{ border: '2px solid black', borderCollapse: 'collapse'}}>
+                        <tr>
+                            <th>
+                            DISCOVER ABSTRACT REPORT
+                            </th>
+                        </tr>
                     </table>
+                    </center>
                     <br />
                     <br />
+                    {/* -----------------------------------------Table -1----------------------------------------------------- */}
                     {etservice && (
                         <div>
                             <center>
                                 {etservice && (
                                     <div>
                                         <center>
-                                            <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                                            <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                                                 <tr>
-                                                    <th className="header-table" colSpan={8}>PROPERTY INFO </th>
+                                                    <th className="das-display-header-table" colSpan={8}>PROPERTY INFO </th>
                                                 </tr>
 
                                                 <tr>
@@ -363,9 +368,9 @@ function DasDisplay() {
                     {etservice && etservice.vestingdeedinfo.map((vestingdeedinfo, index) => (
                         <div key={index} >
                             <center>
-                                <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                                <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                                     <tr>
-                                        <th className='header-table' colSpan="7"> {index === 0 ? "Vesting Information" : `Chain of Title ${index}`}  </th>
+                                        <th className='das-display-header-table' colSpan="7"> {index === 0 ? "Vesting Information" : `Chain of Title ${index}`}  </th>
                                     </tr>
 
                                     <tr>
@@ -434,9 +439,9 @@ function DasDisplay() {
                     {etservice && etservice.absopenmortgagedeedinfo.map((openmortagedeedinfo, mIndex) => (
                         <div key={mIndex} >
                             <center>
-                                <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
+                                <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
                                     <tr>
-                                        <th className='header-table' colSpan="7">OPEN MORTGAGE / DEED OF TRUST  - ({mIndex}) INFORMATION </th>
+                                        <th  className='das-display-header-table' colSpan="7">OPEN MORTGAGE / DEED OF TRUST  - ({mIndex}) INFORMATION </th>
                                     </tr>
 
                                     <tr>
@@ -514,26 +519,23 @@ function DasDisplay() {
             <div id="pdf-content2">
                 {/* Second set of content to be converted */}
                 <br />
-                <table className='Abstract-Report'
-
-                    style={{
-                        border: '2px solid black',
-                        borderCollapse: 'collapse'
-                    }} >
-                    <tr>
-                        <th><h2> DISCOVER ABSTRACT REPORT</h2></th>
-                    </tr>
-                    
-                    {/* Table-----------------------------------------------------------------1*/}
-                </table>
+                <center>
+                    <table className='das-display-report-heading' style={{ border: '2px solid black', borderCollapse: 'collapse'}}>
+                        <tr>
+                            <th>
+                            DISCOVER ABSTRACT REPORT
+                            </th>
+                        </tr>
+                    </table>
+                    </center>
                 <br />
-                <br/>
+                <br />
                 <div >
                     <center>
-                        <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                        <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                             <thead>
                                 <tr>
-                                    <th className='header-table' colSpan="16"> ACTIVE JUDGMENTS AND LIENS</th>
+                                    <th  className='das-display-header-table' colSpan="16"> ACTIVE JUDGMENTS AND LIENS</th>
                                 </tr>
                                 <tr style={{ border: '1px solid black', }}>
                                     <th style={{ border: '1px solid black' }} scope="col">CASE TYPE</th>
@@ -564,9 +566,9 @@ function DasDisplay() {
                     <div id="taxInformation" key={tindex}>
                         <br />
                         <center>
-                            <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
+                            <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
                                 <tr>
-                                    <th className='header-table' colSpan="4">TAX INFORMATION </th>
+                                    <th  className='das-display-header-table' colSpan="4">TAX INFORMATION </th>
                                 </tr>
                                 <tr >
                                     <th style={{ border: '1px solid black' }}>ASSESMENT YEAR</th>
@@ -589,7 +591,7 @@ function DasDisplay() {
                                     <td colSpan='1' style={{ border: '1px solid black' }} >{taxinformation.excemption}</td>
                                 </tr>
 
-                                <tr className='header-table'>
+                                <tr className='das-display-header-table'>
                                     <th style={{ border: '1px solid black' }}>INSTALLMENT</th>
                                     <th style={{ border: '1px solid black' }}>AMOUNT</th>
                                     <th style={{ border: '1px solid black' }}>STATUS</th>
@@ -619,11 +621,11 @@ function DasDisplay() {
                 <br />
 
                 <center>
-                    <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                    <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                         <tr >
-                            <th className='header-table' colSpan={5}>Names Runs</th>
+                            <th className='das-display-header-table' colSpan={5}>Names Runs</th>
                         </tr>
-                        <tr className='heading-table'>
+                        <tr className='das-display-heading-table'>
                             <th style={{ border: '1px solid black', width: '25%' }}> Names</th>
                             <th style={{ border: '1px solid black' }}>  JUD </th>
                             <th style={{ border: '1px solid black' }}> Liens </th>
@@ -647,9 +649,9 @@ function DasDisplay() {
                 <br />
                 {etservice && (
                     <center>
-                        <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                        <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                             <tr>
-                                <th className="header-table" colSpan="5"> SHORT LEGAL DESCRIPTION </th>
+                                <th className="das-display-header-table" colSpan="5"> SHORT LEGAL DESCRIPTION </th>
 
                             </tr>
 
@@ -685,17 +687,15 @@ function DasDisplay() {
                 {/* Third set of content to be converted */}
 
                 <br />
-                <table className='Abstract-Report'
-
-                    style={{
-                        border: '2px solid black',
-                        borderCollapse: 'collapse'
-                    }} >
-                    <tr>
-                        <th><h2> DISCOVER ABSTRACT REPORT</h2></th>
-                    </tr>
-                    {/* Table-----------------------------------------------------------------1*/}
-                </table>
+                <center>
+                    <table className='das-display-report-heading' style={{ border: '2px solid black', borderCollapse: 'collapse'}}>
+                        <tr>
+                            <th>
+                            DISCOVER ABSTRACT REPORT
+                            </th>
+                        </tr>
+                    </table>
+                    </center>
 
                 <br />
                 <br />
@@ -709,10 +709,10 @@ function DasDisplay() {
                 <br />
 
                 <center>
-                    <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
+                    <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
 
                         <tr>
-                            <th className='header-table' colSpan="5">DISCLAIMER</th>
+                            <th className='das-display-header-table' colSpan="5">DISCLAIMER</th>
                         </tr>
 
                         <tr>
@@ -733,12 +733,15 @@ function DasDisplay() {
 
             <br />
             <div className='abstractform-button-container'>
-                <button className='abstractform-button' onClick={printDocument}>Download PDF</button>
-                <br />
-                <br />
+                <center>
+                    <button className='et-service-display-doc-button '  onClick={printDocument}>Download PDF</button>
+                    <button className='et-service-display-pdf-button' onClick={handleDownload}>Download as DOCX</button>
+                </center>
+
+
                 {/* <button className='abstractform-button' onClick={generateWordDocument}>Download word</button> */}
             </div>
-            <button className="abstractform-button" onClick={handleDownload}>Download as DOCX</button>
+
         </div>
 
     )
