@@ -72,6 +72,8 @@
     font-size: 1.5em;
     height: 150px; /* Adjust height for mobile */
     margin-bottom: -150px; /* Adjust margin for mobile */
+    margin-top: 50px;
+
   }
 
   .moving-title h2 {
@@ -84,7 +86,6 @@
     font-size: 1.2em;
     height: 120px; /* Adjust height for small mobile devices */
     margin-top: 70px;
-    
   }
 
   .moving-title h2 {

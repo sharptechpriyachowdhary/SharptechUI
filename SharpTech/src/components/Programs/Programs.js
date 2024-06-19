@@ -13,16 +13,16 @@ import { Link } from 'react-router-dom'
 const Programs = () => {
   return (
     <div>
-      <p className='container'><li><i className="fa fa-check"></i>Specializing in development of software front-end
+      <p className='programs-container-text'><li><i className="fa fa-check"></i>Specializing in development of software front-end
         applications and back-end applications, providing assistance
         in completing the assigned projects. We have well trained and
         experience Technical Trainers who supports and provides training
         and provide assistance in building project. </li>  </p>
         <br/>
-      <p className='container'><li><i className="fa fa-check"></i>Meticulous examination of property ownership history
+      <p className='programs-container-text'><li><i className="fa fa-check"></i>Meticulous examination of property ownership history
         and legal documents for clear and accurate reports. </li>  </p>
       <br/>
-      <p className='container'><li><i className="fa fa-check"></i>Precise measurements and detailed drawings
+      <p className='programs-container-text'><li><i className="fa fa-check"></i>Precise measurements and detailed drawings
         for effective planning and visualization. </li>  </p>
         <br/>
       <div className='programs'>

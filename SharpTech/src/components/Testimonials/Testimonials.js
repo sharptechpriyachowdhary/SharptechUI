@@ -8,7 +8,7 @@ import Title from '../Title/Title';
 const Testimonials = () => {
     return (
         <div>
-            <p className='container '>Welcome to our Roof Sketch Services, where we
+            <p className='programs-container-text' >Welcome to our Roof Sketch Services, where we
                 bring together the power of industry-leading software platforms – Xactimate,
                 Symbility, and Applicad – to provide you with precise, detailed, and customized roof sketches.
                 Our team specializes in utilizing these advanced tools to deliver

@@ -11,6 +11,11 @@
   position: relative;
   height: 100%;
 }
+.programs-container-text{
+  font-size: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
 
 .program img {
   width: 100%; /* Ensure images fill their container */
