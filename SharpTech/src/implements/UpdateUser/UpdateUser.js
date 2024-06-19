@@ -149,7 +149,7 @@ function UpdateUser() {
             <div className="form-row">
               <div className="form-group col">
                 <label htmlFor="empEmail">Email</label>
-                <input type="email" className="form-control" placeholder="Enter your email" name="email" value={userData.email} onChange={handleInputChange} />
+                <input type="email" className="form-control" placeholder="Enter your email" name="email" value={userData.email} onChange={handleInputChange} readOnly/>
                 {emailInvalid && <span className="error-message-return">Invalid email format</span>}
                 {<p>&nbsp;&nbsp;Email can't be Edit</p>}
               </div>

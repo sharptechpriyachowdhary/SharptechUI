@@ -10,7 +10,7 @@ import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import { countries } from "../Carousel/Data";
 import Navbar from '../Navbar/Navbar';
 import "./HomePage.css"
-import Hero from '../Hero/Hero';
+
 
 function HomePage({ playState, setPlayState }) {
   return (
@@ -31,10 +31,12 @@ function HomePage({ playState, setPlayState }) {
       <br />
       <br />
       <Title title='Our Services ' />
+      <br />
       <Programs />
       <br />
       <br />
       <Title title='Sample Reports' subTitle='' />
+      <br />
       <Testimonials />
       <br />
       <Title title='Contact Us' />
