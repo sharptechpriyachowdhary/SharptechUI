@@ -34,6 +34,7 @@ import EmployeeDetail from './implements/EmployeeDetail/EmployeeDetail';
 import ProtectedRoute from './implements/Logic/ProtectedRoute';
 import PublicRoute from './implements/Logic/PublicRoute';
 import VerifyLogin from './implements/Login/VerifyLogin';
+import EtserviceReport from './Reports/EtServicesReports/EtserviceReport';
 
 
 function App() {
@@ -86,6 +87,7 @@ function App() {
               {/* This route will access with both admin and Employee with the help of ProtectedRoute in Loginc folder  */}
               <Route element={<ProtectedRoute redirectTo="/" />}>
                 <Route path="/EtServices" element={<EtServices />} />
+                <Route path="/EtserviceReport" element={<EtserviceReport />} />
                 <Route path="/EtSearchAddress" element={<EtSearchAddress />} />
                 <Route path="/EtServiceDisplay/:orderNumber" element={<EtServiceDisplay />} />
                 <Route path="/EtOrderSearch" element={<EtOrderSearch />} />

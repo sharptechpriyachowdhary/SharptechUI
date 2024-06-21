@@ -61,6 +61,9 @@ const Dropdown = () => {
               <RouterLink to="/EtServices" className="dropdown-link-component">ET Services</RouterLink>
             </li>
             <li className="dropdown-item">
+              <RouterLink to="/EtserviceReport" className="dropdown-link-component">EtserviceReport</RouterLink>
+            </li>
+            <li className="dropdown-item">
               <RouterLink to="/EtOrderSearch" className="dropdown-link-component">ET Order Search</RouterLink>
             </li>
             <li className="dropdown-item">
