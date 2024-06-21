@@ -20,25 +20,27 @@ function DasDisplay() {
     const [isDownloading, setIsDownloading] = useState(false);
 
     useEffect(() => {
-        const loadUser = async () => {
-            try {
-                const token = localStorage.getItem('token');
-                const result = await axios.get(`http://localhost:8080/fetch/${orderNumber}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-                window.alert("Successfully fetched");
-                console.log(result);
-                setEtService(result.data);
-            } catch (error) {
-                console.error('Error fetching user details:', error);
-            }
+        const loadEtService = async () => {
+          try {
+            const token = localStorage.getItem('token');
+            const result = await axios.get(`http://localhost:8080/fetch/${orderNumber}`, {
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            });
+            setEtService(result.data);
+          } catch (error) {
+            console.error('Error fetching et service details:', error);
+          }
         };
-
-        loadUser();
-    }, [orderNumber]);
-
+    
+        loadEtService();
+    
+        return () => {
+          // Clean up any remaining state or effects here if needed
+        };
+      }, [orderNumber]);
+      
     const printDocument = () => {
         const input1 = document.getElementById('pdf-content1');
         const input2 = document.getElementById('pdf-content2');
@@ -234,8 +236,8 @@ function DasDisplay() {
                 {/* First set of content to be converted */}
                 {/* <img src="your-image-url.jpg" alt="Your Image" style={{ width: '100%', height: 'auto' }} /> */}
                 <div >
-                    <br />
-                    <br />
+                    {/* <br />
+                    <br /> */}
                     <table className='Abstract-Report'
 
                         style={{
