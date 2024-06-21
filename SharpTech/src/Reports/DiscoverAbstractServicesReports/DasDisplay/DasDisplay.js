@@ -158,23 +158,12 @@ function DasDisplay() {
                 {/* First set of content to be converted */}
                 {/* <img src="your-image-url.jpg" alt="Your Image" style={{ width: '100%', height: 'auto' }} /> */}
                 <div >
-<<<<<<< HEAD
+
                     {/* <br />
                     <br /> */}
-                    <table className='Abstract-Report'
-
-                        style={{
-                            border: '2px solid black',
-                            borderCollapse: 'collapse'
-                        }} >
-                        <tr>
-                            <th><h2> DISCOVER ABSTRACT REPORT</h2></th>
-                        </tr>
-                        {/* Table-----------------------------------------------------------------1*/}
-                    </table>
+                    
                     <br />
                     <br />
-=======
                     
                     <center>
                         <table className='das-display-report-heading' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
@@ -184,7 +173,7 @@ function DasDisplay() {
                     <br />
                     <br />
                     {/* -----------------------------------------Table-1----------------------------------------------------- */}
->>>>>>> 14dabd249f674c372e9306e1050cc8c473b2692f
+
                     {etservice && (
                         <div>
                             <center>
