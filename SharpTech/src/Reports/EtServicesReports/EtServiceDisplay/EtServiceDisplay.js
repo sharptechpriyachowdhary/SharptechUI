@@ -104,7 +104,9 @@ function EtServiceDisplay() {
           .et-service-disclaimer-box{
            text-align: center;
            }
-
+        .etract-title-service-heading{
+         text-align: center;
+        }
            .et-service-form-table-sub-selftables-heading{
           background-color: rgb(212, 210, 210);
            }
@@ -143,7 +145,7 @@ function EtServiceDisplay() {
                     <div  >
                         <br />
                         <br />
-                        <h1><b> ETRACK TITTLE SERVICES INC </b></h1>
+                        <h1 className='etract-title-service-heading'> ETRACK TITTLE SERVICES INC </h1>
                         <br />
                         <br />
 
@@ -550,12 +552,15 @@ function EtServiceDisplay() {
                         <br />
 
                     </div>
-                    <button className='et-service-display-doc-button' onClick={handleDownload}>Download as DOCX</button>
+                    <button className='et-service-display-doc-button' onClick={handleDownload}>Download DOCX</button>
                     <button className='et-service-display-pdf-button' onClick={printDocument}>Download PDF</button>
                 </div>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 6f2dc605186c4e32b4cf3d645f26ca93b1006473
             </div>
             <Footer />
         </div>
