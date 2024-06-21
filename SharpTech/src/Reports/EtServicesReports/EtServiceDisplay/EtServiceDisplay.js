@@ -554,8 +554,6 @@ function EtServiceDisplay() {
                     <button className='et-service-display-pdf-button' onClick={printDocument}>Download PDF</button>
                 </div>
 
-
-
             </div>
             <Footer />
         </div>
