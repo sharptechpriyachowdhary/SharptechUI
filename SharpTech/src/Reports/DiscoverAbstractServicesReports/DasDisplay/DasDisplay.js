@@ -11,7 +11,11 @@ import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph, Table, TableRow, TableCell } from "docx";
 import htmlDocx from 'html-docx-js/dist/html-docx';
 // import { createParagraph, createHeading, createTable, HeadingLevel } from './DocHelpers';
+<<<<<<< HEAD
 import "./DasDisplay.css"
+=======
+//  import "./DasDisplay.css"
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
 
 function DasDisplay() {
 
@@ -130,7 +134,93 @@ function DasDisplay() {
              
             }
 
+<<<<<<< HEAD
           
+=======
+            th, td {
+                border: 1px solid #000;
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+            /* Specific style for header row */
+            .header-table {
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.2em;
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            /* Links */
+            a {
+                color: #0000EE;
+                text-decoration: underline;
+            }
+
+            /* Images */
+            img {
+                max-width: 100%;
+                height: auto;
+                margin: 10px 0;
+            }
+
+            /* Divs and Containers */
+            #content-to-download {
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            /* Miscellaneous */
+            strong {
+                font-weight: bold;
+            }
+
+            em {
+                font-style: italic;
+            }
+
+            /* Page breaks for Word */
+            @media print {
+                .page-break {
+                    page-break-before: always;
+                }
+            }
+
+            .abstractform-table {
+                border: 2px solid black;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            .abstractform-table th, .abstractform-table td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+                vertical-align: top;
+            }
+
+            .abstractform-button-container {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .abstractform-button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .abstractform-button:hover {
+                background-color: #45a049;
+            }
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
         </style>
     
     `;
@@ -156,6 +246,7 @@ function DasDisplay() {
                 {/* First set of content to be converted */}
                 {/* <img src="your-image-url.jpg" alt="Your Image" style={{ width: '100%', height: 'auto' }} /> */}
                 <div >
+<<<<<<< HEAD
                     
                     <center>
                         <table className='das-display-report-heading' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
@@ -165,14 +256,32 @@ function DasDisplay() {
                     <br />
                     <br />
                     {/* -----------------------------------------Table-1----------------------------------------------------- */}
+=======
+                    <br />
+                    <br />
+                    <table className='Abstract-Report'
+
+                        style={{
+                            border: '2px solid black',
+                            borderCollapse: 'collapse'
+                        }} >
+                        <tr>
+                            <th><h2> DISCOVER ABSTRACT REPORT</h2></th>
+                        </tr>
+                        {/* Table-----------------------------------------------------------------1*/}
+                    </table>
+                    <br />
+                    <br />
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                     {etservice && (
                         <div>
                             <center>
                                 {etservice && (
                                     <div>
                                         <center>
-                                            <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                                            <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                                                 <tr>
+<<<<<<< HEAD
                                                     <th className="das-display-header-table" style={{ marginBottom:'10px' }} colSpan={6}>PROPERTY INFO </th>
                                                 </tr>
 
@@ -192,16 +301,54 @@ function DasDisplay() {
 
                                                     <th colSpan={1} style={{ border: '1px solid black' }}>EFFECTIVE DATE :</th>
                                                     <td className="das-report-display-data" colSpan={1} style={{ border: '1px solid black' }}>{etservice.effectiveDate}  </td>
+=======
+                                                    <th className="header-table" colSpan={8}>PROPERTY INFO </th>
+                                                </tr>
+
+                                                <tr>
+                                                    <th style={{ border: '1px solid black' }}>ORDER NUMBER :</th>
+                                                    <td colSpan={4} style={{ border: '1px solid black' }}>
+                                                        {etservice.orderNumber}
+
+                                                    </td>
+                                                    <th style={{ border: '1px solid black' }}>REFERENCE NUMBER :</th>
+                                                    <td colSpan={'100%'} style={{ border: '1px solid black' }}>
+                                                        {etservice.referenceNumber}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th style={{ border: '1px solid black' }}>SEARCH DATE :</th>
+                                                    <td colSpan={'2'} style={{ border: '1px solid black' }}>
+                                                        {etservice.searchDate}
+                                                    </td>
+
+                                                    <th style={{ border: '1px solid black' }}>As Of</th>
+                                                    <td >7:30 Am</td>
+
+                                                    <th style={{ border: '1px solid black' }}>EFFECTIVE DATE :</th>
+                                                    <td colSpan={2} style={{ border: '1px solid black' }}>
+                                                        {etservice.effectiveDate}
+                                                    </td>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                                                 </tr>
 
                                                 <tr>
 
+<<<<<<< HEAD
                                                     <th colSpan={1} style={{ border: '1px solid black' }}>PROPERTY ADDRESS :</th>
                                                     <td className="das-report-display-data"  colSpan={5} style={{ border: '1px solid black' }}>  {etservice.propertyAddress} </td>
+=======
+                                                    <th style={{ border: '1px solid black' }}>PROPERTY ADDRESS :</th>
+                                                    <td colSpan={6} style={{ border: '1px solid black' }}>
+                                                        {etservice.propertyAddress}
+                                                    </td>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
 
                                                 </tr>
 
                                                 <tr>
+<<<<<<< HEAD
                                                     <th colSpan={1} style={{ border: '1px solid black' }}> STATE : </th>
                                                     <td className="das-report-display-data" colSpan={3} style={{ border: '1px solid black' }}>  {etservice.state}  </td>
 
@@ -234,6 +381,56 @@ function DasDisplay() {
                                                     <td className="das-report-display-data" colSpan={5} style={{ border: '1px solid black' }}>{etservice.propertyType} </td>
                                                     {/* <td colSpan={1} style={{ border: '1px solid black' }}></td>
                                                     <td colSpan={1}  style={{ border: '1px solid black' }}></td> */}
+=======
+                                                    <th style={{ border: '1px solid black' }}> STATE : </th>
+                                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
+                                                        {etservice.state}
+                                                    </td>
+
+                                                    <th style={{ border: '1px solid black' }}> COUNTY :</th>
+                                                    <td colSpan={2} style={{ border: '1px solid black' }}>
+                                                        {etservice.county}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th style={{ border: '1px solid black' }}>BORROWER NAME :</th>
+                                                    <td colSpan={6} style={{ border: '1px solid black' }}>
+                                                        {etservice.borrowerName}
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th style={{ border: '1px solid black' }}> PARCEL NUMBER :</th>
+                                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
+                                                        {etservice.parcelNumber}
+                                                    </td>
+
+                                                    <th style={{ border: '1px solid black' }}> SUBDIVISION : </th>
+                                                    <td colSpan={2} style={{ border: '1px solid black' }}>
+                                                        {etservice.subdivision}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th style={{ border: '1px solid black' }}> Lot/Unit </th>
+                                                    <td colSpan={'4'} style={{ border: '1px solid black' }}>
+                                                        {etservice.lotUnit}
+                                                    </td>
+                                                    <th style={{ border: '1px solid black' }}>BLOCK:</th>
+                                                    <td colSpan={2} style={{ border: '1px solid black' }}>
+                                                        {etservice.block}                                </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th style={{ border: '1px solid black' }}>PROPERTY TYPE:</th>
+                                                    <td colSpan={'8'} style={{ border: '1px solid black' }}>
+                                                        {etservice.propertyType}
+                                                    </td>
+                                                    <td colSpan={'1'} style={{ border: '1px solid black' }}></td>
+                                                    <td colSpan={'1'} style={{ border: '1px solid black' }}></td>
+
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                                                 </tr>
 
                                             </table>
@@ -252,9 +449,13 @@ function DasDisplay() {
                         <div key={index} >
                             <br />
                             <center>
-                                <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                                <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                                     <tr>
+<<<<<<< HEAD
                                         <th className='das-display-header-table' colSpan="4"> {index === 0 ? "VESTING INFORMATION" : ` CHAIN OF TITLE  ${index}`}  </th>
+=======
+                                        <th className='header-table' colSpan="7"> {index === 0 ? "Vesting Information" : `Chain of Title ${index}`}  </th>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                                     </tr>
 
                                     <tr>
@@ -304,9 +505,13 @@ function DasDisplay() {
                         <div key={mIndex} >
                             <br />
                             <center>
-                                <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
+                                <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
                                     <tr>
+<<<<<<< HEAD
                                         <th className='das-display-header-table' colSpan={4} >OPEN MORTGAGE / DEED OF TRUST  - ({mIndex}) INFORMATION </th>
+=======
+                                        <th className='header-table' colSpan="7">OPEN MORTGAGE / DEED OF TRUST  - ({mIndex}) INFORMATION </th>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                                     </tr>
 
                                     <tr>
@@ -382,19 +587,39 @@ function DasDisplay() {
           
             <div id="pdf-content2">
                 <br />
+<<<<<<< HEAD
                 {/* <center>
                     <table className='das-display-report-heading' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                         <tr>  <th> DISCOVER ABSTRACT REPORT </th> </tr>
                     </table>
                 </center> */}
                 <br />
+=======
+                <table className='Abstract-Report'
+
+                    style={{
+                        border: '2px solid black',
+                        borderCollapse: 'collapse'
+                    }} >
+                    <tr>
+                        <th><h2> DISCOVER ABSTRACT REPORT</h2></th>
+                    </tr>
+                    
+                    {/* Table-----------------------------------------------------------------1*/}
+                </table>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                 <br />
+                <br/>
                 <div >
                     <center>
-                        <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                        <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                             <thead>
                                 <tr>
+<<<<<<< HEAD
                                     <th className='das-display-header-table' colSpan={4} style={{ marginBottom:'10px' }}> ACTIVE JUDGMENTS AND LIENS</th>
+=======
+                                    <th className='header-table' colSpan="16"> ACTIVE JUDGMENTS AND LIENS</th>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                                 </tr>
                                 <tr>
                                      <th className="das-display-sub-title-headings" colSpan={1} style={{ border: '1px solid black' }} scope="col">CASE TYPE</th>
@@ -423,9 +648,13 @@ function DasDisplay() {
                     <div id="taxInformation" key={tindex}>
                         <br />
                         <center>
-                            <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
+                            <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
                                 <tr>
+<<<<<<< HEAD
                                     <th className='das-display-header-table' colSpan={4} >TAX INFORMATION </th>
+=======
+                                    <th className='header-table' colSpan="4">TAX INFORMATION </th>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                                 </tr>
                                 <tr >
                                     <th className="das-display-sub-title-headings" colSpan={1} style={{ border: '1px solid black' }}>ASSESMENT YEAR</th>
@@ -448,11 +677,19 @@ function DasDisplay() {
                                     <td className="das-report-display-data" colSpan={1} style={{ border: '1px solid black' }} >{taxinformation.excemption}</td>
                                 </tr>
 
+<<<<<<< HEAD
                                 <tr className='das-display-header-table'>
                                     <th className="das-display-sub-title-headings" colSpan={1} style={{ border: '1px solid black' }}>INSTALLMENT</th>
                                     <th className="das-display-sub-title-headings" colSpan={1} style={{ border: '1px solid black' }}>AMOUNT</th>
                                     <th className="das-display-sub-title-headings" colSpan={1} style={{ border: '1px solid black' }}>STATUS</th>
                                     <th className="das-display-sub-title-headings" colSpan={1} style={{ border: '1px solid black' }}>PAID/DUE DATE</th>
+=======
+                                <tr className='header-table'>
+                                    <th style={{ border: '1px solid black' }}>INSTALLMENT</th>
+                                    <th style={{ border: '1px solid black' }}>AMOUNT</th>
+                                    <th style={{ border: '1px solid black' }}>STATUS</th>
+                                    <th style={{ border: '1px solid black' }}>PAID/DUE DATE</th>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
 
                                 </tr>
                                 {etservice && etservice.taxinstallments.map((taxinstallment, tindex) => (
@@ -476,8 +713,9 @@ function DasDisplay() {
               
 
                 <center>
-                    <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                    <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                         <tr >
+<<<<<<< HEAD
                             <th className='das-display-header-table' style={{ marginBottom:'10px' }} colSpan={5}> NAMES RUNS</th>
                         </tr>
                         <tr className='das-display-heading-table'>
@@ -486,6 +724,16 @@ function DasDisplay() {
                             <th className="das-display-sub-title-headings" colSpan={1} style={{ border: '1px solid black' }}> LINES </th>
                             <th className="das-display-sub-title-headings" colSpan={1} style={{ border: '1px solid black' }}>UCC</th>
                             <th className="das-display-sub-title-headings" colSpan={1} style={{ border: '1px solid black' }}>OTHERS</th>
+=======
+                            <th className='header-table' colSpan={5}>Names Runs</th>
+                        </tr>
+                        <tr className='heading-table'>
+                            <th style={{ border: '1px solid black', width: '25%' }}> Names</th>
+                            <th style={{ border: '1px solid black' }}>  JUD </th>
+                            <th style={{ border: '1px solid black' }}> Liens </th>
+                            <th style={{ border: '1px solid black' }}>UCC</th>
+                            <th style={{ border: '1px solid black' }}>Others</th>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                         </tr>
 
                         {etservice && etservice.namesrun.map((nameruns, nindex) => (
@@ -504,9 +752,14 @@ function DasDisplay() {
                 <br />
                 {etservice && (
                     <center>
-                        <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
+                        <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                             <tr>
+<<<<<<< HEAD
                                 <th className="das-display-header-table" colSpan={1}> SHORT LEGAL DESCRIPTION </th>
+=======
+                                <th className="header-table" colSpan="5"> SHORT LEGAL DESCRIPTION </th>
+
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                             </tr>
 
                             <tr>
@@ -535,6 +788,7 @@ function DasDisplay() {
                 {/* Third set of content to be converted */}
 
                 <br />
+<<<<<<< HEAD
                 {/* <center>
                     <table className='das-display-report-heading' style={{ border: '2px solid black', borderCollapse: 'collapse' }}>
                         <tr>
@@ -542,6 +796,19 @@ function DasDisplay() {
                         </tr>
                     </table>
                 </center> */}
+=======
+                <table className='Abstract-Report'
+
+                    style={{
+                        border: '2px solid black',
+                        borderCollapse: 'collapse'
+                    }} >
+                    <tr>
+                        <th><h2> DISCOVER ABSTRACT REPORT</h2></th>
+                    </tr>
+                    {/* Table-----------------------------------------------------------------1*/}
+                </table>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
 
                 <br />
                 <br />
@@ -555,10 +822,14 @@ function DasDisplay() {
                 <br />
 
                 <center>
-                    <table className='das-display-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
+                    <table className='abstractform-table' style={{ border: '2px solid black', borderCollapse: 'collapse' }} >
 
                         <tr>
+<<<<<<< HEAD
                             <th className='das-display-header-table' style={{ marginBottom:'10px' }} colSpan={1}>DISCLAIMER</th>
+=======
+                            <th className='header-table' colSpan="5">DISCLAIMER</th>
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                         </tr>
 
                         <tr>
@@ -577,15 +848,21 @@ function DasDisplay() {
          
        
             <div className='abstractform-button-container'>
+<<<<<<< HEAD
                 <center>
                     <button className='et-service-display-doc-button ' onClick={printDocument}>Download PDF</button>
                     <button className='et-service-display-pdf-button' onClick={handleDownload}>Download DOCX</button>
                 </center>
 
 
+=======
+                <button className='abstractform-button' onClick={printDocument}>Download PDF</button>
+                <br />
+                <br />
+>>>>>>> 4c1f83fab8853e010fc75bd70c90f621a333aa75
                 {/* <button className='abstractform-button' onClick={generateWordDocument}>Download word</button> */}
             </div>
-
+            <button className="abstractform-button" onClick={handleDownload}>Download as DOCX</button>
         </div>
 
     )
